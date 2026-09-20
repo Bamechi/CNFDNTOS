@@ -1,6 +1,6 @@
 # CNFDNT OS
 
-Responsive web app implementing the September 20, 2026 Round One revision. The original black intake and animated Worlds remain, with Projects, priority queues, reference uploads, Output, Issues, and retained institutional memory.
+Responsive web app implementing the September 20, 2026 Round Two revision. The original black intake and animated Worlds remain, with Projects, priority queues, reference uploads, Output, Issues, and retained institutional memory.
 
 ## Run
 
@@ -14,15 +14,16 @@ Open http://localhost:4310, or use `Launch CNFDNT OS.command`. The existing auth
 
 The database is `.data/cnfdnt.sqlite` (Git-ignored). Schema migration creates a backup under `.data/backups` and retains Worlds, items, captures, originals and existing relationships. JSON/CSV and a portable JSON backup with original file bytes are available in Settings. Never commit the database or `.env`.
 
-## Round One behavior
+## Current behavior
 
 - Worlds are ongoing domains: six recommended, ten active enforced; archived Worlds excluded. Built-in icon/color choices, owner status override or majority of Active Rocks, Needs review for ties/none. Overview shows Headline, Summary, Updates and Critical before Rocks and Next Moves.
 - Projects are finishable work in exactly one World. They can support one primary World-level Rock. To-Dos, Issues, notes, resources and events optionally link to a Project.
-- Three Active Rocks per World; the rest are labeled Inactive. Completing/deactivating promotes the next eligible Rock with a persistent due-date-review flag. Global Focus Three is optional and explicitly labeled a recommended display rule pending confirmation.
-- Checkpoints are canonical linked To-Do records with required description/date. Completion, reopening, editing and deletion are shared across the Rock, Project, World, global To-Dos and Timeline. Deletion warns that the shared checkpoint is removed.
-- Immutable server-assigned creation/upload timestamps; due dates, event starts and reminders are distinct. A To-Do’s age is not reset by scheduling. Days 7–13 show Attention; day 14+ shows Critical review. All unfinished items remain until a person resolves them. Review options include breakdown, Project work, reasoned rescheduling, snooze, dismissal and deletion, with an audit trail.
+- Three Active Rocks per World; the rest are labeled Inactive. Completing/deactivating promotes the next eligible Rock with a persistent due-date-review flag. Up to three Active Rocks across Worlds can be starred as overall MVPs. The global display is cross-World, defaults to due-date order, and saves independent manual and MVP orders. Rock cards open detail pages with Projects, To-Dos, checkpoints and chronological notes.
+- New checkpoints are dated milestone records, with a reviewed actionable To-Do offered only within the 14-day window. Linked task edits/completion sync with the checkpoint. Legacy checkpoint To-Do IDs and dates are preserved; future ones remain scheduled rather than appearing early in actionable lists. Deleting a new checkpoint preserves and unlinks its actionable task. No automatic task generation or recurrence scheduler is introduced.
+- Immutable server-assigned creation/upload timestamps; due dates, event starts and reminders are distinct. A To-Do’s age is not reset by scheduling. Calendar days 7–13 show Needs review; day 14+ shows Stale — review now. Date-only deadlines expire at the end of the user’s local day. New/changed To-Do dates must be today through creation day +14 inclusive; legacy unchanged dates remain intact and flagged. Reminders offer optional relative choices or an independent absolute time. All unfinished items remain until a person resolves them. Review options include breakdown, Project work, reasoned rescheduling, snooze, dismissal and deletion, with an audit trail.
 - Completed Rocks/To-Dos archive after seven days. Projects/Worlds require explicit archive confirmation. Archive is searchable/restorable; notes and resources are retained with parents. Global, World and Project priority scopes are independent.
 - Navigable timeline horizon, month/year controls and aligned month grid, seven-day weeks, day commitments and calm empty states. Phone month grids scroll horizontally inside the calendar, rather than overflowing the page.
+- Knowledge Base separates scoped Ask Knowledge chat, Upload, Resources and Notes. The read-only chat uses only notes/resource text, keeps server-side follow-up context, validates source IDs and exact supporting excerpts, and opens the underlying record. Unsupported answers are source-free. Without a configured model, it shows a setup state.
 - Knowledge Base accepts file selection and drag/drop (mobile file picker), preserves original files and extracts TXT/DOCX/PDF text where supported. Initial quota: 20 MB per file, 200 MB stored originals per account; extraction up to 100 PDF pages/100,000 characters per file. Images/audio are stored but not OCR’d/transcribed. Extracted possible actions are keyword suggestions and require review.
 - Output has nine requested templates and a conversation option, editable/saved drafts, source records, and a separate confirmation step for actions. Without Claude credentials it explicitly provides structured local drafts, not AI conversation. With credentials, Claude can use scoped records, including archived context, Worlds and Projects.
 - Issues are World-linked with optional Project, context and Open/Solved state. Solve records a proposed resolution and opens review forms for follow-up work. A Rock proposal requires explicit strategic-priority confirmation.
@@ -35,7 +36,7 @@ Copy `.env.example` to `.env` and set values on the server, never in browser cod
 
 ### Claude
 
-Set `ANTHROPIC_API_KEY` and an `ANTHROPIC_MODEL` available to your account. Output then uses the Messages API with bounded context and source labels. Generated output never mutates records. Live API usage was not tested without credentials. Reference: https://platform.claude.com/docs/en/api/messages/create
+Set `ANTHROPIC_API_KEY` and an `ANTHROPIC_MODEL` available to your account. Knowledge Q&A and Output then use the Messages API with bounded context and source labels. Generated output never mutates records. Live API usage was not tested without credentials. Reference: https://platform.claude.com/docs/en/api/messages/create
 
 ### Google Calendar
 
@@ -47,6 +48,10 @@ TXT and DOCX extraction use Python's standard library; PDF extraction requires `
 
 Place supplied, rights-cleared MP3/WAV/M4A tracks in `public/music/`. No music has been supplied with this build. Track discovery is local; audio starts manually and pauses during voice capture.
 
+## User guide and icon follow-up
+
+Settings → App guide contains the working flows and examples. `docs/ICON_INVENTORY.md` records sidebar, status, action, World, music and notification icons for a later design pass.
+
 ## Verification
 
 ```sh
@@ -54,7 +59,7 @@ npm run check
 npm test
 ```
 
-The tests use a separate temporary SQLite database and port 4312. Browser acceptance uses a separate database on 4313; never seed test data into the live profile. See `VALIDATION.md` for scope and results and `FOLLOW_UP.md` for external dependencies and later phases.
+The tests use a separate temporary SQLite database and port 4312. Browser acceptance uses a separate database on 4313; never seed test data into the live profile. Run `PLAYWRIGHT_MODULE=/absolute/path/to/playwright node scripts/browser-round-two.cjs` against that isolated server for desktop/phone acceptance. See `VALIDATION.md` for scope and results and `FOLLOW_UP.md` for external dependencies and later phases.
 
 ## Deployment boundaries
 

@@ -8,6 +8,7 @@ import {homedir,tmpdir} from 'node:os';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {normalize,validateState,promotionMessages,activeRocks} from './public/domain.js';
+import {answerKnowledge,knowledgeRecords} from './lib/knowledge.mjs';
 import {generateOutput} from './lib/output.mjs';
 import {googleIntegration} from './lib/google.mjs';
 try { process.loadEnvFile(resolve(import.meta.dirname,'.env')); } catch {}
@@ -15,6 +16,7 @@ const root=resolve(import.meta.dirname,'public');
 await mkdir(resolve(import.meta.dirname,'.data'),{recursive:true});
 const db=new DatabaseSync(process.env.DB_PATH||resolve(import.meta.dirname,'.data/cnfdnt.sqlite'));
 db.exec('CREATE TABLE IF NOT EXISTS profile (id INTEGER PRIMARY KEY, salt TEXT, hash TEXT, data TEXT); CREATE TABLE IF NOT EXISTS sessions (token TEXT PRIMARY KEY, expires INTEGER); CREATE TABLE IF NOT EXISTS files (id TEXT PRIMARY KEY, name TEXT, type TEXT, size INTEGER, uploaded_at TEXT, content BLOB)');
+db.exec('CREATE TABLE IF NOT EXISTS knowledge_threads (id TEXT PRIMARY KEY, scope TEXT, messages TEXT)');
 const date=n=>new Date(Date.now()+n*86400000).toISOString().slice(0,10);
 const seed={name:'Amechi',onboarding:0,theme:'dark',vocabulary:'World',worlds:[{id:'w1',name:'CNFDNT Community',purpose:'Build a space where confidence becomes a way of life.',status:'on',tone:0},{id:'w2',name:'High Lvl Media',purpose:'Ideas into stories. Stories into impact.',status:'on',tone:1},{id:'w3',name:'Personal Growth',purpose:'Become the person the vision requires.',status:'on',tone:2},{id:'w4',name:'Creative Studio',purpose:'Make room for the work only you can make.',status:'off',tone:3}],items:[{id:'r1',world:'w1',type:'rock',title:'Launch the founding community',description:'Welcome the first 100 members with a complete onboarding experience.',due:date(60),status:'on',created:date(0),comments:[]},{id:'r2',world:'w2',type:'rock',title:'Build the next chapter of High Lvl',description:'Publish the new portfolio and three flagship stories.',due:date(75),status:'on',created:date(0),comments:[]},{id:'t1',world:'w1',rock:'r1',type:'todo',title:'Outline the founding member experience',due:date(2),created:date(0),done:false,comments:[]},{id:'t2',world:'w2',type:'todo',title:'Collect references for the next film',due:date(4),created:date(0),done:false,comments:[]},{id:'t3',world:'w3',type:'todo',title:'Make space for a weekly reflection',due:date(6),created:date(0),done:false,comments:[]},{id:'n1',world:'w1',type:'note',title:'The community north star',description:'A place to think bigger, build together, and follow through. Start with connection. Make the first experience personal.',created:date(0)}],captures:[],connections:[]};
 if(!db.prepare('SELECT id FROM profile WHERE id=1').get()){const salt=randomBytes(16).toString('hex');db.prepare('INSERT INTO profile VALUES(1,?,?,?)').run(salt,scryptSync(process.env.TEST_PASSWORD||'vanta',salt,64).toString('hex'),JSON.stringify(seed));}
@@ -26,7 +28,8 @@ function storeState(s){db.prepare('UPDATE profile SET data=? WHERE id=1').run(JS
 function readState(){const raw=rawState(),s=normalize(raw);if(JSON.stringify(raw)!==JSON.stringify(s)){s.revision++;storeState(s);}return s;}
 function writeState(s){s=normalize(s);s.revision=readState().revision+1;return storeState(s);}
 // Idempotent one-time migration preserves legacy uploaded originals and relationship data.
-const legacy=rawState();if(legacy.schema!==2){await mkdir(resolve(import.meta.dirname,'.data/backups'),{recursive:true});await writeFile(resolve(import.meta.dirname,'.data/backups/migration-v1-'+Date.now()+'.json'),JSON.stringify(legacy));for(const i of legacy.items){if(i.file?.startsWith('data:')){const [,type,data]=i.file.match(/^data:([^;]+);base64,(.*)$/s)||[];if(data){const id=randomBytes(16).toString('hex'),buf=Buffer.from(data,'base64');db.prepare('INSERT INTO files VALUES(?,?,?,?,?,?)').run(id,i.filename||i.title,type,buf.length,i.created?i.created+'T12:00:00Z':new Date().toISOString(),buf);i.file_id=id;i.filename||=i.title;i.file_size=buf.length;i.uploaded_at=i.created?i.created+'T12:00:00Z':new Date().toISOString();delete i.file;}}if(i.title?.startsWith('Checkpoint:'))i.description||=i.title; }storeState(normalize(legacy));}
+const legacy=rawState();if(!legacy.schema||legacy.schema<2){await mkdir(resolve(import.meta.dirname,'.data/backups'),{recursive:true});await writeFile(resolve(import.meta.dirname,'.data/backups/migration-v1-'+Date.now()+'.json'),JSON.stringify(legacy));for(const i of legacy.items){if(i.file?.startsWith('data:')){const [,type,data]=i.file.match(/^data:([^;]+);base64,(.*)$/s)||[];if(data){const id=randomBytes(16).toString('hex'),buf=Buffer.from(data,'base64');db.prepare('INSERT INTO files VALUES(?,?,?,?,?,?)').run(id,i.filename||i.title,type,buf.length,i.created?i.created+'T12:00:00Z':new Date().toISOString(),buf);i.file_id=id;i.filename||=i.title;i.file_size=buf.length;i.uploaded_at=i.created?i.created+'T12:00:00Z':new Date().toISOString();delete i.file;}}if(i.title?.startsWith('Checkpoint:'))i.description||=i.title; }storeState(normalize(legacy));}
+if(legacy.schema===2){await mkdir(resolve(import.meta.dirname,'.data/backups'),{recursive:true});await writeFile(resolve(import.meta.dirname,'.data/backups/migration-v2-'+Date.now()+'.json'),JSON.stringify(legacy));storeState(normalize(legacy));}
 const google=googleIntegration(db,readState,writeState);
 const failures=new Map();
 const send=(res,status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
@@ -67,7 +70,16 @@ const server=http.createServer(async(req,res)=>{try{
       const f=db.prepare('SELECT * FROM files WHERE id=?').get(url.pathname.split('/').at(-1));if(!f)return send(res,404,{error:'File not found.'});res.writeHead(200,{'Content-Type':f.type,'Content-Disposition':`attachment; filename*=UTF-8''${encodeURIComponent(f.name)}`,'X-Content-Type-Options':'nosniff','Cache-Control':'private, no-store'});return res.end(f.content);
     }
     if(url.pathname==='/api/backup'&&req.method==='GET'){
-      const backup={format:'CNFDNT OS portable backup',version:2,exported_at:new Date().toISOString(),state:readState(),files:db.prepare('SELECT * FROM files').all().map(f=>({...f,content:Buffer.from(f.content).toString('base64')}))};res.setHeader('Content-Disposition','attachment; filename="cnfdnt-portable-backup.json"');return send(res,200,backup);
+      const backup={format:'CNFDNT OS portable backup',version:3,knowledgeThreads:db.prepare('SELECT * FROM knowledge_threads').all().map(t=>({...t,scope:JSON.parse(t.scope),messages:JSON.parse(t.messages)})),exported_at:new Date().toISOString(),state:readState(),files:db.prepare('SELECT * FROM files').all().map(f=>({...f,content:Buffer.from(f.content).toString('base64')}))};res.setHeader('Content-Disposition','attachment; filename="cnfdnt-portable-backup.json"');return send(res,200,backup);
+    }
+    if(url.pathname==='/api/knowledge'&&req.method==='POST'){
+      const state=readState(),scope={world:String(body.world||''),project:String(body.project||'')};knowledgeRecords(state,scope);
+      const previous=body.threadId?db.prepare('SELECT * FROM knowledge_threads WHERE id=?').get(String(body.threadId)):null;
+      if(body.threadId&&(!previous||previous.scope!==JSON.stringify(scope)))return send(res,400,{error:'Start a new conversation when changing scope.'});
+      const history=previous?JSON.parse(previous.messages):[],result=await answerKnowledge(state,{...scope,question:body.question},history);
+      const id=previous?.id||randomBytes(16).toString('hex');const message={question:String(body.question).slice(0,4000),...result,at:new Date().toISOString()};
+      db.prepare('INSERT OR REPLACE INTO knowledge_threads VALUES(?,?,?)').run(id,JSON.stringify(scope),JSON.stringify([...history,message].slice(-30)));
+      return send(res,200,{threadId:id,...message});
     }
     if(url.pathname==='/api/output'&&req.method==='POST')return send(res,200,await generateOutput(readState(),body));
     if(url.pathname==='/api/google/auth'&&req.method==='POST'){const result=google.auth(token),nonce=new URL(result.url).searchParams.get('state');res.setHeader('Set-Cookie',`cnfdnt_oauth=${nonce}; HttpOnly; SameSite=Lax; Path=/api/google; Max-Age=600${process.env.SECURE_COOKIE==='1'?'; Secure':''}`);return send(res,200,result);}

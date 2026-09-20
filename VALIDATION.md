@@ -1,3 +1,47 @@
+# Round Two validation
+
+Verified September 20, 2026 with Node.js 24.16 and Chromium. Tests use separate databases on ports 4312/4313; the live profile is never seeded with QA work.
+
+## Automated checks
+
+35 tests pass, including all prior domain/server/Google tests plus:
+
+- Five Worlds with three Active Rocks each; only three overall MVPs; invalid/inactive star rejection; completion removes the star without starring a promoted replacement.
+- Separate manual global, per-World and MVP ordering; due sort does not erase manual order.
+- Inclusive To-Do day-0/day-14 window, day-15/past rejection, server creation timestamps, unchanged legacy long dates.
+- Calendar aging at day 7 and day 14, midnight and DST boundaries, date-only local end-of-day and explicit-time overdue rules.
+- Future scheduled checkpoints, within-window actionable task linkage and synchronized completion; preserved legacy checkpoint IDs/timestamps.
+- Optional Project-to-Rock associations and cross-World rejection.
+- Knowledge scope restriction, follow-up context, exact-quote/ID validation, rejected invented/out-of-scope citations, source-free unknown answer, truthful missing-model API response, no record mutation.
+- Portable backups include originals and conversation records.
+
+`npm run check` passes for server, shared domain, UI, guide and integration modules.
+
+## Browser acceptance
+
+`scripts/browser-round-two.cjs` passes on the isolated QA profile:
+
+- Logo → voice intake → portal from Projects, Rocks and Knowledge; Rocks before Projects; phone intake logo.
+- Compact World work selector restricts Rocks and Projects to the selected World.
+- Twenty Rocks across five Worlds: fifteen active, five inactive, exactly three MVP slots; fourth star rejected. MVP and manual orders persist independently across refresh and due-sort changes.
+- Rock card opens detail (not edit modal); notes persist with the Rock; future checkpoint stays scheduled; nearby checkpoint offers a reviewed linked To-Do.
+- Same-World Project linking and correct Project-page heading.
+- Relative reminder with explicitly chosen time, separate stored reminder/due/creation timestamps.
+- Four Knowledge areas, truthful disabled chat setup, TXT upload/extraction/filter and original download.
+- Existing Output draft generation and source links remain available.
+- Settings guide has fourteen working-flow sections and expands correctly.
+- 1440×1000 desktop, 390×844 phone; dark/light views; no document-width overflow or uncaught JavaScript errors in exercised flows.
+
+Visual inspection covered Rock detail, Knowledge, cross-World/MVP cards and phone Worlds/Rocks. Fixed the new phone logo’s light-mode contrast after screenshot review.
+
+## Data and setup boundaries
+
+Schema 3 preserves all preexisting records and legacy checkpoint relationships. A pre-Round-Two live JSON snapshot and an automatic schema-2 migration snapshot are retained under `.data/backups`; no originals or credentials are committed. After restart, verified all 5 Worlds, 13 items, 1 Project and 1 capture were field-for-field unchanged; only the schema version changed.
+
+Live model calls require `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`; no real model call is claimed. Grounding/scoping tests use mocked responses; unconfigured browser/API behavior is verified. Google credentials, actual microphone permissions, native background notifications and supplied music remain external setup as recorded in `FOLLOW_UP.md`. No app-store binary or production hosting was created.
+
+---
+
 # Round One validation
 
 Verified September 20, 2026 with Node.js 24.16 and Chromium. Tests used isolated databases; the live profile was not seeded with QA records.
