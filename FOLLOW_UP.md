@@ -1,14 +1,20 @@
-# Follow-up work
+# Follow-up work after Round One
 
-The beads CLI (`bd`) is unavailable in this environment. These tracked issues preserve the remaining work until an issue tracker is connected.
+`bd` is not installed, so follow-ups are retained here rather than in beads.
 
-- P1: Replace local single-user auth/storage with Supabase accounts, row-level policies, private storage and cloud sync; keep test access separate from real users.
-- P1: Integrate Jev decisions and Claude language/retrieval services with confidence gates, Inbox, correction logging and per-user usage caps. Secure API keys remain server-side.
-- P1: Add hosted transcription and robust mobile hold-to-record audio retention; current voice capture uses browser speech recognition.
-- P1: Add upload scanning, text extraction, resource indexing and source-linked answers.
-- P2: Finish onboarding forms for checkpoints/resources/preferences, account deletion, notifications, World deletion, custom Rock relationships and weekly/quarterly recurring checkpoints.
-- P2: Expand calendar into navigable day/week/month calendar layouts, add Google Calendar integration and Notion export.
-- P2: Expand galaxy to item-level graph and authored connection labels. Add rights-cleared music with volume/mute behavior.
-- P2: Add multi-device conflict resolution, per-file quotas, storage migration, automated backup and production security review.
-- P2: Add native Expo client/App Store packaging and RevenueCat/Stripe flows in the later app phase.
-- Repository handoff: the parent Git root is /Users/amechi and its remote is the unrelated FactoryKeys repository. This app has an isolated repository. A destination repository must be supplied before remote publication.
+## External configuration needed
+
+- Provide a Claude API key/model in the server environment to activate conversational Output and generated summaries. Local structured drafts are available and labeled.
+- Configure a Google OAuth Web application to activate Calendar connection. Read-only OAuth/import/sync/disconnect are implemented and mocked tests pass; real account authorization has not been exercised.
+- Supply a local folder of rights-cleared focus-music tracks. Player controls and recording pause are implemented; no tracks have been supplied.
+- Supply the destination Git remote. The parent repository is the unrelated FactoryKeys home-directory repository; this app remains isolated and locally committed.
+
+## Later product phases
+
+- Jev classification, confidence thresholds and hosted transcription. All current captures/actions have explicit review; unresolved captures remain pending.
+- Production multi-user auth, cloud persistence/private file storage, background jobs, usage billing and cloud backup restore UI. Current quota policy is explicit and server-enforced.
+- Image OCR, audio transcription and richer resource extraction with per-user processing budgets. TXT/DOCX/PDF bounded extraction exists.
+- Native push/background delivery. Current reminders/comprehensive browser alerts only run while the web app is open.
+- Google Drive selected-file source and file-change/access-revocation policy, after Calendar validation. Notion remains optional/later.
+- Expo/App Store client and billing, native Apple review API with neutral rating entry at launch; no five-star request.
+- Confirm the optional global Focus Three display recommendation. Per-World Active three is independent and enforced.
