@@ -1,0 +1,18 @@
+import {test,before,after} from 'node:test';
+import assert from 'node:assert/strict';
+import {spawn} from 'node:child_process';
+import {mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+let child,dir,cookie;const base='http://127.0.0.1:4312';
+const request=(path,method='GET',body,extra={})=>fetch(base+path,{method,headers:{'Content-Type':'application/json',...(cookie?{Cookie:cookie}:{}),...extra},body:body?JSON.stringify(body):undefined});
+before(async()=>{dir=await mkdtemp(join(tmpdir(),'cnfdnt-test-'));child=spawn(process.execPath,['server.mjs'],{cwd:import.meta.dirname+'/..',env:{...process.env,PORT:'4312',DB_PATH:join(dir,'test.sqlite')}});await new Promise((res,rej)=>{const timeout=setTimeout(()=>rej(Error('Server startup timed out')),10000);child.stdout.on('data',()=>{clearTimeout(timeout);res()});child.on('error',rej);child.on('exit',c=>{if(c)rej(Error('Server exited '+c))})});});
+after(async()=>{child?.kill();await new Promise(r=>setTimeout(r,100));await rm(dir,{recursive:true,force:true})});
+test('anonymous access is rejected',async()=>assert.equal((await request('/api/state')).status,401));
+test('incorrect password is rejected',async()=>assert.equal((await request('/api/login','POST',{email:'amechi@addcolormedia.com',password:'wrong'})).status,401));
+test('both test password variants work and sessions use HttpOnly cookies',async()=>{for(const password of ['VANTA','vanta']){const r=await request('/api/login','POST',{email:'amechi@addcolormedia.com',password});assert.equal(r.status,200);assert.match(r.headers.get('set-cookie'),/HttpOnly; SameSite=Strict/);cookie=r.headers.get('set-cookie').split(';')[0]}});
+test('profile writes survive subsequent requests',async()=>{const data=await(await request('/api/state')).json();data.items.push({id:'persist-test',title:'Persistence test',type:'note',world:'w1'});assert.equal((await request('/api/state','PUT',data)).status,200);assert.ok((await(await request('/api/state')).json()).items.some(i=>i.id==='persist-test'))});
+test('invalid state is rejected',async()=>assert.equal((await request('/api/state','PUT',{items:[]})).status,400));
+test('cross-origin writes are rejected',async()=>assert.equal((await request('/api/state','PUT',{}, {Origin:'https://untrusted.example'})).status,403));
+test('static app and manifest are available',async()=>{assert.equal((await request('/')).status,200);assert.equal((await request('/manifest.webmanifest')).status,200)});
+test('logout revokes session',async()=>{assert.equal((await request('/api/logout','POST')).status,200);assert.equal((await request('/api/state')).status,401)});
