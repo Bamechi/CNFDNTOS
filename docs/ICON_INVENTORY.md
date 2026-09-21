@@ -70,3 +70,6 @@ Six allowed colors: `#7298ff`, `#65bbcf`, `#a294e8`, `#91bc9c`, `#dab27b`, `#de9
 ## Theme and accessibility review
 
 Both existing light/dark token systems are retained. Round 2 browser checks cover desktop Rocks, Rock detail, Knowledge, and phone Worlds/Rocks. Controls added this round have visible labels or accessible names. Future icon artwork must retain these labels, focus indicators, reduced-motion handling and non-color status text. Recheck glyph fallback across Safari/iOS, SVG contrast, touch targets and screen-reader pronunciations in the dedicated design pass. Do not treat this inventory as proof of a full WCAG audit.
+
+## Cinematic update
+Sidebar and top-bar controls now use the consistent 22 px SVG icon set in `public/visuals.js`. Music uses a speaker icon, search a magnifier, and notifications a bell. The intake uses the curved CNFDNT brand mark. During music playback, a percentage appears below the speaker; the player dialog provides the slider and measured audio meter.
