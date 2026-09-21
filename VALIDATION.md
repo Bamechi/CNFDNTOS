@@ -77,3 +77,10 @@ Backups were created before live migration. Verified all five existing World IDs
 ## Limits
 
 Live Claude and Google account calls require credentials and were not claimed as tested. Actual microphone hardware, OS notification delivery and music playback require device permission/supplied tracks; their external behavior was not end-to-end validated. Browser speech remains vendor-dependent. No native App Store client was built in this revision.
+
+## Cinematic revision (2026-09-21)
+- Syntax and whitespace checks passed.
+- 38 unit/API tests passed, including simultaneous-save conflict protection, exact large-file reconstruction through 2 MB chunks, music inventory, and HTTP range seeking.
+- Full Round 2 browser workflow passed with reduced motion at desktop and 390 px phone width.
+- Separate cinematic/music verification runs real MP3 playback, exact intake copy, simulated listening events, theme layouts, World controls and measured audio levels.
+- Free dedicated Neon database `cnfdnt-os` provisioned; hosted verification is recorded after deployment.

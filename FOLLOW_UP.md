@@ -19,3 +19,8 @@
 - Expo/App Store client and billing, native Apple review API with neutral rating entry at launch; no five-star request.
 - Complete the later icon-design pass recorded in `docs/ICON_INVENTORY.md`, including speaker and recognizable notification symbols. Overall MVP behavior is now implemented and independent of per-World active-three queues.
 - Add a user-facing Knowledge conversation history browser if desired. Current-session follow-up works; server conversation records are included in portable backups.
+
+## Cinematic revision handoff
+- Beads (`bd`) is unavailable on this machine; follow-up items are recorded here.
+- Hosted production verification pending while connecting the newly created cnfdnt-os Neon database to Vercel.
+- Real microphone recognition remains dependent on browser support/permission; automated checks simulate recognition events.

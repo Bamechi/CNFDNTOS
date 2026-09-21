@@ -64,3 +64,11 @@ The tests use a separate temporary SQLite database and port 4312. Browser accept
 ## Deployment boundaries
 
 The app binds to localhost by default. Data and preferences can be shared by clients of the same server; cloud hosting, multi-user access, push infrastructure and App Store packaging are not included. For hosted HTTPS, configure secure cookies and proper production authentication before allowing public access. Automatic Jev routing and hosted speech remain unconnected. Google Drive selected-file integration is a later option, not a dependency of the core app. Native rating UI is deferred to the iOS launch; no custom/five-star solicitation exists.
+
+## Cinematic revision / hosting
+
+Run `npm install`, then `npm start` with Node 24. The app keeps local SQLite records under `.data/`; never commit this directory. A Vercel deployment uses a dedicated Neon Postgres `DATABASE_URL` provisioned through the Storage integration. The Express entrypoint is `server.mjs`, with configuration in `vercel.json`. The database adapter refuses to start on Vercel without a durable database.
+
+Eight supplied focus tracks are available under their song titles, with looping edge fades, volume percentage, and a real audio level meter. Music starts only on request. See `docs/CINEMATIC_DESIGN.md` for reference alignment, generated artwork provenance, motion, and mobile behavior.
+
+Validation: `npm run check`, `npm test` (38 tests), and the isolated browser suites on port 4313. Use a separate `DB_PATH` for those suites: they intentionally replace the test profile.
