@@ -25,3 +25,5 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 .floating-card:hover,.floating-card:focus-within{animation-play-state:paused}
 
 .world-art .world-icon{width:100%;height:100%;transform:none;top:0;left:0;background:none;border:0}.world-status .status-dot{width:10px;height:10px;margin:0;background:currentColor}.cosmos-stage{right:110px}@media(max-width:800px){.cosmos-stage{right:0}}
+
+#music-control{position:relative}.music-volume-chip{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);font-size:8px;line-height:1;letter-spacing:.4px;color:var(--soft-blue);font-variant-numeric:tabular-nums}#music-control.is-playing .music-volume-chip{display:block}#music-control.is-playing>.ui-icon{color:var(--soft-blue)}

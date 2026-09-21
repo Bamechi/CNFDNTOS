@@ -84,3 +84,5 @@ Live Claude and Google account calls require credentials and were not claimed as
 - Full Round 2 browser workflow passed with reduced motion at desktop and 390 px phone width.
 - Separate cinematic/music verification runs real MP3 playback, exact intake copy, simulated listening events, theme layouts, World controls and measured audio levels.
 - Free dedicated Neon database `cnfdnt-os` provisioned; hosted verification is recorded after deployment.
+
+- Cinematic/music browser suite passed after fixing a voice-first silent-playback bug; both desktop themes and phone screenshots reviewed. Exact intake copy and real audio meter verified.

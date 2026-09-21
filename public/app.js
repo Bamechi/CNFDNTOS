@@ -203,6 +203,8 @@ function openUpload(file){if(!file)return;editItem(null,'resource',{title:file.n
 function reviewExtracted(i){const candidates=(i.extracted_text||'').split(/\n|(?<=[.!?])\s+/).filter(line=>/\b(todo|to-do|action|follow up|deadline|due|will |must |need to|decid)\b/i.test(line)).slice(0,15);modal(`<p class="eyebrow">REVIEW EXTRACTED LANGUAGE</p><h2>Possible next moves</h2><p class="muted">These are keyword matches, not confirmed commitments. Choose a line, then confirm its World, Project, dates and reminder.</p>${candidates.map((text,n)=>`<button class="proposal-line" data-candidate="${n}">${esc(text.slice(0,500))} →</button>`).join('')||'<p class="empty">No action-like lines found. You can still create a To-Do from your own interpretation.</p>'}`);$$('[data-candidate]').forEach(b=>b.onclick=()=>editItem(null,'todo',{title:candidates[Number(b.dataset.candidate)].slice(0,180),description:'Source: '+i.title,world:i.world,project:i.project||'',source_resource:i.id}))}
 function download(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 const music=new FocusMusic();let resumeAfterRecording=false;
+function updateMusicControl(){const button=$('#music-control');if(!button)return;button.classList.toggle('is-playing',!music.paused);let level=button.querySelector('.music-volume-chip');if(!level){level=document.createElement('span');level.className='music-volume-chip';level.setAttribute('aria-hidden','true');button.append(level)}level.textContent=Math.round(music.volume*100)+'%';button.title=music.paused?'Focus music':'Focus music · '+Math.round(music.volume*100)+'%'}
+music.onChange(updateMusicControl);
 function pauseMusic(){resumeAfterRecording=!music.paused;music.pause(true)}
 function resumeMusic(){if(resumeAfterRecording){music.play().catch(()=>{});resumeAfterRecording=false}}
 function musicModal(){
@@ -210,7 +212,8 @@ function musicModal(){
   const volume=$('#music-volume'),play=$('#music-play'),select=$('#music-track'),status=$('#music-status');
   volume.oninput=e=>{music.setVolume(e.target.value);$('#music-percent').textContent=Math.round(music.volume*100)+'%'};
   play.onclick=async()=>{play.disabled=true;try{if(!music.paused){await music.pause();status.textContent='Paused.'}else if(select.value){await music.play(select.value);state.preferences.music={track:$('#music-remember').checked?select.value:'',remember:$('#music-remember').checked};await save();status.textContent='Playing · Loop on'}else status.textContent='Choose a track to begin.'}catch{status.textContent='The selected track could not play. Try again.'}finally{play.disabled=false;play.textContent=music.paused?'Play selected track':'Pause'}};
-  select.onchange=async()=>{if(music.paused)return;try{if(select.value){await music.play(select.value);status.textContent='Playing · Loop on'}else{await music.pause();status.textContent='Music is off.'}play.textContent=music.paused?'Play selected track':'Pause'}catch{status.textContent='This track could not play.'}};
+  const remember=async()=>{state.preferences.music={track:$('#music-remember').checked?select.value:'',remember:$('#music-remember').checked};await save()};$('#music-remember').onchange=remember;
+  select.onchange=async()=>{await remember();if(music.paused)return;try{if(select.value){await music.play(select.value);status.textContent='Playing · Loop on'}else{await music.pause();status.textContent='Music is off.'}play.textContent=music.paused?'Play selected track':'Pause'}catch{status.textContent='This track could not play.'}};
   const bars=[...document.querySelectorAll('.music-meter i')];let previous=0;function meter(t){if(!play.isConnected||!$('#modal').open)return;if(t-previous>70){const level=music.level();bars.forEach((b,i)=>b.classList.toggle('lit',i<Math.round(level*24)));previous=t;}requestAnimationFrame(meter)}requestAnimationFrame(meter);
 }
 
@@ -237,7 +240,7 @@ function bind(){
   if($('#rock-note-form'))$('#rock-note-form').onsubmit=async e=>{e.preventDefault();const text=new FormData(e.target).get('note').trim();if(!text)return;const r=state.items.find(i=>i.id===rockId);state.items.push({id:uid(),type:'note',world:r.world,rock:r.id,title:text.split('\n')[0].slice(0,100),description:text,created_at:stamp(),comments:[]});if(await save('Note saved.'))render()};
 
   if($('#theme-toggle'))$('#theme-toggle').onclick=async()=>{state.theme=state.theme==='dark'?'light':'dark';if(await save())render()};
-  $('#music-control').onclick=musicModal;$('#alerts-control').onclick=notificationsModal;
+  $('#music-control').onclick=musicModal;updateMusicControl();$('#alerts-control').onclick=notificationsModal;
   if($('#more-nav'))$('#more-nav').onclick=()=>modal(`<h2>Your workspace</h2><nav class="mobile-menu">${[...navItems,'settings'].map(n=>`<button data-nav="${n}"><span>${icons[n]}</span>${names[n]} →</button>`).join('')}</nav>`);
   if($('#resume'))$('#resume').onclick=onboard;
   if($('#print'))$('#print').onclick=()=>window.print();
