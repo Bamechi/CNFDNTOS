@@ -25,5 +25,5 @@
 - Hosted production verification pending while connecting the newly created cnfdnt-os Neon database to Vercel.
 - Real microphone recognition remains dependent on browser support/permission; automated checks simulate recognition events.
 
-- GitHub push blocked twice by automatic approval review despite the supplied screenshot and publishing request. Explicit text confirmation requested for public Bamechi/CNFDNTOS main + all eight tracks, then Vercel. Do not retry until that confirmation arrives.
+- GitHub publication confirmed explicitly and completed: Bamechi/CNFDNTOS main. Vercel project cnfdntos created. Automatic review now requires specific confirmation to attach the dedicated cnfdnt-os Neon database and inject its private environment variables; confirmation requested.
 - New Neon database cnfdnt-os exists on the free plan. Its Connect Project dialog is waiting for a Vercel app project. Keep its optional auth add-on enabled: automatic review rejected disabling it.
