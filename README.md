@@ -72,3 +72,5 @@ Run `npm install`, then `npm start` with Node 24. The app keeps local SQLite rec
 Eight supplied focus tracks are available under their song titles, with looping edge fades, volume percentage, and a real audio level meter. Music starts only on request. See `docs/CINEMATIC_DESIGN.md` for reference alignment, generated artwork provenance, motion, and mobile behavior.
 
 Validation: `npm run check`, `npm test` (38 tests), and the isolated browser suites on port 4313. Use a separate `DB_PATH` for those suites: they intentionally replace the test profile.
+
+Production: https://cnfdntos.vercel.app — Express on Vercel with dedicated Neon persistence. Optional AI and Google OAuth require separate configuration.

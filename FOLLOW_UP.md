@@ -6,13 +6,13 @@
 
 - Provide a Claude API key/model in the server environment to activate Knowledge Q&A, conversational Output and generated summaries. Local structured drafts are available and labeled.
 - Configure a Google OAuth Web application to activate Calendar connection. Read-only OAuth/import/sync/disconnect are implemented and mocked tests pass; real account authorization has not been exercised.
-- Supply a local folder of rights-cleared focus-music tracks. Player controls and recording pause are implemented; no tracks have been supplied.
-- Supply the destination Git remote. The parent repository is the unrelated FactoryKeys home-directory repository; this app remains isolated and locally committed.
+- Eight supplied focus-music tracks are installed and published.
+- Source is published to Bamechi/CNFDNTOS; this app has its own isolated repository.
 
 ## Later product phases
 
 - Jev classification, confidence thresholds and hosted transcription. All current captures/actions have explicit review; unresolved captures remain pending.
-- Production multi-user auth, cloud persistence/private file storage, background jobs, usage billing and cloud backup restore UI. Current quota policy is explicit and server-enforced.
+- Production multi-user auth, background jobs, usage billing and cloud backup restore UI. Single test-profile cloud persistence/private file storage use Neon; quotas are server-enforced.
 - Image OCR, audio transcription and richer resource extraction with per-user processing budgets. TXT/DOCX/PDF bounded extraction exists.
 - Native push/background delivery. Current reminders/comprehensive browser alerts only run while the web app is open.
 - Google Drive selected-file source and file-change/access-revocation policy, after Calendar validation. Notion remains optional/later.
@@ -22,8 +22,8 @@
 
 ## Cinematic revision handoff
 - Beads (`bd`) is unavailable on this machine; follow-up items are recorded here.
-- Hosted production verification pending while connecting the newly created cnfdnt-os Neon database to Vercel.
+- Production database connected to cnfdntos (production only), with sensitive environment variables.
+- Live site: https://cnfdntos.vercel.app
+- Both password variants, secure session cookies, save/sign-out/sign-in persistence and all eight music byte-range responses verified September 21, 2026.
 - Real microphone recognition remains dependent on browser support/permission; automated checks simulate recognition events.
-
-- GitHub publication confirmed explicitly and completed: Bamechi/CNFDNTOS main. Vercel project cnfdntos created. Automatic review now requires specific confirmation to attach the dedicated cnfdnt-os Neon database and inject its private environment variables; confirmation requested.
-- New Neon database cnfdnt-os exists on the free plan. Its Connect Project dialog is waiting for a Vercel app project. Keep its optional auth add-on enabled: automatic review rejected disabling it.
+- Optional AI and Google OAuth integrations remain unconfigured.

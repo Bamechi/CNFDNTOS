@@ -86,3 +86,7 @@ Live Claude and Google account calls require credentials and were not claimed as
 - Free dedicated Neon database `cnfdnt-os` provisioned; hosted verification is recorded after deployment.
 
 - Cinematic/music browser suite passed after fixing a voice-first silent-playback bug; both desktop themes and phone screenshots reviewed. Exact intake copy and real audio meter verified.
+
+## Production deployment — September 21, 2026
+
+Dedicated Neon database connected to production only. Both VANTA/vanta login variants, Secure session cookies, a reversible preference saved across logout/new login, and all eight music range requests passed on https://cnfdntos.vercel.app. Complete public assets are bundled for Express root-page serving. All 38 automated tests and syntax checks pass. Cloud profile starts with sample data; existing local data remains untouched.
