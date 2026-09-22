@@ -36,7 +36,7 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 .login-back{position:absolute;top:26px;right:30px;font-size:11px;letter-spacing:1.5px;color:var(--muted);text-decoration:none;opacity:.8}.login-back:hover{opacity:1;color:var(--text)}.login-form{position:relative}
 
 /* ===== Round 3: Liquid Glass dimension pass, lighter dark mode, richer chrome ===== */
-:root,[data-theme="dark"]{--bg:#0a0e16;--panel:#111723;--line:#2a3143;--muted:#9aa3b8;--input:#0d1220;--glass-top:#ffffff14;--glass-bottom:#ffffff06;--glass-border:#ffffff1c;--edge:#8fb0ff66}
+[data-theme="dark"]{--bg:#0a0e16;--panel:#111723;--line:#2a3143;--muted:#9aa3b8;--input:#0d1220;--glass-top:#ffffff14;--glass-bottom:#ffffff06;--glass-border:#ffffff1c;--edge:#8fb0ff66}
 [data-theme="dark"] body,[data-theme="dark"] .app-shell{background:radial-gradient(ellipse 70% 50% at 80% -10%,#1d3a8a2e,transparent 60%),radial-gradient(ellipse 50% 40% at 0% 100%,#3b2a7a24,transparent 60%),var(--bg)}
 [data-theme="dark"] .panel,[data-theme="dark"] .item-card,[data-theme="dark"] .rock-card,[data-theme="dark"] .world-work,[data-theme="dark"] .time-strip,[data-theme="dark"] .checkpoint-list{background:linear-gradient(160deg,#ffffff12,#ffffff06 45%,#ffffff03);border:1px solid #ffffff1a;box-shadow:inset 0 1px 0 #ffffff24,inset 0 -1px 0 #0000004d,0 24px 48px -26px #000d;backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);border-radius:20px;transition:transform .35s,border-color .35s,box-shadow .35s}
 [data-theme="dark"] .panel::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 20% 0%,#ffffff10,transparent 60%);}
@@ -128,3 +128,34 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 
 /* Voice pill: lightning while listening handled on canvas; keep rim crisp. */
 .cinematic-intake .hold{border-color:#dcefffcc}
+
+/* Round 3c: light mode restored, timeline horizon, breadcrumb, glow dates. */
+[data-theme="light"]{--glass-top:#ffffffee;--glass-bottom:#ffffffb0;--glass-border:#d6e0f0;--edge:#5b93ff88}
+[data-theme="light"] body,[data-theme="light"] .app-shell{background:radial-gradient(ellipse 70% 50% at 80% -10%,#5b93ff1a,transparent 60%),radial-gradient(ellipse 50% 40% at 0% 100%,#b487ff14,transparent 60%),var(--bg)}
+[data-theme="light"] .panel::before{background:radial-gradient(ellipse 60% 40% at 20% 0%,#ffffff,transparent 60%)}
+[data-theme="light"] .sidebar .nav-item:hover{background:#2c4a7a0a}
+[data-theme="light"] .sidebar .nav-item.selected>span:first-child{background:linear-gradient(145deg,#5b93ff,#8f6bff);color:#fff}
+[data-theme="light"] .text-button:hover,[data-theme="light"] .item-title:hover h3{color:#2f6fe8}
+[data-theme="light"] .track-toggle button:hover{background:#2c4a7a0d}
+[data-theme="light"] .track-toggle button.active{background:#fff;box-shadow:inset 0 1px 0 #fff,0 6px 14px -10px #2c4a7a}
+[data-theme="light"] .rock-glyph{background:linear-gradient(145deg,#fff,#eef3fb);border-color:#d6e0f0;color:#3a4a68}
+[data-theme="light"] .notes-grid>.item-card .eyebrow{color:#8a6a2c}
+[data-theme="light"] .import-drop{background:#2c4a7a06}
+[data-theme="light"] .timeline-row:hover,[data-theme="light"] .todo-row:hover{background:#2c4a7a0c}
+.breadcrumb,.breadcrumb>button{font-size:14px!important;font-weight:500;color:var(--text)}
+.breadcrumb>button:first-child{color:var(--muted)}
+.breadcrumb span{color:var(--muted);opacity:.6}
+/* Horizon strip: glowing dated nodes, titles surface on hover or focus. */
+.dated-points{display:flex;gap:6px;overflow-x:auto;padding:26px 4px 14px;scrollbar-width:thin}
+.date-point{position:relative;flex:0 0 150px;display:grid;justify-items:center;gap:10px;padding:8px 6px 10px;border-radius:16px;border:1px solid transparent;background:transparent;color:var(--text);transition:background .3s,border-color .3s,transform .3s}
+.date-point::before{content:'';position:absolute;left:0;right:0;top:62px;height:1px;background:linear-gradient(90deg,transparent,var(--glass-border),transparent);z-index:0}
+.date-point small{font-size:12px;font-weight:600;letter-spacing:1.2px;padding:5px 11px;border-radius:999px;border:1px solid var(--glass-border);background:linear-gradient(135deg,var(--glass-top),var(--glass-bottom));color:var(--text);z-index:1}
+.date-point span{width:14px;height:14px;border-radius:50%;display:grid;place-items:center;font-size:0;background:radial-gradient(circle,#fff 0 3px,#5b93ff 3.5px 6px,transparent 6.5px);box-shadow:0 0 14px #5b93ffb3,0 0 30px #5b93ff55;z-index:1;transition:transform .3s,box-shadow .3s}
+.date-point strong{font-size:12.5px;font-weight:500;line-height:1.35;text-align:center;color:var(--muted);opacity:.55;transition:opacity .3s,color .3s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:140px}
+.date-point:hover,.date-point:focus-visible{background:linear-gradient(160deg,var(--glass-top),var(--glass-bottom));border-color:var(--edge);transform:translateY(-3px);outline:0}
+.date-point:hover strong,.date-point:focus-visible strong{opacity:1;color:var(--text)}
+.date-point:hover span,.date-point:focus-visible span{transform:scale(1.35);box-shadow:0 0 22px #5b93ff,0 0 48px #5b93ff80}
+.dated-points:hover .date-point:not(:hover) strong{opacity:.35}
+.time-strip>small.muted{display:block;margin-top:6px;font-size:13px}
+[data-theme="light"] .date-point span{background:radial-gradient(circle,#2f6fe8 0 3px,#5b93ff 3.5px 6px,transparent 6.5px);box-shadow:0 0 14px #5b93ff80}
+.login-home{display:inline-block;text-decoration:none;color:inherit;transition:opacity .25s}.login-home:hover{opacity:.8}

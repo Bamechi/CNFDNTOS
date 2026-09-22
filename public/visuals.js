@@ -43,10 +43,10 @@ export function startIntakeVisual(){
   const nodes=[];for(let n=0;n<30;n++)nodes.push({i:Math.floor((n*263+41)%count),phase:n*1.9});
   // Neural cells inside the pill: jittered seeds that pulse from the centre outward.
   const seeds=[];for(let r=0;r<3;r++)for(let c=0;c<15;c++){const j=(r*15+c);seeds.push({u:(c+.5)/15+((j*37%100)/100-.5)*.045,v:(r+.5)/3+((j*53%100)/100-.5)*.24,phase:(j*97%100)/100*6.28})}
-  function resize(){const dpr=Math.min(devicePixelRatio||1,1.7);width=innerWidth;height=innerHeight;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const box=button.getBoundingClientRect();ew=box.width;eh=box.height;energy.width=ew*dpr;energy.height=eh*dpr;ec.setTransform(dpr,0,0,dpr,0,0)}
+  function resize(){const dpr=Math.min(devicePixelRatio||1,1.7);const cb=canvas.getBoundingClientRect();width=cb.width||innerWidth;height=cb.height||innerHeight;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const box=button.getBoundingClientRect();ew=box.width;eh=box.height;energy.width=ew*dpr;energy.height=eh*dpr;ec.setTransform(dpr,0,0,dpr,0,0)}
   const observer=new ResizeObserver(resize);observer.observe(button);resize();
   function draw(ts){if(disposed)return;frame=requestAnimationFrame(draw);if(document.hidden||ts-last<30)return;const dt=Math.min(60,ts-last||33);last=ts;if(!reduced.matches)time+=dt*.001;const active=button.classList.contains('recording');level+=(Number(active)-level)*.07;ctx.clearRect(0,0,width,height);ec.clearRect(0,0,ew,eh);
-    const box=button.getBoundingClientRect(),cx=box.left+ew/2,cy=box.top+eh/2,scale=Math.min(width*.34,height*.44,440),t=time*.09,pulse=.5+.5*Math.sin(time*1.6);
+    const box=button.getBoundingClientRect(),cb=canvas.getBoundingClientRect(),cx=box.left-cb.left+ew/2,cy=box.top-cb.top+eh/2,scale=Math.min(width*.34,height*.44,440),t=time*.09,pulse=.5+.5*Math.sin(time*1.6);
     // Soft blue halo behind the pill.
     const halo=ctx.createRadialGradient(cx,cy-eh*.3,eh*.3,cx,cy-eh*.3,scale*.8);halo.addColorStop(0,`rgba(58,112,255,${.16+level*.22+pulse*.05})`);halo.addColorStop(.45,`rgba(46,84,220,${.06+level*.08})`);halo.addColorStop(1,'transparent');ctx.fillStyle=halo;ctx.fillRect(0,0,width,height);
     // Wireframe brain, always present at low opacity; coheres while listening.

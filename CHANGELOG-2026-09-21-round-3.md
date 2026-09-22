@@ -49,3 +49,13 @@
 - **To-Dos**: filter bar on the global tab — World, Project, Rock, and sort (manual, deadline, oldest, newest).
 - **Settings → Import**: Excel and CSV templates in `public/templates/`, CSV upload creates Worlds first, then Rocks, Projects, To-Dos, Issues, Notes with validation (dates, 14-day To-Do window, ten-World cap, Rock due date). Report shown inline.
 - Verified: `npm run check`, `npm test` 38/38, no console errors, no horizontal overflow at 1440×900 and 390×844 on app and landing, CSV import exercised in browser (5 records from the template).
+
+## Round 3c — light mode fix, landing v3, timeline, login link
+- **Light mode repaired.** Round 3b's token override was written as `:root,[data-theme="dark"]`, which outranked `[data-theme=light]` and painted the light theme with the dark background. Now scoped to `[data-theme="dark"]` only; light theme gets its own glass tokens, hover states and ambient light.
+- **Timeline "On the horizon"**: glowing dated nodes, date in a glass pill, titles quiet until hover or keyboard focus (then the node grows, the title brightens, neighbours soften). Breadcrumb raised to 14px/500.
+- **Landing v3**: brain constellation removed. Hero is a pinned, scroll-driven orbit navigator: six labeled planets (Speak, Worlds, Rocks, Knowledge, Phone, Membership) orbit the CNFDNT core; each is a link into its section; hover pauses the orbit; scrolling shrinks and rotates the system while the copy lifts away. Section 2 is a live Hold-to-speak demo running the app's own `visuals.js` engine (auto-demonstrates every 7s until touched; press/hold/release with keyboard support and step captions). Section 3 pins the desktop and iPhone frames while the feature list scrolls; the screenshots change per feature. Gallery, phone, pricing (yearly default), access, footer follow.
+- Nav is transparent over the hero and only picks up glass once scrolled; the top-left glow moved down and dimmed so the header no longer reads as a separate blue band.
+- Wordmark on the landing page is embedded as a data URI (the `landing/wordmark.png` asset had been dropped by the WebP conversion step; restored as well).
+- `visuals.js` now positions the intake drawing relative to its canvas, so the same engine runs full-screen in the app and inside the landing demo container.
+- Login page: the CNFDNT OS logo links to `/`; the "Home" link remains in the form column.
+- Verified: `npm run check`, `npm test` 38/38, no landing console errors, no overflow at 1440×900 and 390×844, light mode screenshots for Worlds, Timeline and Output.
