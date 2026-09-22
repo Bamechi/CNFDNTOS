@@ -6,5 +6,15 @@
       "maxDuration": 60,
       "includeFiles": "public/**"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/app",
+      "destination": "/os.html"
+    },
+    {
+      "source": "/app/",
+      "destination": "/os.html"
+    }
+  ]
 }

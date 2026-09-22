@@ -46,7 +46,7 @@ Set `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REDIRECT_URI`. The r
 
 TXT and DOCX extraction use Python's standard library; PDF extraction requires `pypdf`. Set `EXTRACTOR_PYTHON` if necessary. The local Codex runtime is detected when present. Failed extraction retains the original and reports an explicit status.
 
-Place supplied, rights-cleared MP3/WAV/M4A tracks in `public/music/`. No music has been supplied with this build. Track discovery is local; audio starts manually and pauses during voice capture.
+The supplied, rights-cleared focus tracks are included in `public/music/`. Track discovery is local; audio starts manually and pauses during voice capture.
 
 ## User guide and icon follow-up
 

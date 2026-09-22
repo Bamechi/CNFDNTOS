@@ -1,0 +1,51 @@
+# CNFDNT OS — Round 3 (Cinematic polish + landing page), September 21, 2026
+
+## Routing
+- `/` now serves `public/landing.html` (marketing landing page with its own light/dark toggle).
+- `/app` and `/app/` serve the operating system (`public/index.html`). Login lives there. `express.static` no longer auto-serves `index.html` at `/`.
+- `manifest.webmanifest` `start_url` is `/app`. Browser scripts and tests point at `/app`.
+- Login page has a small "About CNFDNT OS" link back to `/`.
+
+## Voice intake (public/visuals.js, public/cinematic.css)
+- Pulsating neural-cell network drawn inside the pill at all times (blue left, violet/magenta right), faster and brighter while listening.
+- Low-opacity wireframe brain (two lobes, nearest-neighbour mesh, glowing nodes) and concentric signal rings behind the pill at idle; coheres while listening.
+- Neon rim breathes continuously (`hold-pulse`, `edge-breathe`), amplified in `.recording`.
+- Copy unchanged: `Hold to speak`, `OR WRITE`, `...LISTENING...`, `HOME`.
+
+## Motion
+- Satellite orbit loop 160s → 75s; orbit rings drift (240–360s); primary planet rotates slowly (420s).
+- Floating cards: World cards, Rock/Project cards, MVP slots, glass CTA, login art and onboarding planet drift ~6px with a slight tilt on staggered phases; paused on hover/focus. Reduced-motion still disables all of it.
+
+## Icons (public/visuals.js `paths`)
+- Redrawn 24px stroke set: Worlds (planet + ring), Rocks (faceted gem), Projects (layers), To-Dos (circle check), Issues (alert circle), Timeline (calendar), Knowledge (book), Output (sparkle), Brain Dump (plus circle), Archive (box), Settings (gear), sun/moon, speaker, bell, search, star, more.
+
+## Dimension pass
+- Layered card lighting/shadows in both themes, glass topbar, hero halo, page-wide soft top light, hover lift on top actions.
+- Fixed the visible square around the login planet (`.hero-orb` inset shadow removed).
+
+## Typography
+- Manrope is now self-hosted (`public/fonts/`, from @fontsource/manrope, SIL OFL). Previously the stylesheet named Manrope but no font file was loaded, so production rendered fallback type. `server.mjs` mime map gained `.woff2` and `.jpg`.
+
+## Landing page (public/landing.html, landing.css, landing.js, public/landing/*)
+- Sections: nav with theme toggle + Log in + Enter, hero with desktop + iPhone frames on orbit rings, proof strip, 8 feature cards, 3 deep dives (Worlds, Rocks, Knowledge), Speak/Sort/Move steps with the intake screenshot, phone section (App Store noted as Phase 2), private-access CTA (mailto cnfdnt.ai@gmail.com), footer.
+- Screenshots in `public/landing/` are real captures of this build at 1440×900 (desktop, 2×) and 390×844 (phone, 3×), both themes, WebP. Re-capture after visual changes.
+- Theme is stored in `localStorage` key `cnfdnt-landing-theme`; default dark.
+
+## Verified
+- `npm run check` passes; `npm test` 38/38.
+- Desktop 1440×1000 and phone 390×844: no horizontal overflow on app or landing page; no console errors on landing.
+
+## Round 3b (same day) — Monday notes + Vercel landing fix
+- **Landing page now shows on Vercel.** Vercel serves `public/` statically before the Express function, so `public/index.html` was always the app. The landing page is now `public/index.html` and the operating system is `public/os.html`; Express routes `/app` → `os.html` and `vercel.json` carries matching rewrites.
+- **Pricing and purchase**: Solo $19/mo ($149/yr), Operator $39/mo ($299/yr), White-Glove Setup $999 one-time (three sessions with B. Amechi, up to one hour each). Monthly/yearly toggle. `CHECKOUT` in `landing.js` takes Stripe Payment Link URLs; until they are pasted in, buttons open a pre-filled email to cnfdnt.ai@gmail.com. Account self-signup is a later phase (single-user auth remains).
+- **Dala-style hero**: side-profile brain constellation of coloured outlined triangles with ambient particles, twinkle, drift, pointer parallax, sparks on the outline. Device mockups moved to a "Screens" section with theme-following screenshots.
+- **Intake brain**: replaced the two-lobe sphere with a hand-set side-profile brain silhouette (cerebrum, cerebellum, stem), sulci traced inside, outline lit. Sits behind the pill on desktop and above it on phone. Lightning arcs race in from both ends while listening.
+- **Dimension pass (Liquid Glass)**: dark tokens lifted (`--bg #0a0e16`, `--panel #111723`), radial ambient light on the shell, panels and cards use layered gradient glass with blur, top highlight, inner shadow and lift; hovered card comes forward while siblings soften; rows highlight on hover.
+- **Sidebar**: icons sit in lit tiles, labels 14px, selected item gets a blue-violet tile and glass highlight.
+- **Arrows removed** from cards, rows, settings links and menus; edit actions use a pencil icon; navigation is implied by hover and design.
+- **Fonts**: detail text (notes, descriptions, sub-copy) raised to 14px.
+- **Worlds**: clicking the globe opens World settings; On track / Off track / Auto toggle sits beside the World name and saves instantly; Updates panel removed; headline and summary edit inline on the overview (span two-thirds width); Notes cards are ruled and dashed to read differently from Projects and Rocks.
+- **Rocks**: textured card faces with a gem glyph; the three MVPs sit on a gold-edged platform with a star-gem glyph and warm tint; other Rocks stay quiet. Rock detail gains "New Project for this Rock" (pre-linked to the Rock and World). When a linked Project reaches its due date and is still open, opening the Rock prompts: complete it, Rock on track, or Rock off track. Prompt repeats once per day per Project.
+- **To-Dos**: filter bar on the global tab — World, Project, Rock, and sort (manual, deadline, oldest, newest).
+- **Settings → Import**: Excel and CSV templates in `public/templates/`, CSV upload creates Worlds first, then Rocks, Projects, To-Dos, Issues, Notes with validation (dates, 14-day To-Do window, ten-World cap, Rock due date). Report shown inline.
+- Verified: `npm run check`, `npm test` 38/38, no console errors, no horizontal overflow at 1440×900 and 390×844 on app and landing, CSV import exercised in browser (5 records from the template).

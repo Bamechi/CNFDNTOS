@@ -1,0 +1,7 @@
+Type,World,Title,Description,Due date (YYYY-MM-DD),Project,Rock,Status
+World,,CNFDNT Community,Everything behind the community for managers and operators.,,,,
+Rock,CNFDNT Community,Launch the founding community,50 founding members onboarded with a working resource library.,2026-12-15,,,on
+Project,CNFDNT Community,Build the onboarding sequence,"Welcome emails, first-week checklist, intro call.",2026-11-15,,Launch the founding community,open
+To-Do,CNFDNT Community,Draft welcome email,,2026-09-28,Build the onboarding sequence,Launch the founding community,
+Issue,CNFDNT Community,Payment link not live,Stripe link returns 404.,,Build the onboarding sequence,,
+Note,CNFDNT Community,Positioning reminder,"Jaguar energy: quiet, undeniable confidence.",,,,

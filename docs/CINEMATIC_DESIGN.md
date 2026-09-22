@@ -3,9 +3,9 @@
 The supplied dark/light home references govern composition: quiet glass, real textured worlds, a large readable headline, a restrained orbital system, and five World cards across wide screens. At phone widths, the composition stacks above a two-column World grid. Functional views inherit the same materials and controls.
 
 ## Motion
-- 160-second orbital loops; 3-pixel card float over 9 seconds, paused on hover/focus.
+- 75-second orbital loops with slowly drifting rings; ~6-pixel card float with a slight tilt over 7–9 seconds on staggered phases, paused on hover/focus.
 - 420 ms page entrance. No scroll hijacking or long scroll-scrub sequences.
-- Voice intake: cyan/violet pill energy; translucent particle brain coheres during recording. Canvas stops when navigating away and skips hidden pages. Reduced-motion preferences suppress animated travel.
+- Voice intake: pulsating neural cells inside the pill at all times, breathing neon rim, low-opacity wireframe brain and signal rings behind it at idle; everything brightens during recording. Canvas stops when navigating away and skips hidden pages. Reduced-motion preferences suppress animated travel.
 - Exact copy: `Hold to speak`, `OR WRITE`, `...LISTENING...`, and `HOME`. Empty captures return quietly to idle.
 
 ## Artwork
@@ -18,3 +18,6 @@ Eight user-supplied MP3 originals are included under their exact titles. Audio i
 
 ## Hosting
 Express serves the existing app. SQLite remains the local store; DATABASE_URL selects durable Neon Postgres in Vercel. State saves use an atomic comparison to reject stale simultaneous writes. Files upload in 2 MB parts to preserve the existing 20 MB limit within serverless request limits. PDF, DOCX, and TXT extraction runs in Node. Private local records and secrets are excluded from Git.
+
+## Round 3
+See `CHANGELOG-2026-09-21-round-3.md` for the landing page, routing, icon set, self-hosted Manrope and motion changes.
