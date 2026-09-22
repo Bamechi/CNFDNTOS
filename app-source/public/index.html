@@ -1,1 +1,247 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06080d"><meta name="description" content="CNFDNT OS. A space for everything on your mind. Capture ideas, connect your worlds, and move with intention."><title>CNFDNT OS — Your second brain</title><link rel="icon" href="/assets/icon.svg"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/fonts/manrope.css"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/cinematic.css"><link rel="preload" href="/assets/planet-sapphire.webp" as="image"></head><body><div id="app"></div><dialog id="modal"></dialog><div id="toast" role="status"></div><script type="module" src="/app.js"></script></body></html>
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06080d">
+<title>CNFDNT OS — The voice-first second brain for people who run things</title>
+<meta name="description" content="CNFDNT OS is a private operating system for your mind. Hold to speak, and your ideas land in the right World, Rock, Project or To-Do. Built for phone and desktop.">
+<meta property="og:title" content="CNFDNT OS — Your second brain, in perspective">
+<meta property="og:description" content="Hold to speak. Everything on your mind lands where it belongs. Worlds, Rocks, Projects, To-Dos, Knowledge and Output in one calm command center.">
+<meta property="og:image" content="/landing/desktop-home-dark.webp">
+<link rel="icon" href="/assets/icon.svg">
+<link rel="stylesheet" href="/fonts/manrope.css">
+<link rel="stylesheet" href="/landing.css">
+<link rel="preload" href="/landing/desktop-home-dark.webp" as="image">
+<link rel="preload" href="/assets/planet-sapphire.webp" as="image">
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><i class="glow glow-a"></i><i class="glow glow-b"></i><i class="grain"></i></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="/" aria-label="CNFDNT OS home"><img class="wordmark" src="/landing/wordmark.png" alt="CNFDNT"><span>OS</span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#features">Features</a>
+    <a href="#screens">Screens</a>
+    <a href="#worlds">Worlds</a>
+    <a href="#how">How it works</a>
+    <a href="#phone">Phone</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Switch theme">
+      <svg class="ic ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.9"/><path d="M12 2.2v2.6m0 14.4v2.6M2.2 12h2.6m14.4 0h2.6M5.1 5.1l1.85 1.85m10.1 10.1 1.85 1.85M5.1 18.9l1.85-1.85m10.1-10.1 1.85-1.85"/></svg>
+      <svg class="ic ic-moon" viewBox="0 0 24 24"><path d="M19.8 14.6A8.2 8.2 0 0 1 9.4 4.2a8.6 8.6 0 1 0 10.4 10.4Z"/></svg>
+    </button>
+    <a class="button ghost" href="/app">Log in</a>
+    <a class="button solid" href="#pricing">Get CNFDNT OS</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">A SECOND BRAIN. A CLEARER YOU.</p>
+      <h1>Your mind,<br><span class="accent">in perspective.</span></h1>
+      <p class="lede">Hold to speak. Every idea, commitment and priority lands in the right place. CNFDNT OS is the private operating system for people who run businesses, brands and lives behind the scenes.</p>
+      <div class="cta-row">
+        <a class="button solid large" href="#pricing">Get CNFDNT OS</a>
+        <a class="button ghost large" href="#how">See how it works</a>
+      </div>
+      <ul class="hero-proof" aria-label="At a glance">
+        <li><strong>Voice-first</strong><span>Capture in one hold</span></li>
+        <li><strong>10 Worlds</strong><span>Every domain of your life</span></li>
+        <li><strong>3 Rocks</strong><span>Per World, per quarter</span></li>
+        <li><strong>Phone + desktop</strong><span>One calm command center</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-stage constellation-stage reveal" aria-hidden="true">
+      <canvas id="constellation"></canvas>
+      <p class="constellation-caption">Everything on your mind, mapped into one calm universe.</p>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section class="strip reveal" aria-label="What is inside">
+    <div><strong>Hold to speak</strong><span>Voice or write. Music pauses while you talk.</span></div>
+    <div><strong>Worlds · Rocks · Projects</strong><span>Structure that mirrors how you actually operate.</span></div>
+    <div><strong>To-Dos that age</strong><span>Nothing silently disappears. Stale work is flagged, never deleted.</span></div>
+    <div><strong>Ask your knowledge</strong><span>Answers cite the note or file they came from.</span></div>
+  </section>
+
+  <!-- SCREENS -->
+  <section class="section screens" id="screens">
+    <div class="section-head reveal">
+      <p class="eyebrow">DESKTOP AND IPHONE</p>
+      <h2>One calm command center, every screen.</h2>
+      <p class="sub">Real screens from the current build, in the theme you choose. Toggle light or dark at the top of this page and the screenshots follow.</p>
+    </div>
+    <div class="hero-stage devices reveal" aria-hidden="true">
+      <div class="orbits">
+        <i class="ring ring-1"></i><i class="ring ring-2"></i><i class="ring ring-3"></i>
+        <div class="satellite s-1"><img src="/assets/planet-sapphire.webp" alt=""></div>
+        <div class="satellite s-2"><img src="/assets/planet-sapphire.webp" alt="" style="--hue:-40deg"></div>
+        <div class="satellite s-3"><img src="/assets/planet-sapphire.webp" alt="" style="--hue:50deg"></div>
+        <div class="satellite s-4"><img src="/assets/planet-sapphire.webp" alt="" style="--hue:180deg"></div>
+      </div>
+      <div class="device desktop float-a" data-parallax="8">
+        <div class="device-bar"><i></i><i></i><i></i><span>cnfdntos.vercel.app</span></div>
+        <img data-dark="/landing/desktop-home-dark.webp" data-light="/landing/desktop-home-light.webp" src="/landing/desktop-home-dark.webp" alt="CNFDNT OS home screen with orbital Worlds on desktop">
+      </div>
+      <div class="device phone float-b" data-parallax="-14">
+        <i class="notch"></i>
+        <img data-dark="/landing/phone-home-dark.webp" data-light="/landing/phone-home-light.webp" src="/landing/phone-home-dark.webp" alt="CNFDNT OS home screen on iPhone">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="section-head reveal">
+      <p class="eyebrow">WHAT IT DOES</p>
+      <h2>One place for everything on your mind.</h2>
+      <p class="sub">Most tools ask you to organize before you can think. CNFDNT OS lets you think first, then keeps the structure for you.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></svg></i><h3>Voice-first intake</h3><p>Hold the pill, say what is on your mind, release. The capture waits for your review, so nothing gets filed where you did not intend.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.6"/><ellipse cx="12" cy="12" rx="10.4" ry="3.5" transform="rotate(-24 12 12)" opacity=".62"/></svg></i><h3>Worlds</h3><p>Up to ten ongoing domains of life and business, each with its own planet, color and status. Worlds are never finished; they are tended.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><path d="M7.2 3.5h9.6L21 9l-9 11.5L3 9l4.2-5.5Z"/><path d="M3 9h18M9.6 9 12 20.5 14.4 9M7.2 3.5 9.6 9 12 3.5l2.4 5.5 2.4-5.5" opacity=".55"/></svg></i><h3>Rocks and MVPs</h3><p>Three active quarterly outcomes per World, with a definition of done and on- or off-track status. Star three across everything as your Most Valuable Priorities.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="m8.2 12.4 2.6 2.6 5.2-5.6"/></svg></i><h3>Projects and To-Dos that age</h3><p>Finishable work sits inside a World. To-Dos show Needs Review at seven days and Stale at fourteen, so open loops surface instead of hiding.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><path d="M4.2 5.6A2.6 2.6 0 0 1 6.8 3H19.8v15.2H6.8a2.6 2.6 0 0 0-2.6 2.6V5.6Z"/><path d="M4.2 20.8a2.6 2.6 0 0 1 2.6-2.6h13v2.6H6.8"/><path d="M9 7.6h6.6M9 11h4.4" opacity=".6"/></svg></i><h3>Knowledge Base</h3><p>Upload files, save notes and links, then ask a question scoped to a World or Project. Answers cite their sources or say plainly when the records cannot answer.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2.8c.55 4.6 3.6 8.6 9.2 9.2-5.6.55-8.65 4.6-9.2 9.2-.55-4.6-3.6-8.65-9.2-9.2 5.6-.6 8.65-4.6 9.2-9.2Z"/></svg></i><h3>Output</h3><p>Turn selected Rocks, notes and To-Dos into structured briefs, plans and drafts. Generated work never rewrites your records.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><rect x="3.6" y="5" width="16.8" height="16" rx="3.4"/><path d="M8 3v4m8-4v4M3.6 10.2h16.8"/></svg></i><h3>Timeline and reminders</h3><p>Due dates, event starts and reminder times stay distinct. Choose "on due date", "one day before" or a custom time, and see everything on one calendar.</p></article>
+      <article class="card reveal"><i class="card-icon"><svg viewBox="0 0 24 24"><path d="M4 9.4h3.4L12 5.4v13.2l-4.6-4H4V9.4Z"/><path d="M15.4 9.2a4.2 4.2 0 0 1 0 5.6M18.3 6.6a8 8 0 0 1 0 10.8" opacity=".7"/></svg></i><h3>Focus music</h3><p>Eight original tracks with a real signal meter. Music fades out the moment you hold to speak and returns when you are done.</p></article>
+    </div>
+  </section>
+
+  <!-- DEEP DIVES -->
+  <section class="section" id="worlds">
+    <div class="dive reveal">
+      <div class="dive-copy">
+        <p class="eyebrow">YOUR UNIVERSE</p>
+        <h2>See your whole life in orbit.</h2>
+        <p>Every World gets a textured planet and a status you can read at a glance: on track, needs review, off track. Beneath the cards, a compact view of the Rocks and Projects with dates coming up.</p>
+        <ul class="checks"><li>Five World cards across wide screens, stacked on the phone</li><li>Notes with dates inside every World</li><li>Manual order that survives sorting and refreshes</li></ul>
+      </div>
+      <div class="dive-shot float-a"><img data-dark="/landing/desktop-home-dark.webp" data-light="/landing/desktop-home-light.webp" src="/landing/desktop-home-dark.webp" alt="Worlds home screen" loading="lazy"></div>
+    </div>
+    <div class="dive flip reveal">
+      <div class="dive-copy">
+        <p class="eyebrow">ROCKS</p>
+        <h2>Three outcomes a quarter. Three that matter most.</h2>
+        <p>Rocks are the substantial outcomes for a planning period. Each World allows three active; the rest wait in a queue and promote automatically when a slot opens. Star up to three overall as MVPs and the Rocks tab keeps them on top.</p>
+        <ul class="checks"><li>Definition of done and due date on every Rock</li><li>On track or off track, reviewed weekly</li><li>Rock detail pages with notes, Projects and checkpoints</li></ul>
+      </div>
+      <div class="dive-shot float-b"><img data-dark="/landing/desktop-rocks-dark.webp" data-light="/landing/desktop-rocks-light.webp" src="/landing/desktop-rocks-dark.webp" alt="Rocks overview" loading="lazy"></div>
+    </div>
+    <div class="dive reveal">
+      <div class="dive-copy">
+        <p class="eyebrow">KNOWLEDGE</p>
+        <h2>Ask your own records a question.</h2>
+        <p>Upload PDFs, Word documents and text. Save notes and links. Then ask, scoped to all Worlds, one World or one Project. Every answer shows the note or file it drew from, and originals stay downloadable.</p>
+        <ul class="checks"><li>Twenty megabytes per file, originals preserved</li><li>Scoped search across notes, resources and uploads</li><li>Honest setup state until the model is configured</li></ul>
+      </div>
+      <div class="dive-shot float-a"><img data-dark="/landing/desktop-knowledge-dark.webp" data-light="/landing/desktop-knowledge-light.webp" src="/landing/desktop-knowledge-dark.webp" alt="Knowledge Base with Ask Knowledge" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how" id="how">
+    <div class="section-head reveal">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>Speak. Sort. Move.</h2>
+    </div>
+    <ol class="steps">
+      <li class="card reveal"><span class="step-num">01</span><h3>Speak</h3><p>Open the app and hold the pill. Say the idea, the task, the worry. Or write it. The intake is the front door every time.</p></li>
+      <li class="card reveal"><span class="step-num">02</span><h3>Sort</h3><p>Review the capture and place it: a World, a Rock, a Project, a To-Do, an Issue or a note in Knowledge. Nothing is filed without you.</p></li>
+      <li class="card reveal"><span class="step-num">03</span><h3>Move</h3><p>Open the Worlds home. Your MVPs, upcoming dates and open loops are already in perspective. Ask "What should I do today?" and get a draft plan from your own records.</p></li>
+    </ol>
+    <div class="intake-shot reveal">
+      <img src="/landing/desktop-intake-dark.webp" alt="The Hold to speak intake screen with a wireframe brain behind the button" loading="lazy">
+    </div>
+  </section>
+
+  <!-- PHONE -->
+  <section class="section phone-section" id="phone">
+    <div class="phone-row">
+      <div class="phone-copy reveal">
+        <p class="eyebrow">MOBILE FIRST</p>
+        <h2>Built for the phone in your pocket.</h2>
+        <p>The whole system fits on one thumb. Capture from the lock screen of your day, review on the desktop when you sit down. Install it to your home screen today; the App Store edition is Phase 2.</p>
+        <ul class="checks"><li>Add to Home Screen on iPhone and Android</li><li>Light and dark mode, chosen by you</li><li>No horizontal scrolling, ever</li></ul>
+        <a class="button solid" href="/app">Open on your phone</a>
+      </div>
+      <div class="phone-stack reveal" aria-hidden="true">
+        <div class="device phone float-b"><i class="notch"></i><img src="/landing/phone-intake-dark.webp" alt=""></div>
+        <div class="device phone float-a"><i class="notch"></i><img data-dark="/landing/phone-home-dark.webp" data-light="/landing/phone-home-light.webp" src="/landing/phone-home-dark.webp" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing" id="pricing">
+    <div class="section-head center reveal">
+      <p class="eyebrow">MEMBERSHIP</p>
+      <h2>Choose your universe.</h2>
+      <p class="sub">One private operating system. Pay monthly or save with a year. Every plan includes the voice intake, Worlds, Rocks, Projects, To-Dos, Issues, Timeline, Knowledge Base, Output, focus music and backups.</p>
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button class="active" data-billing="monthly">Monthly</button>
+        <button data-billing="yearly">Yearly</button>
+        <span class="save">Save 35%</span>
+      </div>
+    </div>
+    <div class="plans">
+      <article class="plan card reveal">
+        <p class="plan-name">Solo</p>
+        <p class="price"><span class="currency">USD</span><span class="amount" data-monthly="19" data-yearly="12">19</span><span class="per">/mo</span></p>
+        <p class="billed muted" data-monthly="Billed monthly" data-yearly="Billed $149 a year">Billed monthly</p>
+        <ul class="checks"><li>Voice-first intake, unlimited captures</li><li>Up to 10 Worlds, 3 active Rocks each</li><li>Projects, To-Dos with aging, Issues, Timeline</li><li>Knowledge Base with 200 MB of originals</li><li>Eight focus tracks and full backups</li></ul>
+        <a class="button ghost full" data-checkout="solo" href="mailto:cnfdnt.ai@gmail.com?subject=CNFDNT%20OS%20Solo">Start Solo</a>
+      </article>
+      <article class="plan card featured reveal">
+        <span class="badge">Most popular</span>
+        <p class="plan-name">Operator</p>
+        <p class="price"><span class="currency">USD</span><span class="amount" data-monthly="39" data-yearly="25">39</span><span class="per">/mo</span></p>
+        <p class="billed muted" data-monthly="Billed monthly" data-yearly="Billed $299 a year">Billed monthly</p>
+        <ul class="checks"><li>Everything in Solo</li><li>Ask Knowledge with source-cited answers</li><li>Output drafts: briefs, plans and weekly reviews</li><li>Google Calendar sync, read-only</li><li>Priority access to the iPhone edition in Phase 2</li></ul>
+        <a class="button solid full" data-checkout="operator" href="mailto:cnfdnt.ai@gmail.com?subject=CNFDNT%20OS%20Operator">Start Operator</a>
+      </article>
+      <article class="plan card setup reveal">
+        <p class="plan-name">White-Glove Setup</p>
+        <p class="price"><span class="currency">USD</span><span class="amount">999</span><span class="per">one time</span></p>
+        <p class="billed muted">Add to any plan</p>
+        <p class="setup-copy">Three private sessions with B. Amechi, up to one hour each: we build your Worlds, set the quarter's Rocks, import what you already run, and follow up twice to keep the system honest.</p>
+        <ul class="checks"><li>Session 1 · Map your Worlds and Rocks together</li><li>Session 2 · Import Projects, To-Dos and knowledge</li><li>Session 3 · 30-day follow-up and course correction</li></ul>
+        <a class="button ghost full" data-checkout="setup" href="mailto:cnfdnt.ai@gmail.com?subject=CNFDNT%20OS%20White-Glove%20Setup%20(%24999)">Book Setup · $999</a>
+      </article>
+    </div>
+    <p class="pricing-note muted reveal">Already a member? <a href="/app">Log in</a>. Prices in US dollars. Cancel any time; your data exports with you.</p>
+  </section>
+
+  <!-- ACCESS -->
+  <section class="section access" id="access">
+    <div class="access-card reveal">
+      <div class="orbits small" aria-hidden="true"><i class="ring ring-1"></i><i class="ring ring-2"></i><div class="satellite s-1"><img src="/assets/planet-sapphire.webp" alt=""></div><div class="satellite s-3"><img src="/assets/planet-sapphire.webp" alt="" style="--hue:50deg"></div></div>
+      <p class="eyebrow">FOR PEOPLE WHO RUN THINGS</p>
+      <h2>Make room for what’s next.</h2>
+      <p>Built by the manager behind 19Keys and High Lvl Media for the operators, managers and confidants who carry the vision behind the scenes.</p>
+      <div class="cta-row">
+        <a class="button solid large" href="#pricing">Get CNFDNT OS</a>
+        <a class="button ghost large" href="/app">Log in</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <a class="brand" href="/"><img class="wordmark" src="/landing/wordmark.png" alt="CNFDNT"><span>OS</span></a>
+  <p>Capture once. Live with intention.</p>
+  <nav aria-label="Footer"><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="/app">Log in</a></nav>
+  <small>© 2026 CNFDNT. Nothing gets lost. Everything connects.</small>
+</footer>
+
+<script src="/landing.js" defer></script>
+</body>
+</html>

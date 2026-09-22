@@ -19,6 +19,8 @@ bell:'<path d="M6 16.6h12l-1.5-2.3v-4.1a4.5 4.5 0 0 0-9 0v4.1L6 16.6Z"/><path d=
 search:'<circle cx="10.6" cy="10.6" r="6.6"/><path d="m15.6 15.6 5 5"/>',
 star:'<path d="m12 2.6 2.9 6 6.5.9-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9 2.9-6Z"/>',
 arrow:'<path d="m9 5 7 7-7 7"/>',
+edit:'<path d="M4 20h4.5L19 9.5a2.1 2.1 0 0 0-3-3L5.5 17 4 20Z"/><path d="m14 8.5 3 3"/>',
+mvp:'<path d="M7.2 3.5h9.6L21 9l-9 11.5L3 9l4.2-5.5Z"/><path d="m12 7.2 1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3L7.7 10.3l3-.4L12 7.2Z" fill="currentColor" stroke="none" opacity=".9"/>',
 more:'<circle cx="5" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.1" fill="currentColor" stroke="none"/>'};
 export const icon=name=>`<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.worlds}</svg>`;
 export function planet(tone=0,cls=''){return `<div class="planet ${cls}" style="--planet-hue:${tone}deg" aria-hidden="true"><img src="/assets/planet-sapphire.webp" alt="" draggable="false"><i class="planet-atmosphere"></i></div>`}
@@ -28,13 +30,17 @@ export function stopIntakeVisual(){disposeBrain();disposeBrain=()=>{}}
 export function startIntakeVisual(){
   stopIntakeVisual();const canvas=document.querySelector('#brain'),button=document.querySelector('#hold'),energy=document.querySelector('#button-energy');if(!canvas||!button||!energy)return;
   const ctx=canvas.getContext('2d'),ec=energy.getContext('2d'),reduced=matchMedia('(prefers-reduced-motion: reduce)');let frame,last=0,width=0,height=0,ew=0,eh=0,time=0,level=0,disposed=false;
-  // Brain point cloud, front view: two lobes with a central fissure, sampled on slightly folded spheres.
-  const particles=[];const count=innerWidth<700?700:1250;
-  for(let n=0;n<count;n++){const side=n%2?1:-1,k=Math.floor(n/2),half=count/2,v=Math.acos(1-2*(k+.5)/half),u=k*2.399963;const fold=1+.05*Math.sin(u*7+Math.sin(v*6)*2)*Math.sin(v*11);
-    const x=Math.sin(v)*Math.cos(u)*.62*fold,y=Math.cos(v)*.72*fold,z=Math.sin(v)*Math.sin(u)*.58;
-    particles.push({x:side*(.06+Math.abs(x)*(1-.1*(y>0))),y:y-.05,z,light:(n*73%100)/100})}
-  const neighbours=[];for(let i=0;i<particles.length;i++){const a=particles[i];let best=[[1e9,-1],[1e9,-1]];for(let j=0;j<particles.length;j++){if(i===j)continue;const b=particles[j],d=(a.x-b.x)**2+(a.y-b.y)**2+(a.z-b.z)**2;if(d<best[1][0]){best[1]=[d,j];best.sort((p,q)=>p[0]-q[0])}}neighbours.push(best.map(b=>b[1]).filter(j=>j>i))}
-  const nodes=[];for(let n=0;n<26;n++)nodes.push({i:Math.floor((n*263+41)%particles.length),phase:n*1.9});
+  // Side-profile brain: a hand-set silhouette (cerebrum, cerebellum, stem) filled with particles, sulci traced inside.
+  const outline=[[.62,-.18],[.78,.05],[.8,.3],[.68,.52],[.45,.66],[.15,.74],[-.2,.72],[-.52,.62],[-.76,.42],[-.86,.15],[-.84,-.12],[-.72,-.32],[-.78,-.5],[-.62,-.66],[-.4,-.7],[-.22,-.6],[-.16,-.46],[-.1,-.55],[-.02,-.8],[.12,-.82],[.14,-.62],[.08,-.48],[.2,-.42],[.42,-.42],[.6,-.32]];
+  const sulci=[[[.55,-.12],[.3,-.02],[0,.02],[-.3,.02],[-.55,.08]],[[.5,.3],[.3,.42],[.05,.4],[-.2,.48],[-.45,.4]],[[.6,.1],[.45,.2],[.3,.12],[.15,.22],[0,.16]],[[-.3,.25],[-.45,.15],[-.6,.28],[-.7,.15]],[[.1,-.3],[.3,-.25],[.45,-.3]],[[-.35,-.5],[-.5,-.45],[-.62,-.55],[-.45,-.62]],[[.2,.55],[.05,.5],[-.1,.58],[-.3,.55]]];
+  const shape=new Path2D();outline.forEach(([x,y],i)=>{const [nx,ny]=outline[(i+1)%outline.length],mx=(x+nx)/2,my=(y+ny)/2;if(i===0)shape.moveTo(mx,my);else shape.quadraticCurveTo(x,y,mx,my)});shape.quadraticCurveTo(outline[0][0],outline[0][1],(outline[0][0]+outline[1][0])/2,(outline[0][1]+outline[1][1])/2);
+  const probe=document.createElement('canvas').getContext('2d');
+  const particles=[];const count=innerWidth<700?520:980;let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+  while(particles.length<count){const x=rnd()*2-1,y=rnd()*1.7-.9;if(probe.isPointInPath(shape,x,y))particles.push({x,y,z:rnd()*2-1,light:rnd(),kind:0})}
+  outline.forEach(([x,y],i)=>{const [nx,ny]=outline[(i+1)%outline.length];for(let k=0;k<9;k++){const t=k/9;particles.push({x:x+(nx-x)*t,y:y+(ny-y)*t,z:.3,light:.9,kind:1})}});
+  sulci.forEach(c=>{for(let i=0;i<c.length-1;i++)for(let k=0;k<7;k++){const t=k/7;particles.push({x:c[i][0]+(c[i+1][0]-c[i][0])*t,y:c[i][1]+(c[i+1][1]-c[i][1])*t,z:.5,light:.75,kind:2})}});
+  const neighbours=[];for(let i=0;i<particles.length;i++){const a=particles[i];let best=[[1e9,-1],[1e9,-1]];for(let j=0;j<particles.length;j++){if(i===j)continue;const b=particles[j],d=(a.x-b.x)**2+(a.y-b.y)**2+(a.z-b.z)*.02;if(d<best[1][0]){best[1]=[d,j];best.sort((p,q)=>p[0]-q[0])}}neighbours.push(best.map(b=>b[1]).filter(j=>j>i))}
+  const nodes=[];for(let n=0;n<30;n++)nodes.push({i:Math.floor((n*263+41)%count),phase:n*1.9});
   // Neural cells inside the pill: jittered seeds that pulse from the centre outward.
   const seeds=[];for(let r=0;r<3;r++)for(let c=0;c<15;c++){const j=(r*15+c);seeds.push({u:(c+.5)/15+((j*37%100)/100-.5)*.045,v:(r+.5)/3+((j*53%100)/100-.5)*.24,phase:(j*97%100)/100*6.28})}
   function resize(){const dpr=Math.min(devicePixelRatio||1,1.7);width=innerWidth;height=innerHeight;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const box=button.getBoundingClientRect();ew=box.width;eh=box.height;energy.width=ew*dpr;energy.height=eh*dpr;ec.setTransform(dpr,0,0,dpr,0,0)}
@@ -42,13 +48,13 @@ export function startIntakeVisual(){
   function draw(ts){if(disposed)return;frame=requestAnimationFrame(draw);if(document.hidden||ts-last<30)return;const dt=Math.min(60,ts-last||33);last=ts;if(!reduced.matches)time+=dt*.001;const active=button.classList.contains('recording');level+=(Number(active)-level)*.07;ctx.clearRect(0,0,width,height);ec.clearRect(0,0,ew,eh);
     const box=button.getBoundingClientRect(),cx=box.left+ew/2,cy=box.top+eh/2,scale=Math.min(width*.34,height*.44,440),t=time*.09,pulse=.5+.5*Math.sin(time*1.6);
     // Soft blue halo behind the pill.
-    const halo=ctx.createRadialGradient(cx,cy,eh*.3,cx,cy,scale*.75);halo.addColorStop(0,`rgba(58,112,255,${.16+level*.22+pulse*.05})`);halo.addColorStop(.45,`rgba(46,84,220,${.06+level*.08})`);halo.addColorStop(1,'transparent');ctx.fillStyle=halo;ctx.fillRect(0,0,width,height);
+    const halo=ctx.createRadialGradient(cx,cy-eh*.3,eh*.3,cx,cy-eh*.3,scale*.8);halo.addColorStop(0,`rgba(58,112,255,${.16+level*.22+pulse*.05})`);halo.addColorStop(.45,`rgba(46,84,220,${.06+level*.08})`);halo.addColorStop(1,'transparent');ctx.fillStyle=halo;ctx.fillRect(0,0,width,height);
     // Wireframe brain, always present at low opacity; coheres while listening.
-    const dot=.3+level*.42,line=.14+level*.26,angle=Math.sin(time*.09)*.22,projected=[];
-    for(const p of particles){const x=p.x*Math.cos(angle)+p.z*Math.sin(angle),z=p.z*Math.cos(angle)-p.x*Math.sin(angle),depth=(z+.65)/1.3;projected.push({x:cx+x*scale*1.08,y:cy+p.y*scale*1.02+Math.sin(time*.3)*4,depth,light:p.light})}
-    ctx.lineWidth=.6;for(let i=0;i<projected.length;i++){const a=projected[i];for(const j of neighbours[i]){const b=projected[j];const rim=1-Math.min(1,Math.abs(a.depth-.5)*2.4);ctx.strokeStyle=`rgba(${72+rim*60|0},${132+rim*50|0},255,${line*(.35+a.depth*.65)*(.8+rim*.9)})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
-    for(const p of projected){ctx.fillStyle=`rgba(${90+p.light*60|0},${150+p.light*60|0},255,${dot*(.3+p.depth*.7)})`;ctx.beginPath();ctx.arc(p.x,p.y,.7+p.depth*.9,0,7);ctx.fill()}
-    for(const n of nodes){const p=projected[n.i],glow=.5+.5*Math.sin(time*1.3+n.phase);ctx.shadowBlur=10+level*8;ctx.shadowColor='#5c9cff';ctx.fillStyle=`rgba(180,215,255,${(.25+level*.55)*glow*(.4+p.depth*.6)})`;ctx.beginPath();ctx.arc(p.x,p.y,1.6+glow*.9,0,7);ctx.fill();ctx.shadowBlur=0}
+    const phone=width<700,bx=cx,by=phone?cy-eh*1.75:cy-eh*.42,bs=phone?Math.min(width*.44,scale*.9):scale*.92,dot=.3+level*.45,line=.13+level*.28,tilt=Math.sin(time*.18)*.08,breathe=1+Math.sin(time*.9)*.012,projected=[];
+    for(const p of particles){const depth=(p.z+1)/2;projected.push({x:bx+(p.x*Math.cos(tilt)+p.z*.06)*bs*breathe,y:by-(p.y*breathe+Math.sin(time*.3)*.01)*bs,depth,light:p.light,kind:p.kind})}
+    ctx.lineWidth=.6;for(let i=0;i<projected.length;i++){const a=projected[i];for(const j of neighbours[i]){const b=projected[j];ctx.strokeStyle=`rgba(${a.kind?120:72},${a.kind?170:132},255,${line*(a.kind?1.3:.45+a.depth*.55)})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
+    for(const p of projected){const bright=p.kind===1?1.35:p.kind===2?1.15:.4+p.depth*.6;ctx.fillStyle=`rgba(${100+p.light*60|0},${160+p.light*60|0},255,${Math.min(1,dot*bright)})`;ctx.beginPath();ctx.arc(p.x,p.y,p.kind?1.1:.7+p.depth*.8,0,7);ctx.fill()}
+    for(const n of nodes){const p=projected[n.i],glow=.5+.5*Math.sin(time*1.3+n.phase);ctx.shadowBlur=10+level*8;ctx.shadowColor='#5c9cff';ctx.fillStyle=`rgba(190,222,255,${(.3+level*.55)*glow})`;ctx.beginPath();ctx.arc(p.x,p.y,1.5+glow*1.1,0,7);ctx.fill();ctx.shadowBlur=0}
     // Signal rings hugging the pill, each carrying a few travelling nodes.
     for(let n=0;n<5;n++){const radius=eh*.9+n*scale*.13,ry=radius*(.86+n*.03);ctx.beginPath();ctx.ellipse(cx,cy,radius,ry,0,0,Math.PI*2);ctx.strokeStyle=`rgba(${n%2?'136,110,255':'86,150,255'},${.26+level*.18-n*.03})`;ctx.lineWidth=n===0?.9:.65;ctx.stroke();
       for(let k=0;k<2+n%2;k++){const a=k*2.1+n*1.3+t*(n%2?-1:1)*(1+n*.2),x=cx+Math.cos(a)*radius,y=cy+Math.sin(a)*ry,g=.6+.4*Math.sin(time*2+n+k);ctx.shadowBlur=14;ctx.shadowColor='#6da5ff';ctx.fillStyle=`rgba(190,222,255,${(.55+level*.4)*g})`;ctx.beginPath();ctx.arc(x,y,1.5+(k===0?1:0),0,7);ctx.fill();ctx.shadowBlur=0}}
@@ -63,6 +69,8 @@ export function startIntakeVisual(){
     for(let i=0;i<pts.length;i++){const a=pts[i];for(let j=i+1;j<pts.length;j++){const b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<reach){const w=wave((a.u+b.u)/2,a.phase),c=tint((a.u+b.u)/2);ec.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]},${(.3+w*.6)*intensity*(1-d/reach*.45)})`;ec.shadowBlur=8+w*10;ec.shadowColor=`rgb(${c[0]|0},${c[1]|0},${c[2]})`;ec.beginPath();ec.moveTo(a.x,a.y);ec.lineTo(b.x,b.y);ec.stroke()}}}
     ec.shadowBlur=0;
     for(const p of pts){const w=wave(p.u,p.phase),c=tint(p.u),g=ec.createRadialGradient(p.x,p.y,0,p.x,p.y,eh*.28);g.addColorStop(0,`rgba(${c[0]|0},${c[1]|0},${c[2]},${(.12+w*.22)*intensity})`);g.addColorStop(1,'transparent');ec.fillStyle=g;ec.fillRect(p.x-eh*.3,p.y-eh*.3,eh*.6,eh*.6);ec.fillStyle=`rgba(230,240,255,${(.35+w*.55)*intensity})`;ec.beginPath();ec.arc(p.x,p.y,.9+w*1.1,0,7);ec.fill()}
+    // Lightning while listening: jagged arcs from both ends racing toward the centre.
+    if(level>.25){for(let k=0;k<7;k++){const left=k%2===0,sx=left?2:ew-2,sy=eh*.2+Math.random()*eh*.6,tx=ew/2+(left?-1:1)*(10+Math.random()*ew*.12),ty=eh/2+(Math.random()-.5)*eh*.4,steps=7;ec.beginPath();ec.moveTo(sx,sy);for(let i=1;i<steps;i++){const t=i/steps;ec.lineTo(sx+(tx-sx)*t+(Math.random()-.5)*14,sy+(ty-sy)*t+(Math.random()-.5)*18)}ec.lineTo(tx,ty);const c=left?'110,200,255':'232,130,255';ec.strokeStyle=`rgba(${c},${(.25+Math.random()*.45)*level})`;ec.lineWidth=1.6;ec.shadowBlur=14;ec.shadowColor=`rgb(${c})`;ec.stroke();ec.strokeStyle=`rgba(255,255,255,${(.35+Math.random()*.4)*level})`;ec.lineWidth=.6;ec.stroke()}ec.shadowBlur=0}
     // Breathing edge light so the whole pill visibly pulses.
     const edge=ec.createLinearGradient(0,0,ew,0);edge.addColorStop(0,`rgba(80,190,255,${.12+pulse*.16+level*.3})`);edge.addColorStop(.5,'rgba(120,120,255,0)');edge.addColorStop(1,`rgba(230,110,255,${.12+pulse*.16+level*.3})`);ec.fillStyle=edge;ec.fillRect(0,0,ew,eh);
     ec.restore();

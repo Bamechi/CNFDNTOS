@@ -19,7 +19,7 @@ const seed={name:'Amechi',onboarding:0,theme:'dark',vocabulary:'World',worlds:[{
 if(!(await db.prepare('SELECT id FROM profile WHERE id=1').get())){const salt=randomBytes(16).toString('hex');(await db.prepare('INSERT INTO profile VALUES(1,?,?,?) ON CONFLICT(id) DO NOTHING').run(salt,scryptSync(process.env.TEST_PASSWORD||'vanta',salt,64).toString('hex'),JSON.stringify(normalize(seed))));}
 const FILE_LIMIT=20*1024*1024, ACCOUNT_LIMIT=200*1024*1024;
 const extensions={'.pdf':'application/pdf','.docx':'application/vnd.openxmlformats-officedocument.wordprocessingml.document','.txt':'text/plain','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.mp3':'audio/mpeg','.wav':'audio/wav','.m4a':'audio/mp4','.ogg':'audio/ogg','.webm':'audio/webm'};
-const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.mp3':'audio/mpeg','.wav':'audio/wav','.m4a':'audio/mp4','.woff2':'font/woff2','.jpg':'image/jpeg'};
+const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.mp3':'audio/mpeg','.wav':'audio/wav','.m4a':'audio/mp4','.woff2':'font/woff2','.jpg':'image/jpeg','.xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','.csv':'text/csv'};
 async function rawState(){return JSON.parse((await db.prepare('SELECT data FROM profile WHERE id=1').get()).data);}
 async function storeState(s,previous){const data=JSON.stringify(s);if(previous){const result=await db.prepare('UPDATE profile SET data=? WHERE id=1 AND data=?').run(data,JSON.stringify(previous));if(!Number(result.changes))throw conflict();}else await db.prepare('UPDATE profile SET data=? WHERE id=1').run(data);return s;}
 async function readState(){for(let n=0;n<3;n++){const raw=await rawState(),s=normalize(raw);if(JSON.stringify(raw)===JSON.stringify(s))return s;s.revision++;try{return await storeState(s,raw)}catch(e){if(e.status!==409)throw e}}throw conflict();}
@@ -99,7 +99,7 @@ app.use(async(req,res)=>{try{
     if(url.pathname==='/api/google/disconnect'&&req.method==='POST')return send(res,200,await google.disconnect());
     return send(res,404,{error:'Not found'});
   }
-  const routed=url.pathname==='/'?'/landing.html':(url.pathname==='/app'||url.pathname==='/app/')?'/index.html':url.pathname;const path=resolve(root,'.'+decodeURIComponent(routed));if(!path.startsWith(root+'/')){res.writeHead(403);return res.end()}
+  const routed=url.pathname==='/'?'/index.html':(url.pathname==='/app'||url.pathname==='/app/')?'/os.html':url.pathname;const path=resolve(root,'.'+decodeURIComponent(routed));if(!path.startsWith(root+'/')){res.writeHead(403);return res.end()}
   try{const content=await readFile(path);res.writeHead(200,{'Content-Type':mime[extname(path)]||'application/octet-stream','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','Cache-Control':'no-cache'});res.end(content)}catch{res.writeHead(404);res.end('Not found')}
 }catch(e){console.error(e.message);send(res,e.status||500,{error:e.status?e.message:'Could not complete the request. '+(e.message.startsWith('Google')?e.message:'')})}});
 if(!process.env.VERCEL)app.listen(Number(process.env.PORT||4310),process.env.HOST||'127.0.0.1',()=>console.log(`CNFDNT OS http://localhost:${process.env.PORT||4310}`));
