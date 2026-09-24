@@ -203,4 +203,16 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 .mvp-section h2 .ui-icon,.mvp-slot-icon .ui-icon{color:#b487ff;width:24px;height:24px}
 .rock-glyph .ui-icon{color:#c9d6ee}
 
-.cosmos-primary .ori-wordmark.hero-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58%;height:auto;color:#f4f6fb;filter:drop-shadow(0 6px 16px #000c) drop-shadow(0 0 18px #7c7cff55);z-index:2}
+.cosmos-primary .ori-wordmark.hero-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44%;height:auto;color:#f4f6fb;filter:drop-shadow(0 6px 16px #000c) drop-shadow(0 0 18px #7c7cff55);z-index:2}
+
+/* Round 4e: satellites keep distinct positions when motion is reduced */
+.satellite-0{offset-distance:0%}.satellite-1{offset-distance:20%}.satellite-2{offset-distance:40%}.satellite-3{offset-distance:60%}.satellite-4{offset-distance:80%}
+@media(prefers-reduced-motion:reduce){.cosmos-satellite{animation:none!important}}
+/* World header: short-name label beside the globe */
+.world-art-wrap{display:grid;justify-items:center;gap:10px}
+.world-short{font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--glass-border);background:linear-gradient(135deg,var(--glass-top),var(--glass-bottom));color:var(--text)}
+/* Output stage legibility: waves sit low and fade under the copy; copy gets a soft glass plate */
+.power-copy{background:radial-gradient(ellipse 70% 80% at 50% 50%,#070a12e6 0%,#070a12b3 45%,transparent 75%);border-radius:30px;padding:34px 40px}
+.power-copy .muted{color:#dde3f2;font-size:15px;text-shadow:0 1px 12px #000}
+.power-copy h2{text-shadow:0 2px 24px #000,0 0 30px #5b93ff55}
+#output-wave{-webkit-mask-image:radial-gradient(ellipse 45% 38% at 50% 48%,transparent 0 55%,#000 100%);mask-image:radial-gradient(ellipse 45% 38% at 50% 48%,transparent 0 55%,#000 100%)}
