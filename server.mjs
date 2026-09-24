@@ -23,9 +23,17 @@ if(!(await db.prepare('SELECT id FROM profile WHERE id=1').get())){const salt=ra
 for(const ddl of ['ALTER TABLE profile ADD COLUMN email TEXT','ALTER TABLE sessions ADD COLUMN profile_id INTEGER','ALTER TABLE files ADD COLUMN owner INTEGER','CREATE TABLE IF NOT EXISTS knowledge_threads (id TEXT PRIMARY KEY, scope TEXT, messages TEXT)','ALTER TABLE knowledge_threads ADD COLUMN owner INTEGER']){try{await db.exec(ddl)}catch{}}
 await db.prepare("UPDATE profile SET email='amechi@addcolormedia.com' WHERE id=1 AND email IS NULL").run();
 await db.prepare('UPDATE files SET owner=1 WHERE owner IS NULL').run();await db.prepare('UPDATE knowledge_threads SET owner=1 WHERE owner IS NULL').run();await db.prepare('UPDATE sessions SET profile_id=1 WHERE profile_id IS NULL').run();
+async function loadSeed(a){const data=JSON.parse(await readFile(resolve(import.meta.dirname,'seeds',a.seed+'-state.json'),'utf8'));let files=[];try{files=JSON.parse(await readFile(resolve(import.meta.dirname,'seeds',a.seed+'-files.json'),'utf8'))}catch{}
+  for(const i of data.items||[])if(i.type==='resource'&&i.file_id&&!i.extracted_text){const f=files.find(x=>x.id===i.file_id);if(f){try{i.extracted_text=await readFile(resolve(import.meta.dirname,'seeds',f.path),'utf8')}catch{}}}return data}
 const ACCOUNTS=[{id:2,email:'hello@iamphoenixwhite.com',name:'Phoenix',password:process.env.PHOENIX_PASSWORD||'phoenix',seed:'phoenix'}];
-for(const a of ACCOUNTS){if(await db.prepare('SELECT id FROM profile WHERE id=?').get(a.id))continue;
-  let data;try{data=JSON.parse(await readFile(resolve(import.meta.dirname,'seeds',a.seed+'-state.json'),'utf8'))}catch{data={name:a.name,onboarding:0,theme:'dark',vocabulary:'World',worlds:[],items:[],projects:[],captures:[],connections:[]}}
+for(const a of ACCOUNTS){const existing=await db.prepare('SELECT id,data FROM profile WHERE id=?').get(a.id);
+  if(existing){// Clean-break reseed: when the bundled seed carries a newer seed_version, replace the workspace once. Password, files and Knowledge chats are kept.
+    let seedVersion=0,current=1;try{seedVersion=JSON.parse(await readFile(resolve(import.meta.dirname,'seeds',a.seed+'-state.json'),'utf8')).seed_version||0}catch{}
+    try{current=JSON.parse(existing.data).seed_version||1}catch{}
+    if(seedVersion>current){const fresh=await loadSeed(a);fresh.revision=(()=>{try{return (JSON.parse(existing.data).revision||0)+1}catch{return 1}})();await db.prepare('UPDATE profile SET data=? WHERE id=?').run(JSON.stringify(normalize(fresh)),a.id);
+      try{const files=JSON.parse(await readFile(resolve(import.meta.dirname,'seeds',a.seed+'-files.json'),'utf8'));for(const f of files){const buf=await readFile(resolve(import.meta.dirname,'seeds',f.path));await db.prepare('INSERT INTO files (id,name,type,size,uploaded_at,content,owner) VALUES(?,?,?,?,?,?,?) ON CONFLICT(id) DO NOTHING').run(f.id,f.name,f.type,buf.length,f.uploaded_at,buf,a.id)}}catch{}}
+    continue}
+  let data;try{data=await loadSeed(a)}catch{data={name:a.name,onboarding:0,theme:'dark',vocabulary:'World',worlds:[],items:[],projects:[],captures:[],connections:[]}}
   const salt=randomBytes(16).toString('hex');await db.prepare('INSERT INTO profile (id,salt,hash,data,email) VALUES(?,?,?,?,?) ON CONFLICT(id) DO NOTHING').run(a.id,salt,scryptSync(a.password,salt,64).toString('hex'),JSON.stringify(normalize(data)),a.email);
   try{const files=JSON.parse(await readFile(resolve(import.meta.dirname,'seeds',a.seed+'-files.json'),'utf8'));for(const f of files){const buf=await readFile(resolve(import.meta.dirname,'seeds',f.path));await db.prepare('INSERT INTO files (id,name,type,size,uploaded_at,content,owner) VALUES(?,?,?,?,?,?,?) ON CONFLICT(id) DO NOTHING').run(f.id,f.name,f.type,buf.length,f.uploaded_at,buf,a.id)}}catch{}}
 const FILE_LIMIT=20*1024*1024, ACCOUNT_LIMIT=200*1024*1024;
