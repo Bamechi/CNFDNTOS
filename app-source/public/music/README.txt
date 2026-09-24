@@ -1,0 +1,1 @@
+Place supplied, rights-cleared MP3, WAV or M4A files here. The focus-music menu reads filenames as track names. Music is off by default and pauses during voice capture. No music has been supplied or distributed with this revision.
