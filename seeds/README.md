@@ -7,6 +7,7 @@ Loaded once, the first time the server starts and finds no profile with that id.
 | 1 | amechi@addcolormedia.com | AMECHI_PASSWORD or TEST_PASSWORD (vanta) | built-in demo Worlds |
 | 2 | hello@iamphoenixwhite.com | PHOENIX_PASSWORD (phoenix) | phoenix-state.json + phoenix-files.json |
 
-Phoenix seed contents: World "Phoenix White" (short name Phoenix), 15 Rocks (3 active, rest queued), 107 Projects, 77 To-Dos, 137 Issues, 218 Notes, plus two searchable resources: the Orí Knowledge Base and the Down the Rabbit Hole sponsorship deck (text).
-Import adjustments: past-due To-Dos were dated Sept 24, 2026 with "Originally due …" in the description; To-Dos dated more than 14 days out became Projects (Orí's To-Do rule).
-Not seeded (upload in the app, Knowledge Base → Upload): the source PDFs, DOCX and images in Phoenix-White-Ori/sources, and the Breakout workbook tabs the importer does not take (People, Money, Media Quotes, Links, Flags, Afterparty Qs, Website Spec). The 42 MB sponsorship-deck PDF exceeds the 20 MB per-file limit; its text version is already seeded.
+Phoenix seed (seed_version 2, from Phoenix-White_Ori-Import_v2.csv, Sept 24, 2026): six Worlds (Retreats, Events & Partnerships; Origin; Products; Content / Branding; Websites / Apps; Personal Life), 7 Rocks, 17 Projects, 90 To-Dos, 17 Checkpoints, 38 Issues, 3 Notes, plus two searchable resources (Orí Knowledge Base, Down the Rabbit Hole deck text) in the Retreats World.
+Import rules applied: past-due To-Dos dated Sept 24 with "Originally due" noted; To-Dos more than 14 days out became Checkpoints on their Rock (or their Project's Rock); the six with no Rock were kept as undated To-Dos with "Target date" in the description.
+Reseed: when this file's seed_version is higher than the stored workspace's, the server replaces Phoenix's workspace once on boot (clean break). Password, uploaded files and Knowledge chats are kept. Any Worlds, Rocks or To-Dos created in her account before the reseed are replaced.
+Not seeded: source PDFs, DOCX and images (upload in Knowledge Base → Upload; the 42 MB deck PDF exceeds the 20 MB limit, its text is seeded).
