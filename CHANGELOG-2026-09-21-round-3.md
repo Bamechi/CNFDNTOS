@@ -81,3 +81,16 @@
 - Hero headline is the animated Orí logo: dots orbit in, fuse into the ring, "rí" arrives; then "Your inner head." beneath. Timed to start after the intro (or immediately when the intro was already seen this session).
 - Landing demo now completes the real flow: hold (lightning, rings), release ("Captured"), then the stage transitions to the Worlds home screen in a device frame for three seconds before resetting. Auto-demo every 9s until touched.
 - Screenshots recaptured (home core shows the wordmark).
+
+## Round 4e — centering, phone orbit, World short name, Output legibility
+- Wordmark viewBoxes trimmed to the artwork (`2 0 70 48`, hero/intro `11 0 166 120`) so the logo centers optically on the planet cores, in the intro, and in exported PNGs.
+- Landing orbit nodes and app satellites have static base positions; with iOS Reduce Motion (or any reduced-motion setting) they no longer collapse onto one point. Smaller phone orbit and labels; rings stay centered without animation.
+- World page shows the World's short name under its globe.
+- Output stage: waves moved below the copy, softened and masked out behind the text; copy sits on a soft dark plate with stronger text shadow.
+
+## Round 5 — two accounts (Amechi, Phoenix)
+- Multi-account server: login by email; sessions carry the profile id; state, files, knowledge threads, storage quota and Google Calendar integration are scoped per account (AsyncLocalStorage per request). Existing data stays on profile 1; migrations add columns and backfill on first boot; existing sessions keep working.
+- Accounts: amechi@addcolormedia.com (AMECHI_PASSWORD / TEST_PASSWORD, default vanta) and hello@iamphoenixwhite.com (PHOENIX_PASSWORD, default phoenix). Seeds in /seeds; vercel.json includeFiles now covers public and seeds.
+- Avatar initials derive from the display name (no more hard-coded "BA").
+- Importer: past-due To-Dos import dated today with the original date noted; To-Dos more than 14 days out import as Projects; both are listed in the import report.
+- Verified: 38/38 tests; account isolation (each account sees only its own Worlds and files; cross-account file request returns 404); migration from a pre-Round-5 database keeps Amechi's login, data and live session.
