@@ -8,12 +8,14 @@ import {normalize,validateState,promotionMessages,activeRocks} from './public/do
 import {answerKnowledge,knowledgeRecords} from './lib/knowledge.mjs';
 import {generateOutput} from './lib/output.mjs';
 import {googleIntegration} from './lib/google.mjs';
+import {checkoutProducts,createAccessToken,deliveryCatalog,productsForLineItems,publicProduct,renderDeliveryPage,stripeRequest,tokenProducts,verifyAccessToken,verifyStripeSignature,accessUrl} from './lib/fulfillment.mjs';
 try { process.loadEnvFile(resolve(import.meta.dirname,'.env')); } catch {}
 const root=resolve(import.meta.dirname,'public');
 const db=await openDatabase(process.env.DB_PATH||resolve(import.meta.dirname,'.data/cnfdnt.sqlite'));
 await db.exec('CREATE TABLE IF NOT EXISTS profile (id INTEGER PRIMARY KEY, salt TEXT, hash TEXT, data TEXT); CREATE TABLE IF NOT EXISTS sessions (token TEXT PRIMARY KEY, expires INTEGER); CREATE TABLE IF NOT EXISTS files (id TEXT PRIMARY KEY, name TEXT, type TEXT, size INTEGER, uploaded_at TEXT, content BLOB)');
 await db.exec('CREATE TABLE IF NOT EXISTS knowledge_threads (id TEXT PRIMARY KEY, scope TEXT, messages TEXT)');
 await db.exec('CREATE TABLE IF NOT EXISTS uploads (id TEXT PRIMARY KEY, session TEXT, name TEXT, size INTEGER, expires INTEGER); CREATE TABLE IF NOT EXISTS upload_parts (upload_id TEXT, part INTEGER, content BLOB, PRIMARY KEY(upload_id,part))');
+await db.exec('CREATE TABLE IF NOT EXISTS stripe_orders (session_id TEXT PRIMARY KEY, customer_email TEXT, product_ids TEXT, access_token TEXT, created_at TEXT)');
 const date=n=>new Date(Date.now()+n*86400000).toISOString().slice(0,10);
 const seed={name:'Amechi',onboarding:0,theme:'dark',vocabulary:'World',worlds:[{id:'w1',name:'CNFDNT Community',purpose:'Build a space where confidence becomes a way of life.',status:'on',tone:0},{id:'w2',name:'High Lvl Media',purpose:'Ideas into stories. Stories into impact.',status:'on',tone:1},{id:'w3',name:'Personal Growth',purpose:'Become the person the vision requires.',status:'on',tone:2},{id:'w4',name:'Creative Studio',purpose:'Make room for the work only you can make.',status:'off',tone:3}],items:[{id:'r1',world:'w1',type:'rock',title:'Launch the founding community',description:'Welcome the first 100 members with a complete onboarding experience.',due:date(60),status:'on',created:date(0),comments:[]},{id:'r2',world:'w2',type:'rock',title:'Build the next chapter of High Lvl',description:'Publish the new portfolio and three flagship stories.',due:date(75),status:'on',created:date(0),comments:[]},{id:'t1',world:'w1',rock:'r1',type:'todo',title:'Outline the founding member experience',due:date(2),created:date(0),done:false,comments:[]},{id:'t2',world:'w2',type:'todo',title:'Collect references for the next film',due:date(4),created:date(0),done:false,comments:[]},{id:'t3',world:'w3',type:'todo',title:'Make space for a weekly reflection',due:date(6),created:date(0),done:false,comments:[]},{id:'n1',world:'w1',type:'note',title:'The community north star',description:'A place to think bigger, build together, and follow through. Start with connection. Make the first experience personal.',created:date(0)}],captures:[],connections:[]};
 if(!(await db.prepare('SELECT id FROM profile WHERE id=1').get())){const salt=randomBytes(16).toString('hex');(await db.prepare('INSERT INTO profile VALUES(1,?,?,?) ON CONFLICT(id) DO NOTHING').run(salt,scryptSync(process.env.TEST_PASSWORD||'vanta',salt,64).toString('hex'),JSON.stringify(normalize(seed))));}
@@ -30,6 +32,11 @@ if(legacy.schema===2){if(!process.env.VERCEL){await mkdir(resolve(import.meta.di
 const google=await googleIntegration(db,readState,writeState);
 const failures=new Map();
 const send=(res,status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
+async function maybeSendDeliveryEmail({email,products,link}){
+  if(!email||!process.env.RESEND_API_KEY)return;
+  const html=`<p>Thanks for your CNFDNT purchase.</p><p>Your delivery page is ready: <a href="${link}">${link}</a></p><ul>${products.map(p=>`<li>${p.title}</li>`).join('')}</ul><p>If anything looks off, reply to cnfdnt.ai@gmail.com.</p>`;
+  await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({from:process.env.DELIVERY_EMAIL_FROM||'CNFDNT <delivery@cnfdnt.co>',to:email,subject:'Your CNFDNT product access',html})}).catch(error=>console.error('Delivery email failed:',error.message));
+}
 async function extract(buf,ext){
   if(!['.txt','.docx','.pdf'].includes(ext))return {text:'',status:'Original preserved. Audio transcription and image OCR are not connected.'};
   try{let text='';if(ext==='.txt')text=buf.toString('utf8');else if(ext==='.docx'){const mammoth=await import('mammoth');text=(await mammoth.extractRawText({buffer:buf})).value;}else{const {PDFParse}=await import('pdf-parse');const parser=new PDFParse({data:new Uint8Array(buf)});try{text=(await parser.getText()).text}finally{await parser.destroy()}}
@@ -43,6 +50,24 @@ app.use(express.static(root,{index:false}));
 app.use(async(req,res)=>{try{
   const url=new URL(req.url,'http://localhost');
   if(url.pathname.startsWith('/api/')){
+    if(url.pathname==='/api/stripe/webhook'&&req.method==='POST'){
+      let raw='';for await(const chunk of req){raw+=chunk;if(Buffer.byteLength(raw)>1024*1024)return send(res,413,{error:'Webhook payload too large.'});}
+      verifyStripeSignature(raw,req.headers['stripe-signature']);
+      const event=JSON.parse(raw);
+      if(['checkout.session.completed','checkout.session.async_payment_succeeded'].includes(event.type)){
+        const session=event.data.object;
+        const lineItems=await stripeRequest('/checkout/sessions/'+encodeURIComponent(session.id)+'/line_items?limit=100');
+        const products=productsForLineItems(lineItems.data||[]);
+        if(products.length){
+          const token=createAccessToken({sessionId:session.id,email:session.customer_details?.email||session.customer_email||'',productIds:products.map(p=>p.id),expires:Date.now()+1000*60*60*24*30});
+          const email=session.customer_details?.email||session.customer_email||'';
+          await db.prepare('INSERT INTO stripe_orders VALUES(?,?,?,?,?) ON CONFLICT(session_id) DO UPDATE SET customer_email=excluded.customer_email,product_ids=excluded.product_ids,access_token=excluded.access_token').run(session.id,email,JSON.stringify(products.map(p=>p.id)),token,new Date().toISOString());
+          await maybeSendDeliveryEmail({email,products,link:accessUrl(req,token)});
+        }
+      }
+      return send(res,200,{received:true});
+    }
+    if(url.pathname==='/api/delivery/catalog'&&req.method==='GET')return send(res,200,{...deliveryCatalog(),products:deliveryCatalog().products.map(publicProduct)});
     if(req.method!=='GET'&&req.headers.origin&&req.headers.origin!==`http://${req.headers.host}`&&req.headers.origin!==`https://${req.headers.host}`)return send(res,403,{error:'Origin rejected'});
     let raw='';for await(const chunk of req){raw+=chunk;if(Buffer.byteLength(raw)>30*1024*1024)return send(res,413,{error:'Request too large. Maximum file size is 20 MB.'});}
     let body={};try{body=raw?JSON.parse(raw):{}}catch{return send(res,400,{error:'Invalid JSON'})}
@@ -98,6 +123,23 @@ app.use(async(req,res)=>{try{
     if(url.pathname==='/api/google/sync'&&req.method==='POST')return send(res,200,await google.sync(body.selected));
     if(url.pathname==='/api/google/disconnect'&&req.method==='POST')return send(res,200,await google.disconnect());
     return send(res,404,{error:'Not found'});
+  }
+  if(url.pathname==='/delivery'&&req.method==='GET'){
+    const sessionId=url.searchParams.get('session_id');
+    if(!sessionId){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(renderDeliveryPage({products:[],message:'Paste a Stripe checkout session ID into the delivery URL after payment.'}))}
+    const result=await checkoutProducts(sessionId);
+    const email=result.session.customer_details?.email||result.session.customer_email||'';
+    const token=createAccessToken({sessionId,email,productIds:result.products.map(p=>p.id),expires:Date.now()+1000*60*60*24*30});
+    await db.prepare('INSERT INTO stripe_orders VALUES(?,?,?,?,?) ON CONFLICT(session_id) DO UPDATE SET customer_email=excluded.customer_email,product_ids=excluded.product_ids,access_token=excluded.access_token').run(sessionId,email,JSON.stringify(result.products.map(p=>p.id)),token,new Date().toISOString());
+    res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'private, no-store'});
+    return res.end(renderDeliveryPage({...result,token}));
+  }
+  if(url.pathname==='/delivery/access'&&req.method==='GET'){
+    const payload=verifyAccessToken(url.searchParams.get('token'));
+    if(!payload){res.writeHead(403,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(renderDeliveryPage({products:[],message:'This delivery link is missing, expired, or invalid.'}))}
+    const products=tokenProducts(payload);
+    res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'private, no-store'});
+    return res.end(renderDeliveryPage({products,session:{customer_email:payload.email},token:url.searchParams.get('token')}));
   }
   const routed=url.pathname==='/'?'/index.html':(url.pathname==='/app'||url.pathname==='/app/')?'/os.html':url.pathname;const path=resolve(root,'.'+decodeURIComponent(routed));if(!path.startsWith(root+'/')){res.writeHead(403);return res.end()}
   try{const content=await readFile(path);res.writeHead(200,{'Content-Type':mime[extname(path)]||'application/octet-stream','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','Cache-Control':'no-cache'});res.end(content)}catch{res.writeHead(404);res.end('Not found')}

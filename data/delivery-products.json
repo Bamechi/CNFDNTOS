@@ -1,0 +1,1329 @@
+{
+  "assetFolderUrl": "https://drive.google.com/drive/folders/1uHjxD_U1ZvbK3_AF_NE0BMGyLzkZkROY",
+  "products": [
+    {
+      "id": "BUNDLE-0066",
+      "slug": "bundle-0066",
+      "name": "BUNDLE-0066 CNFDNT Blueprint Library",
+      "title": "CNFDNT Blueprint Library",
+      "stripeProductId": "prod_VJI3DpJZ6GRZ3G",
+      "stripePriceId": "price_1UIfTjIzICPDPGnW0ZFG5ASl",
+      "stripePaymentLink": "https://buy.stripe.com/6oU3cwaG579T2dMaRo7bW04",
+      "amount": "66.66",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "CNFDNT Blueprint Library",
+          "type": "bundle",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "BUNDLE-0088",
+      "slug": "bundle-0088",
+      "name": "BUNDLE-0088 AI Implementer Toolkit",
+      "title": "AI Implementer Toolkit",
+      "stripeProductId": "prod_VJMkcROqgtpJlW",
+      "stripePriceId": "price_1UIk0uIzICPDPGnWo3gXDMgc",
+      "stripePaymentLink": "https://buy.stripe.com/00w6oIeWl2TDdWubVs7bW05",
+      "amount": "88.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "AI Implementer Toolkit",
+          "type": "bundle",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "BUNDLE-0099",
+      "slug": "bundle-0099",
+      "name": "BUNDLE-0099 Content Systems for Creators",
+      "title": "Content Systems for Creators",
+      "stripeProductId": "prod_VJMmTr4VQlcOJG",
+      "stripePriceId": "price_1UIk2ZIzICPDPGnWOoBsNuLO",
+      "stripePaymentLink": "https://buy.stripe.com/00w3cw01rbq95pYgbI7bW06",
+      "amount": "99.99",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Content Systems for Creators",
+          "type": "bundle",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "BUNDLE-0144",
+      "slug": "bundle-0144",
+      "name": "BUNDLE-0144 The CNFDNT GPT Suite",
+      "title": "The CNFDNT GPT Suite",
+      "stripeProductId": "prod_VJMm8vsWSB0dyv",
+      "stripePriceId": "price_1UIk30IzICPDPGnWdeZPGYNg",
+      "stripePaymentLink": "https://buy.stripe.com/5kQ28s15vdyh4lU7Fc7bW07",
+      "amount": "144.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "The CNFDNT GPT Suite",
+          "type": "bundle",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "BUNDLE-0199",
+      "slug": "bundle-0199",
+      "name": "BUNDLE-0199 Executive Operator Pack",
+      "title": "Executive Operator Pack",
+      "stripeProductId": "prod_VJMmDwVK9tqNHf",
+      "stripePriceId": "price_1UIk3JIzICPDPGnWqvqZYaTS",
+      "stripePaymentLink": "https://buy.stripe.com/6oU6oI8xXcuddWu0cK7bW08",
+      "amount": "199.99",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Executive Operator Pack",
+          "type": "bundle",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0007",
+      "slug": "cnfdnt-eguide-0007",
+      "name": "CNFDNT-EGUIDE-0007 ChatGPT Supremacy 2.0 Blueprint",
+      "title": "ChatGPT Supremacy 2.0 Blueprint",
+      "stripeProductId": "prod_VJMnh5wyWheep2",
+      "stripePriceId": "price_1UIk3rIzICPDPGnWLKh2v8ho",
+      "stripePaymentLink": "https://buy.stripe.com/aFadRa8xX79T7y66B87bW09",
+      "amount": "44.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "ChatGPT Supremacy 2.0 Blueprint",
+          "type": "pdf",
+          "fileName": "cnfdnt eguide ChatGPT Supremacy 2.0_Pre Graphic.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/cnfdnt eguide ChatGPT Supremacy 2.0_Pre Graphic.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0008",
+      "slug": "cnfdnt-eguide-0008",
+      "name": "CNFDNT-EGUIDE-0008 The Content Flywheel Blueprint",
+      "title": "The Content Flywheel Blueprint",
+      "stripeProductId": "prod_VJMnI0TjmHhk4f",
+      "stripePriceId": "price_1UIk4AIzICPDPGnWNhPhgLGp",
+      "stripePaymentLink": "https://buy.stripe.com/14A5kE9C1bq9f0ygbI7bW0a",
+      "amount": "22.22",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "The Content Flywheel Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_ CONTENT FLYWHEEL (NEEDS WORK) v2.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide_ CONTENT FLYWHEEL (NEEDS WORK) v2.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0009",
+      "slug": "cnfdnt-eguide-0009",
+      "name": "CNFDNT-EGUIDE-0009 Flow Executive Blueprint",
+      "title": "Flow Executive Blueprint",
+      "stripeProductId": "prod_VJMocG9jDLNVqT",
+      "stripePriceId": "price_1UIk4dIzICPDPGnWXOAmpnnS",
+      "stripePaymentLink": "https://buy.stripe.com/bJe14odSh2TDdWugbI7bW0b",
+      "amount": "33.33",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Flow Executive Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_ Flow Executive Blueprint.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide_ Flow Executive Blueprint.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0010",
+      "slug": "cnfdnt-eguide-0010",
+      "name": "CNFDNT-EGUIDE-0010 From Idea to AI App Blueprint (Web + App)",
+      "title": "From Idea to AI App Blueprint (Web + App)",
+      "stripeProductId": "prod_VJMoYlY3LAieKy",
+      "stripePriceId": "price_1UIk4wIzICPDPGnWElyOoGTj",
+      "stripePaymentLink": "https://buy.stripe.com/6oU4gAaG58dX3hQ0cK7bW0c",
+      "amount": "22.22",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "From Idea to AI App Blueprint (Web + App)",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide__full ai app builder questionairev2.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide__full ai app builder questionairev2.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0011",
+      "slug": "cnfdnt-eguide-0011",
+      "name": "CNFDNT-EGUIDE-0011 AI Visuals That Convert \u2014 The Creative Director Playbook",
+      "title": "AI Visuals That Convert \u2014 The Creative Director Playbook",
+      "stripeProductId": "prod_VJcROrcYmdYwbN",
+      "stripePriceId": "price_1UIzCgIzICPDPGnWkiNFQNQG",
+      "stripePaymentLink": "https://buy.stripe.com/6oU14o8xX8dX7y6bVs7bW0d",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "AI Visuals That Convert \u2014 The Creative Director Playbook",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide__PLAYBOOK_DIRECTIVE.pdf v2.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide__PLAYBOOK_DIRECTIVE.pdf v2.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0013",
+      "slug": "cnfdnt-eguide-0013",
+      "name": "CNFDNT-EGUIDE-0013 Decks That Land",
+      "title": "Decks That Land",
+      "stripeProductId": "prod_VJcRU9AxhdEb42",
+      "stripePriceId": "price_1UIzCzIzICPDPGnW5X6EVed8",
+      "stripePaymentLink": "https://buy.stripe.com/6oU4gA01reCl4lU4t07bW0e",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Decks That Land",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_DECKS THAT LAND .pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide_DECKS THAT LAND .pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0014",
+      "slug": "cnfdnt-eguide-0014",
+      "name": "CNFDNT-EGUIDE-0014 The Follow-Up Engine Blueprint",
+      "title": "The Follow-Up Engine Blueprint",
+      "stripeProductId": "prod_VJcS9lWiNleJ9v",
+      "stripePriceId": "price_1UIzDKIzICPDPGnWgyqZu5pC",
+      "stripePaymentLink": "https://buy.stripe.com/3cI3cw4hHdyhcSq8Jg7bW0f",
+      "amount": "4.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0015",
+      "slug": "cnfdnt-eguide-0015",
+      "name": "CNFDNT-EGUIDE-0015 NotebookLM Field Guide \u2014 High-Lvl Edition",
+      "title": "NotebookLM Field Guide \u2014 High-Lvl Edition",
+      "stripeProductId": "prod_VJcSP2uOviabTo",
+      "stripePriceId": "price_1UIzDbIzICPDPGnW48KwyNuo",
+      "stripePaymentLink": "https://buy.stripe.com/dRm14o4hH51L4lU9Nk7bW0g",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "NotebookLM Field Guide \u2014 High-Lvl Edition",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_NotebookLM Field Guide - High-Lvl Edition (1).pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide_NotebookLM Field Guide - High-Lvl Edition (1).pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0016",
+      "slug": "cnfdnt-eguide-0016",
+      "name": "CNFDNT-EGUIDE-0016 The Execution Blueprint",
+      "title": "The Execution Blueprint",
+      "stripeProductId": "prod_VJcSJb8jx6DVpt",
+      "stripePriceId": "price_1UIzDxIzICPDPGnWWoAZO533",
+      "stripePaymentLink": "https://buy.stripe.com/fZu5kEcOd0Lv2dM4t07bW0h",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "The Execution Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT eguide_The-Execution-Blueprint-HighLvl_compressed.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT eguide_The-Execution-Blueprint-HighLvl_compressed.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0017",
+      "slug": "cnfdnt-eguide-0017",
+      "name": "CNFDNT-EGUIDE-0017 The 30-Day AI Visuals Cash Blueprint",
+      "title": "The 30-Day AI Visuals Cash Blueprint",
+      "stripeProductId": "prod_VJcTMGfolHRQIo",
+      "stripePriceId": "price_1UIzEEIzICPDPGnWZVEL3cye",
+      "stripePaymentLink": "https://buy.stripe.com/3cI9AU7tTcud4lU4t07bW0i",
+      "amount": "11.10",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "The 30-Day AI Visuals Cash Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT_30D_AI_CASH_BLUEPRINT.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT_30D_AI_CASH_BLUEPRINT.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0019",
+      "slug": "cnfdnt-eguide-0019",
+      "name": "CNFDNT-EGUIDE-0019 Brand Alchemy \u2014 Creative Direction Blueprint",
+      "title": "Brand Alchemy \u2014 Creative Direction Blueprint",
+      "stripeProductId": "prod_VJcTvagC3Zq8SJ",
+      "stripePriceId": "price_1UIzEaIzICPDPGnWgcs1wzSX",
+      "stripePaymentLink": "https://buy.stripe.com/7sYcN601rcud6u21gO7bW0j",
+      "amount": "22.22",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Brand Alchemy \u2014 Creative Direction Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT_BRAND_ALCHEMY_DIRECTIVE v2.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT_BRAND_ALCHEMY_DIRECTIVE v2.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0020",
+      "slug": "cnfdnt-eguide-0020",
+      "name": "CNFDNT-EGUIDE-0020 Faker Creators Blueprint",
+      "title": "Faker Creators Blueprint",
+      "stripeProductId": "prod_VJcT443418oeWj",
+      "stripePriceId": "price_1UIzEsIzICPDPGnWVGGmM0GS",
+      "stripePaymentLink": "https://buy.stripe.com/fZubJ2eWl3XHf0y2kS7bW0k",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Faker Creators Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT_FAKER_CREATORS_IG.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT_FAKER_CREATORS_IG.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0022",
+      "slug": "cnfdnt-eguide-0022",
+      "name": "CNFDNT-EGUIDE-0022 Media Team Workflow Blueprint",
+      "title": "Media Team Workflow Blueprint",
+      "stripeProductId": "prod_VJcUzaFCLgsBoE",
+      "stripePriceId": "price_1UIzFEIzICPDPGnWej5vuhfg",
+      "stripePaymentLink": "https://buy.stripe.com/eVqaEY29zam52dM6B87bW0l",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Media Team Workflow Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT_WORKFLOW_V2 (1).pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT_WORKFLOW_V2 (1).pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0023",
+      "slug": "cnfdnt-eguide-0023",
+      "name": "CNFDNT-EGUIDE-0023 Second Brain 101 Blueprint",
+      "title": "Second Brain 101 Blueprint",
+      "stripeProductId": "prod_VJcU0Lc8wbYlQZ",
+      "stripePriceId": "price_1UIzFVIzICPDPGnWcWqhD9E0",
+      "stripePaymentLink": "https://buy.stripe.com/00w6oI7tTbq919Ie3A7bW0m",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Second Brain 101 Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDT Eguide_ 2nd brain 1 .pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDT Eguide_ 2nd brain 1 .pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0001",
+      "slug": "cnfdnt-gpt-0001",
+      "name": "CNFDNT-GPT-0001 AI Website & Web App Builder Coach",
+      "title": "AI Website & Web App Builder Coach",
+      "stripeProductId": "prod_VJcUwLbkWkuh64",
+      "stripePriceId": "price_1UIzFpIzICPDPGnWTE6VwLNc",
+      "stripePaymentLink": "https://buy.stripe.com/eVq9AU3dDgKtf0ycZw7bW0n",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "AI Website & Web App Builder Coach",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0002",
+      "slug": "cnfdnt-gpt-0002",
+      "name": "CNFDNT-GPT-0002 UGC Still-to-Video Promptsmith (Realism-First) (GPRT)",
+      "title": "UGC Still-to-Video Promptsmith (Realism-First) (GPRT)",
+      "stripeProductId": "prod_VJcVoSsGBqajh6",
+      "stripePriceId": "price_1UIzG6IzICPDPGnWgQwuHiVL",
+      "stripePaymentLink": "https://buy.stripe.com/3cIaEY7tT51L2dM0cK7bW0o",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "UGC Still-to-Video Promptsmith (Realism-First) (GPRT)",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0003",
+      "slug": "cnfdnt-gpt-0003",
+      "name": "CNFDNT-GPT-0003 Nano Banan Pro \u2014 Campaign-Grade Promptsmith",
+      "title": "Nano Banan Pro \u2014 Campaign-Grade Promptsmith",
+      "stripeProductId": "prod_VJcV1ZRxeaEcLR",
+      "stripePriceId": "price_1UIzGTIzICPDPGnWGIFVPIdX",
+      "stripePaymentLink": "https://buy.stripe.com/4gMeVeg0pdyh9Ge9Nk7bW0p",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Nano Banan Pro \u2014 Campaign-Grade Promptsmith",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0004",
+      "slug": "cnfdnt-gpt-0004",
+      "name": "CNFDNT-GPT-0004 CNFDNT eGuide Image Maker (Cinematic Ads Prompt GPT)",
+      "title": "CNFDNT eGuide Image Maker (Cinematic Ads Prompt GPT)",
+      "stripeProductId": "prod_VJcVQe4w0lx3MY",
+      "stripePriceId": "price_1UIzGkIzICPDPGnWAX2QzBmB",
+      "stripePaymentLink": "https://buy.stripe.com/28EaEY15vfGp3hQ4t07bW0q",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "CNFDNT eGuide Image Maker (Cinematic Ads Prompt GPT)",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0005",
+      "slug": "cnfdnt-gpt-0005",
+      "name": "CNFDNT-GPT-0005 Human Voice Editor (AI Humanizer)",
+      "title": "Human Voice Editor (AI Humanizer)",
+      "stripeProductId": "prod_VJcWXsgm7T6eSZ",
+      "stripePriceId": "price_1UIzH7IzICPDPGnW4K1XGJlN",
+      "stripePaymentLink": "https://buy.stripe.com/6oU4gA01rgKt9Ge7Fc7bW0r",
+      "amount": "4.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Human Voice Editor (AI Humanizer)",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0006",
+      "slug": "cnfdnt-gpt-0006",
+      "name": "CNFDNT-GPT-0006 Personal Brand Builder (Assessment \u2192 Full Brand Package)",
+      "title": "Personal Brand Builder (Assessment \u2192 Full Brand Package)",
+      "stripeProductId": "prod_VJcWsYJiToHogO",
+      "stripePriceId": "price_1UIzHOIzICPDPGnWb75YX4L4",
+      "stripePaymentLink": "https://buy.stripe.com/5kQ14o6pP65P8Ca8Jg7bW0s",
+      "amount": "4.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Personal Brand Builder (Assessment \u2192 Full Brand Package)",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0007",
+      "slug": "cnfdnt-gpt-0007",
+      "name": "CNFDNT-GPT-0007 Cognitive & Leadership Profile Generator (Personal Operating System)",
+      "title": "Cognitive & Leadership Profile Generator (Personal Operating System)",
+      "stripeProductId": "prod_VJcWfBEZSgu7sy",
+      "stripePriceId": "price_1UIzHkIzICPDPGnWSbtWpPUC",
+      "stripePaymentLink": "https://buy.stripe.com/8x2fZi01r2TD2dM6B87bW0t",
+      "amount": "33.33",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Cognitive & Leadership Profile Generator (Personal Operating System)",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0008",
+      "slug": "cnfdnt-gpt-0008",
+      "name": "CNFDNT-GPT-0008 Million Dollar Webinar Architect",
+      "title": "Million Dollar Webinar Architect",
+      "stripeProductId": "prod_VJcXz424jUuvVc",
+      "stripePriceId": "price_1UIzI1IzICPDPGnWxKOovxlA",
+      "stripePaymentLink": "https://buy.stripe.com/aFa4gA8xX2TD2dM5x47bW0u",
+      "amount": "111.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Million Dollar Webinar Architect",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0009",
+      "slug": "cnfdnt-gpt-0009",
+      "name": "CNFDNT-GPT-0009 Communication Coach (Voice, EQ, Storytelling)",
+      "title": "Communication Coach (Voice, EQ, Storytelling)",
+      "stripeProductId": "prod_VJcXtyh90Tbhf2",
+      "stripePriceId": "price_1UIzIMIzICPDPGnWfgyzolnl",
+      "stripePaymentLink": "https://buy.stripe.com/dRm00k15vam519If7E7bW0v",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Communication Coach (Voice, EQ, Storytelling)",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0010",
+      "slug": "cnfdnt-gpt-0010",
+      "name": "CNFDNT-GPT-0010 Brand Worldbuilder & Creative Director",
+      "title": "Brand Worldbuilder & Creative Director",
+      "stripeProductId": "prod_VJcX5Q0iNB6YIJ",
+      "stripePriceId": "price_1UIzIeIzICPDPGnWNNfO58ET",
+      "stripePaymentLink": "https://buy.stripe.com/9B628s4hH9i13hQ3oW7bW0w",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Brand Worldbuilder & Creative Director",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0011",
+      "slug": "cnfdnt-gpt-0011",
+      "name": "CNFDNT-GPT-0011 Email Triage & Reply Writer",
+      "title": "Email Triage & Reply Writer",
+      "stripeProductId": "prod_VJcY4tbcV41O5z",
+      "stripePriceId": "price_1UIzJ0IzICPDPGnWTLosTu3F",
+      "stripePaymentLink": "https://buy.stripe.com/28E14o4hH2TD3hQ7Fc7bW0x",
+      "amount": "4.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Email Triage & Reply Writer",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0012",
+      "slug": "cnfdnt-gpt-0012",
+      "name": "CNFDNT-GPT-0012 One Thing Video Framework Builder",
+      "title": "One Thing Video Framework Builder",
+      "stripeProductId": "prod_VJcYPqw1sSIoTC",
+      "stripePriceId": "price_1UIzJHIzICPDPGnWBnysjxl6",
+      "stripePaymentLink": "https://buy.stripe.com/7sYbJ25lLeClaKiaRo7bW0y",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "One Thing Video Framework Builder",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0013",
+      "slug": "cnfdnt-gpt-0013",
+      "name": "CNFDNT-GPT-0013 Keynote Course Builder",
+      "title": "Keynote Course Builder",
+      "stripeProductId": "prod_VJcYZd7IullGfx",
+      "stripePriceId": "price_1UIzJeIzICPDPGnWymQUVFOt",
+      "stripePaymentLink": "https://buy.stripe.com/cNidRa5lL51L3hQ2kS7bW0z",
+      "amount": "11.11",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Keynote Course Builder",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-GPT-0014",
+      "slug": "cnfdnt-gpt-0014",
+      "name": "CNFDNT-GPT-0014 PodBook: Transcript-to-Book Builder",
+      "title": "PodBook: Transcript-to-Book Builder",
+      "stripeProductId": "prod_VJcZlSfqYxY4hz",
+      "stripePriceId": "price_1UIzJwIzICPDPGnWgYXhDpmF",
+      "stripePaymentLink": "https://buy.stripe.com/9B6dRa5lLfGpbOm4t07bW0A",
+      "amount": "8.88",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "PodBook: Transcript-to-Book Builder",
+          "type": "gpt-link",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0001",
+      "slug": "cnfdnt-1on1-0001",
+      "name": "CNFDNT-1ON1-0001 Entry Clarity Call",
+      "title": "Entry Clarity Call",
+      "stripeProductId": "prod_VJcZgHkaaCCYp9",
+      "stripePriceId": "price_1UIzKHIzICPDPGnWjsimfhSU",
+      "stripePaymentLink": "https://buy.stripe.com/cNi28s6pP0Lv4lU0cK7bW0B",
+      "amount": "111.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Entry Clarity Call",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0002",
+      "slug": "cnfdnt-1on1-0002",
+      "name": "CNFDNT-1ON1-0002 1-on-1 Systems Session",
+      "title": "1-on-1 Systems Session",
+      "stripeProductId": "prod_VJcZdgFI84G94d",
+      "stripePriceId": "price_1UIzKZIzICPDPGnWU8zlr3zf",
+      "stripePaymentLink": "https://buy.stripe.com/14A3cw01rdyh3hQ0cK7bW0C",
+      "amount": "444.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "1-on-1 Systems Session",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0003",
+      "slug": "cnfdnt-1on1-0003",
+      "name": "CNFDNT-1ON1-0003 Workflow Build Session (Private)",
+      "title": "Workflow Build Session (Private)",
+      "stripeProductId": "prod_VJca76w5sbCeea",
+      "stripePriceId": "price_1UIzKwIzICPDPGnW0lERnoM6",
+      "stripePaymentLink": "https://buy.stripe.com/6oUcN6g0p9i13hQ0cK7bW0D",
+      "amount": "333.33",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Workflow Build Session (Private)",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0004",
+      "slug": "cnfdnt-1on1-0004",
+      "name": "CNFDNT-1ON1-0004 Workflow Build Session (Public)",
+      "title": "Workflow Build Session (Public)",
+      "stripeProductId": "prod_VJca6F8nJdCDt0",
+      "stripePriceId": "price_1UIzLDIzICPDPGnWLf0xkInc",
+      "stripePaymentLink": "https://buy.stripe.com/fZu4gA7tT8dX3hQbVs7bW0E",
+      "amount": "144.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Workflow Build Session (Public)",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0005",
+      "slug": "cnfdnt-1on1-0005",
+      "name": "CNFDNT-1ON1-0005 Integration Sprint",
+      "title": "Integration Sprint",
+      "stripeProductId": "prod_VJca7jEyWqBvJK",
+      "stripePriceId": "price_1UIzLZIzICPDPGnWyNDqQjdM",
+      "stripePaymentLink": "https://buy.stripe.com/fZu3cwaG52TD19IaRo7bW0F",
+      "amount": "4444.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Integration Sprint",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0006",
+      "slug": "cnfdnt-1on1-0006",
+      "name": "CNFDNT-1ON1-0006 Operator in Residence (Monthly)",
+      "title": "Operator in Residence (Monthly)",
+      "stripeProductId": "prod_VJcbihLoR42h03",
+      "stripePriceId": "price_1UIzMMIzICPDPGnW7q9EpPlq",
+      "stripePaymentLink": "https://buy.stripe.com/5kQ9AUaG5dyh19I5x47bW0G",
+      "amount": "7500.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Operator in Residence (Monthly)",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0007",
+      "slug": "cnfdnt-1on1-0007",
+      "name": "CNFDNT-1ON1-0007 Team Training Workshop",
+      "title": "Team Training Workshop",
+      "stripeProductId": "prod_VJcb5GW4AtsyRr",
+      "stripePriceId": "price_1UIzMeIzICPDPGnWL4f3r3A4",
+      "stripePaymentLink": "https://buy.stripe.com/00wcN66pP65PdWu2kS7bW0H",
+      "amount": "2222.22",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Team Training Workshop",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-1ON1-0008",
+      "slug": "cnfdnt-1on1-0008",
+      "name": "CNFDNT-1ON1-0008 Offline Review",
+      "title": "Offline Review",
+      "stripeProductId": "prod_VJcchOwce2Z1Yq",
+      "stripePriceId": "price_1UIzMyIzICPDPGnWbmYNESDO",
+      "stripePaymentLink": "https://buy.stripe.com/8x2fZi9C1am5cSq4t07bW0I",
+      "amount": "222.22",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "Offline Review",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-COMM-0011",
+      "slug": "cnfdnt-comm-0011",
+      "name": "CNFDNT-COMM-0011 CNFDNT Tools+ / Content+",
+      "title": "CNFDNT Tools+ / Content+",
+      "stripeProductId": "prod_VJccCQ0XTjYTUs",
+      "stripePriceId": "price_1UIzNKIzICPDPGnWCbsQNjsw",
+      "stripePaymentLink": "https://buy.stripe.com/4gMdRadSh8dX8CaaRo7bW0J",
+      "amount": "44.44",
+      "billing": "month",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "CNFDNT Tools+ / Content+",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-COMM-0012",
+      "slug": "cnfdnt-comm-0012",
+      "name": "CNFDNT-COMM-0012 CNFDNT Inner Room",
+      "title": "CNFDNT Inner Room",
+      "stripeProductId": "prod_VJccqh7nmNYbI3",
+      "stripePriceId": "price_1UIzNcIzICPDPGnW4RUjeYo8",
+      "stripePaymentLink": "https://buy.stripe.com/fZudRa9C1gKt5pYaRo7bW0K",
+      "amount": "197.00",
+      "billing": "month",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "CNFDNT Inner Room",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "15-ways-to-make-money-with-ai",
+      "slug": "15-ways-to-make-money-with-ai",
+      "name": "_15 WAYS TO MAKE MONEY WITH AI",
+      "title": "_15 WAYS TO MAKE MONEY WITH AI",
+      "stripeProductId": "prod_VJcdHRoSkbRrJU",
+      "stripePriceId": "price_1UIzO1IzICPDPGnWcrVh2TmL",
+      "stripePaymentLink": "https://buy.stripe.com/eVq9AUdShdyhg4C3oW7bW0L",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "_15 WAYS TO MAKE MONEY WITH AI",
+          "type": "pdf",
+          "fileName": "_15 WAYS TO MAKE MONEY WITH AI.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/_15 WAYS TO MAKE MONEY WITH AI.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "ai-alchemy-dictionary-2026-v2",
+      "slug": "ai-alchemy-dictionary-2026-v2",
+      "name": "AI ALCHEMY DICTIONARY __ 2026+ V2",
+      "title": "AI ALCHEMY DICTIONARY __ 2026+ V2",
+      "stripeProductId": "prod_VJcdtklEqLD9Zl",
+      "stripePriceId": "price_1UIzOMIzICPDPGnWYg3k0OLj",
+      "stripePaymentLink": "https://buy.stripe.com/3cI4gAeWl3XH3hQ7Fc7bW0M",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "AI ALCHEMY DICTIONARY __ 2026+ V2",
+          "type": "pdf",
+          "fileName": "AI ALCHEMY DICTIONARY __ 2026+.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/AI ALCHEMY DICTIONARY __ 2026+.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "chatbot-and-llms-aigent-smith-resources",
+      "slug": "chatbot-and-llms-aigent-smith-resources",
+      "name": "Chatbot and LLMs_AiGENT SMITH RESOURCES",
+      "title": "Chatbot and LLMs_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJcdrvvpgxHHra",
+      "stripePriceId": "price_1UIzOdIzICPDPGnWV197U5s5",
+      "stripePaymentLink": "https://buy.stripe.com/7sY5kE7tT0Lv2dM5x47bW0N",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "content-tools-aigent-smith-resources",
+      "slug": "content-tools-aigent-smith-resources",
+      "name": "Content Tools_AiGENT SMITH RESOURCES",
+      "title": "Content Tools_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJceYjb18AdlXF",
+      "stripePriceId": "price_1UIzOyIzICPDPGnWGEG0ceHn",
+      "stripePaymentLink": "https://buy.stripe.com/dRm14o01rbq94lU6B87bW0O",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "paid-v-free-aigent-smith-resources",
+      "slug": "paid-v-free-aigent-smith-resources",
+      "name": "Paid v Free_AiGENT SMITH RESOURCES",
+      "title": "Paid v Free_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJcey1SBZLpOiM",
+      "stripePriceId": "price_1UIzPFIzICPDPGnWcKPhkukl",
+      "stripePaymentLink": "https://buy.stripe.com/8x2eVebK9dyhdWue3A7bW0P",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "productivity-support-aigent-smith-resources",
+      "slug": "productivity-support-aigent-smith-resources",
+      "name": "Productivity Support_AiGENT SMITH RESOURCES",
+      "title": "Productivity Support_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJceJxeujKTzNG",
+      "stripePriceId": "price_1UIzPbIzICPDPGnWGlstfkF2",
+      "stripePaymentLink": "https://buy.stripe.com/28E28s9C13XHdWucZw7bW0Q",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "prompting-101-aigent-smith-resources",
+      "slug": "prompting-101-aigent-smith-resources",
+      "name": "Prompting 101_AiGENT SMITH RESOURCES",
+      "title": "Prompting 101_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJcf7hlzlm2y6P",
+      "stripePriceId": "price_1UIzPsIzICPDPGnWkGANLReH",
+      "stripePaymentLink": "https://buy.stripe.com/4gM4gA01rgKt9Ge2kS7bW0R",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "research-support-aigent-smith-resources",
+      "slug": "research-support-aigent-smith-resources",
+      "name": "Research Support_AiGENT SMITH RESOURCES",
+      "title": "Research Support_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJcf4zWrZdl1Ac",
+      "stripePriceId": "price_1UIzQEIzICPDPGnWta7MBrGW",
+      "stripePaymentLink": "https://buy.stripe.com/9B69AU3dD9i14lU0cK7bW0S",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "web-design-and-develop-decks-aigent-smith-resources",
+      "slug": "web-design-and-develop-decks-aigent-smith-resources",
+      "name": "Web Design and Develop_Decks_AiGENT SMITH RESOURCES",
+      "title": "Web Design and Develop_Decks_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJcfXo8qjU8gmU",
+      "stripePriceId": "price_1UIzQVIzICPDPGnWkw8o3L7X",
+      "stripePaymentLink": "https://buy.stripe.com/28E4gAcOddyh05E0cK7bW0T",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "writing-and-copy-tools-aigent-smith-resources",
+      "slug": "writing-and-copy-tools-aigent-smith-resources",
+      "name": "Writing and Copy Tools_AiGENT SMITH RESOURCES",
+      "title": "Writing and Copy Tools_AiGENT SMITH RESOURCES",
+      "stripeProductId": "prod_VJcgWQaQFheOym",
+      "stripePriceId": "price_1UIzQqIzICPDPGnWJfz0dFsh",
+      "stripePaymentLink": "https://buy.stripe.com/6oU14o01r8dXg4C4t07bW0U",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0001",
+      "slug": "cnfdnt-eguide-0001",
+      "name": "CNFDNT-EGUIDE-0001 ARCHITECT \u2014 System Infrastructure Blueprint",
+      "title": "ARCHITECT \u2014 System Infrastructure Blueprint",
+      "stripeProductId": "prod_VJcgbbHv5085l6",
+      "stripePriceId": "price_1UIzRBIzICPDPGnWAVw4MCLH",
+      "stripePaymentLink": "https://buy.stripe.com/8x2bJ2aG551LaKi2kS7bW0V",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "ARCHITECT \u2014 System Infrastructure Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_ARCHITECT __ System Infrastructure.pdf.pdf",
+          "localAssetPath": "Cnfdnt Survey Result Profiles for website survey /CNFDNT Eguide_ARCHITECT __ System Infrastructure.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0002",
+      "slug": "cnfdnt-eguide-0002",
+      "name": "CNFDNT-EGUIDE-0002 CATALYST \u2014 Momentum & Containment Blueprint",
+      "title": "CATALYST \u2014 Momentum & Containment Blueprint",
+      "stripeProductId": "prod_VJcgUlQr3hrfBb",
+      "stripePriceId": "price_1UIzRSIzICPDPGnW9JgWMBYT",
+      "stripePaymentLink": "https://buy.stripe.com/aFa7sMdSh2TDcSq8Jg7bW0W",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "CATALYST \u2014 Momentum & Containment Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_CATALYST __ Momentum & Containment.pdf.pdf",
+          "localAssetPath": "Cnfdnt Survey Result Profiles for website survey /CNFDNT Eguide_CATALYST __ Momentum & Containment.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0003",
+      "slug": "cnfdnt-eguide-0003",
+      "name": "CNFDNT-EGUIDE-0003 CLOSER \u2014 The Unstuck Protocol Blueprint",
+      "title": "CLOSER \u2014 The Unstuck Protocol Blueprint",
+      "stripeProductId": "prod_VJchhVS0jcrLaQ",
+      "stripePriceId": "price_1UIzRnIzICPDPGnWr8nqhhmJ",
+      "stripePaymentLink": "https://buy.stripe.com/5kQdRa29zcud3hQ7Fc7bW0X",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "CLOSER \u2014 The Unstuck Protocol Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_CLOSER __ The Unstuck Protocol.pdf.pdf",
+          "localAssetPath": "Cnfdnt Survey Result Profiles for website survey /CNFDNT Eguide_CLOSER __ The Unstuck Protocol.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0004",
+      "slug": "cnfdnt-eguide-0004",
+      "name": "CNFDNT-EGUIDE-0004 ORCHESTRATOR \u2014 Coordination Architecture Blueprint",
+      "title": "ORCHESTRATOR \u2014 Coordination Architecture Blueprint",
+      "stripeProductId": "prod_VJchyXJ0v1C0r0",
+      "stripePriceId": "price_1UIzS4IzICPDPGnWLbhi5F23",
+      "stripePaymentLink": "https://buy.stripe.com/8x26oIeWl3XHaKi3oW7bW0Y",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "ORCHESTRATOR \u2014 Coordination Architecture Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_ORCHESTRATOR __ Coordination Architecture.pdf.pdf",
+          "localAssetPath": "Cnfdnt Survey Result Profiles for website survey /CNFDNT Eguide_ORCHESTRATOR __ Coordination Architecture.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0005",
+      "slug": "cnfdnt-eguide-0005",
+      "name": "CNFDNT-EGUIDE-0005 STABILIZER \u2014 Rhythm & System Blueprint",
+      "title": "STABILIZER \u2014 Rhythm & System Blueprint",
+      "stripeProductId": "prod_VJch48NA1df9rQ",
+      "stripePriceId": "price_1UIzSSIzICPDPGnWhvIhok4d",
+      "stripePaymentLink": "https://buy.stripe.com/4gMaEYg0p8dX5pY0cK7bW0Z",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "STABILIZER \u2014 Rhythm & System Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_STABILIZER __ Rhythm & System.pdf.pdf",
+          "localAssetPath": "Cnfdnt Survey Result Profiles for website survey /CNFDNT Eguide_STABILIZER __ Rhythm & System.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0006",
+      "slug": "cnfdnt-eguide-0006",
+      "name": "CNFDNT-EGUIDE-0006 STRATEGIST \u2014 The Clarity Machine Blueprint",
+      "title": "STRATEGIST \u2014 The Clarity Machine Blueprint",
+      "stripeProductId": "prod_VJci7lgDDWbB3h",
+      "stripePriceId": "price_1UIzSlIzICPDPGnWqJZ3KVL2",
+      "stripePaymentLink": "https://buy.stripe.com/7sY14o6pP65P4lU4t07bW10",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "STRATEGIST \u2014 The Clarity Machine Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_STRATEGIST __ The Clarity Machine.pdf.pdf",
+          "localAssetPath": "Cnfdnt Survey Result Profiles for website survey /CNFDNT Eguide_STRATEGIST __ The Clarity Machine.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0012",
+      "slug": "cnfdnt-eguide-0012",
+      "name": "CNFDNT-EGUIDE-0012 30 Second Prompts to Level Up AI Visuals",
+      "title": "30 Second Prompts to Level Up AI Visuals",
+      "stripeProductId": "prod_VJciw1sFQYoYLz",
+      "stripePriceId": "price_1UIzT7IzICPDPGnW8xLxvUgv",
+      "stripePaymentLink": "https://buy.stripe.com/8x214ocOd2TD2dMgbI7bW11",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "30 Second Prompts to Level Up AI Visuals",
+          "type": "pdf",
+          "fileName": "CNFDNT Eguide_3 Second Prompts 2.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT Eguide_3 Second Prompts 2.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0018",
+      "slug": "cnfdnt-eguide-0018",
+      "name": "CNFDNT-EGUIDE-0018 The AI Voice Agent Blueprint",
+      "title": "The AI Voice Agent Blueprint",
+      "stripeProductId": "prod_VJciIqhXSAWX6d",
+      "stripePriceId": "price_1UIzTPIzICPDPGnWbvOfa59i",
+      "stripePaymentLink": "https://buy.stripe.com/bJe3cwg0p2TDaKi9Nk7bW12",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "The AI Voice Agent Blueprint",
+          "type": "pdf",
+          "fileName": "CNFDNT_AVA and VOcie Agent eGuide.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT_AVA and VOcie Agent eGuide.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-EGUIDE-0021",
+      "slug": "cnfdnt-eguide-0021",
+      "name": "CNFDNT-EGUIDE-0021 High Lvl Show Bible Template",
+      "title": "High Lvl Show Bible Template",
+      "stripeProductId": "prod_VJcjrfmz8j0h9R",
+      "stripePriceId": "price_1UIzTkIzICPDPGnWPuLmg9Vf",
+      "stripePaymentLink": "https://buy.stripe.com/00w3cw29z51L19I2kS7bW13",
+      "amount": "0.00",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": [
+        {
+          "label": "High Lvl Show Bible Template",
+          "type": "pdf",
+          "fileName": "CNFDNT_HLM_SHOW_BIBLE_TEMPLATE.pdf.pdf",
+          "localAssetPath": "cnfdnt ebooks and eguides/CNFDNT_HLM_SHOW_BIBLE_TEMPLATE.pdf.pdf",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "HIGH-LVL-SINGLE",
+      "slug": "high-lvl-single",
+      "name": "High - Lvl Lead Magnet: Single $4.44",
+      "title": "High - Lvl Lead Magnet: Single $4.44",
+      "stripeProductId": "prod_VF6dOp8QPCIaaS",
+      "stripePriceId": "price_1UEcPtIzICPDPGnWGY1P5bCg",
+      "stripePaymentLink": "https://buy.stripe.com/28E3cw5lLbq99Gee3A7bW02",
+      "amount": "4.44",
+      "billing": "one-time",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "HIGH-LVL-MONTHLY",
+      "slug": "high-lvl-monthly",
+      "name": "High - Lvl Lead Magnet: Monthly Subscription $11.11",
+      "title": "High - Lvl Lead Magnet: Monthly Subscription $11.11",
+      "stripeProductId": "prod_VF6es9A3RcUwRa",
+      "stripePriceId": "price_1UEcR3IzICPDPGnW5oIpkq23",
+      "stripePaymentLink": "https://buy.stripe.com/6oU28s8xX8dX19I5x47bW01",
+      "amount": "11.11",
+      "billing": "month",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "HIGH-LVL-YEARLY",
+      "slug": "high-lvl-yearly",
+      "name": "High - Lvl Lead Magnet: Yearly $99.99",
+      "title": "High - Lvl Lead Magnet: Yearly $99.99",
+      "stripeProductId": "prod_VF6eqpMBRhwEsO",
+      "stripePriceId": "price_1UEcRdIzICPDPGnWo6ViXFht",
+      "stripePaymentLink": "https://buy.stripe.com/fZufZi6pP2TD19IaRo7bW00",
+      "amount": "99.99",
+      "billing": "year",
+      "customerChoosesAmount": false,
+      "delivery": []
+    },
+    {
+      "id": "NAME-YOUR-PRICE",
+      "slug": "name-your-price",
+      "name": "Name Your Price",
+      "title": "Name Your Price",
+      "stripeProductId": "prod_VGf2pZNaz5Hs2V",
+      "stripePriceId": "price_1UG7i1IzICPDPGnWQ9mbi1cP",
+      "stripePaymentLink": "https://buy.stripe.com/cNi28seWldyh7y67Fc7bW14",
+      "amount": "PWYW",
+      "billing": "customer chooses amount",
+      "customerChoosesAmount": true,
+      "delivery": []
+    },
+    {
+      "id": "CNFDNT-1ON1-0009",
+      "slug": "cnfdnt-1on1-0009",
+      "name": "CNFDNT-1ON1-0009 Partner Session (Joint Build)",
+      "title": "Partner Session (Joint Build)",
+      "stripeProductId": "",
+      "stripePriceId": "",
+      "stripePaymentLink": "https://buy.stripe.com/9B6bJ2dSh9i18CacZw7bW15",
+      "amount": "PWYW",
+      "billing": "customer chooses amount",
+      "customerChoosesAmount": true,
+      "delivery": [
+        {
+          "label": "Partner Session (Joint Build)",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "CNFDNT-COMM-0010",
+      "slug": "cnfdnt-comm-0010",
+      "name": "CNFDNT-COMM-0010 CNFDNT Community \u2014 Access",
+      "title": "CNFDNT Community \u2014 Access",
+      "stripeProductId": "",
+      "stripePriceId": "",
+      "stripePaymentLink": "https://buy.stripe.com/5kQ7sM15v65P6u2cZw7bW16",
+      "amount": "PWYW",
+      "billing": "customer chooses amount",
+      "customerChoosesAmount": true,
+      "delivery": [
+        {
+          "label": "CNFDNT Community \u2014 Access",
+          "type": "service-access",
+          "fileName": "",
+          "localAssetPath": "",
+          "assetUrl": ""
+        }
+      ]
+    }
+  ]
+}
