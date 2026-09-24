@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check server.mjs && node --check public/app.js && node --check public/domain.js && node --check lib/google.mjs && node --check lib/output.mjs && node --check lib/knowledge.mjs && node --check lib/fulfillment.mjs && node --check public/guide.js && node --check public/visuals.js && node --check public/music.js && node --check lib/database.mjs && node --check lib/uploads.mjs && node --check scripts/configure-stripe-delivery.mjs",
-    "configure:stripe-delivery": "node scripts/configure-stripe-delivery.mjs"
+    "check": "node --check server.mjs && node --check public/app.js && node --check public/domain.js && node --check lib/google.mjs && node --check lib/output.mjs && node --check lib/knowledge.mjs && node --check public/guide.js && node --check public/visuals.js && node --check public/music.js && node --check lib/database.mjs && node --check lib/uploads.mjs"
   },
   "engines": {
     "node": "24.x"

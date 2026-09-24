@@ -59,3 +59,25 @@
 - `visuals.js` now positions the intake drawing relative to its canvas, so the same engine runs full-screen in the app and inside the landing demo container.
 - Login page: the CNFDNT OS logo links to `/`; the "Home" link remains in the form column.
 - Verified: `npm run check`, `npm test` 38/38, no landing console errors, no overflow at 1440×900 and 390×844, light mode screenshots for Worlds, Timeline and Output.
+
+## Round 4 (September 23, 2026) — Orí rebrand, power surfaces, world labels
+- **Brand**: the app is Orí. Wordmark (O-ring with gold dot + "rí", inline SVG, `oriWordmark()` in visuals.js) replaces the CNFDNT wordmark in the sidebar, login, intake and footer; `mark()` is now the Orí ring and replaces the crescent in the home core, hold pill and the "brand" World icon. Titles, manifest, guide, login copy updated. CNFDNT OS is not mentioned in the product.
+- **Landing**: hero copy from the brand package (Orí / Your inner head. / Capture. Organize. Become. / A second brain. A higher you.); core is an animated Orí mark (eight orbiting dots settle into the ring, then the ring draws in); no pinned hero, so the Speak section follows immediately; feature scroller condensed; gold accent on eyebrows and the Setup plan; light/dark screenshots recaptured for every frame including the intake screens.
+- **Home**: the five orbit satellites now represent the user's first five active Worlds, colored by World, labeled with the World's short name (new "Short name · orbit label" field in World settings, up to 14 characters; defaults to the first word of the name) and clickable into the World.
+- **Output**: new waveform icon (no stars anywhere); the empty state is a glowing wavelength stage ("Orí Output · A clearer next move."); "What should I do today?" is a power CTA with a rotating gradient ring, light sweep and pulsing icon; Generate draft is a gradient button.
+- **Rocks/MVP**: Rocks icon is a boulder; MVP icon is the three-point crown arc from the brand package; MVP · Active is a gold flag badge; heading and slot icons updated; star glyphs removed.
+- **Intake**: brain background removed; halo, rings and dust remain.
+- Knowledge Base chat requires ANTHROPIC_API_KEY and ANTHROPIC_MODEL in the Vercel environment; the send button is intentionally disabled until they exist.
+- Verified: `npm run check`, `npm test` 38/38, no landing console errors, no overflow at 1440×900 and 390×844.
+
+## Round 4c — accent unification, example-World orbit, PAS copy
+- Gold (#C9A227) retired everywhere. Single accent #7c7cff (between the hero's "Your inner" blue and "head." violet) on the Orí dot, the acute on the í (rendered as a clipped overlay glyph so it colors only the accent), MVP badges, power surfaces, intro and pricing.
+- Landing orbit labels are example Worlds: Personal, Job, Hobby, Money, Relationships, Brand; all link to the Features section. Core is the dark planet with the Orí ring centered, no glow smear.
+- Landing copy rewritten on the PAS structure: Problem ("Your best ideas die in the wrong app."), Agitate ("Dropped balls cost more than time."), Solution (Hold to speak; phone section "The idea shows up in the car. So does Orí."); pricing subhead anchors price against one lost deal. Gallery captions state outcomes.
+- Logo PNG set regenerated in the accent color, plus an indigo-with-accent variant.
+
+## Round 4d — full wordmark everywhere, demo completes the flow
+- The full Orí wordmark (ring, accent dot, "rí" with accent) replaces the ring-only mark on the home core in the app and on the landing core.
+- Hero headline is the animated Orí logo: dots orbit in, fuse into the ring, "rí" arrives; then "Your inner head." beneath. Timed to start after the intro (or immediately when the intro was already seen this session).
+- Landing demo now completes the real flow: hold (lightning, rings), release ("Captured"), then the stage transitions to the Worlds home screen in a device frame for three seconds before resetting. Auto-demo every 9s until touched.
+- Screenshots recaptured (home core shows the wordmark).

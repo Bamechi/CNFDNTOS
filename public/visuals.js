@@ -1,14 +1,15 @@
 /** Small, local visual system. Motion pauses offscreen and respects reduced-motion. */
-export const mark = (cls='') => `<svg class="brand-symbol ${cls}" viewBox="0 0 60 60" fill="none" aria-hidden="true"><path d="M55 5C36 9 8 20 5 28C1 37 34 49 55 55C41 47 23 34 24 29C25 22 43 11 55 5Z" fill="currentColor"/></svg>`;
+export const mark = (cls='') => `<svg class="brand-symbol ori-mark ${cls}" viewBox="0 0 60 60" fill="none" aria-hidden="true"><circle cx="30" cy="30" r="22" stroke="currentColor" stroke-width="7"/><circle cx="30" cy="30" r="5.5" fill="var(--ori-gold,#7c7cff)"/></svg>`;
+export const oriWordmark = (cls='') => `<svg class="ori-wordmark ${cls}" viewBox="0 0 128 48" aria-label="Orí" role="img"><defs><clipPath id="ori-acc"><rect x="60" y="-6" width="70" height="21"/></clipPath></defs><circle cx="22" cy="25" r="17" stroke="currentColor" stroke-width="5.5" fill="none"/><circle cx="22" cy="25" r="4.2" fill="var(--ori-gold,#7c7cff)"/><text x="46" y="40" font-family="Manrope,'Helvetica Neue',sans-serif" font-weight="500" font-size="41" letter-spacing="-1.5" fill="currentColor">rı</text><text x="46" y="40" font-family="Manrope,'Helvetica Neue',sans-serif" font-weight="500" font-size="41" letter-spacing="-1.5" fill="var(--ori-gold,#7c7cff)" clip-path="url(#ori-acc)">rí</text></svg>`;
 const paths={
 worlds:'<circle cx="12" cy="12" r="5.6"/><ellipse cx="12" cy="12" rx="10.4" ry="3.5" transform="rotate(-24 12 12)" opacity=".62"/>',
-rocks:'<path d="M7.2 3.5h9.6L21 9l-9 11.5L3 9l4.2-5.5Z"/><path d="M3 9h18M9.6 9 12 20.5 14.4 9M7.2 3.5 9.6 9 12 3.5l2.4 5.5 2.4-5.5" opacity=".55"/>',
+rocks:'<path d="M4 17.5 7.5 9.2 11 12l3.6-6.5L20 17.5H4Z"/><path d="M2.5 20.5h19" opacity=".6"/>',
 projects:'<path d="m12 3.2 8.8 4.8L12 12.8 3.2 8 12 3.2Z"/><path d="m3.2 12 8.8 4.8L20.8 12M3.2 16l8.8 4.8L20.8 16" opacity=".6"/>',
 todos:'<circle cx="12" cy="12" r="8.8"/><path d="m8.2 12.4 2.6 2.6 5.2-5.6"/>',
 issues:'<circle cx="12" cy="12" r="8.8"/><path d="M12 7.6v5.4"/><circle cx="12" cy="16.4" r=".75" fill="currentColor" stroke="none"/>',
 timeline:'<rect x="3.6" y="5" width="16.8" height="16" rx="3.4"/><path d="M8 3v4m8-4v4M3.6 10.2h16.8"/><circle cx="8.5" cy="14.6" r=".8" fill="currentColor" stroke="none"/><circle cx="12" cy="14.6" r=".8" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.6" r=".8" fill="currentColor" stroke="none"/><circle cx="8.5" cy="17.8" r=".8" fill="currentColor" stroke="none"/><circle cx="12" cy="17.8" r=".8" fill="currentColor" stroke="none"/>',
 knowledge:'<path d="M4.2 5.6A2.6 2.6 0 0 1 6.8 3H19.8v15.2H6.8a2.6 2.6 0 0 0-2.6 2.6V5.6Z"/><path d="M4.2 20.8a2.6 2.6 0 0 1 2.6-2.6h13v2.6H6.8"/><path d="M9 7.6h6.6M9 11h4.4" opacity=".6"/>',
-output:'<path d="M12 2.8c.55 4.6 3.6 8.6 9.2 9.2-5.6.55-8.65 4.6-9.2 9.2-.55-4.6-3.6-8.65-9.2-9.2 5.6-.6 8.65-4.6 9.2-9.2Z"/><path d="M19 2.6c.2 1.5 1.1 2.7 2.6 2.9-1.5.2-2.4 1.4-2.6 2.9-.2-1.5-1.1-2.7-2.6-2.9 1.5-.2 2.4-1.4 2.6-2.9Z" opacity=".6"/>',
+output:'<path d="M2.5 12h3.2l2.3-6.5 3.4 13 3.2-9.5 2 3h5"/><circle cx="21.2" cy="12" r=".9" fill="currentColor" stroke="none"/>',
 capture:'<circle cx="12" cy="12" r="8.8"/><path d="M12 8.2v7.6M8.2 12h7.6"/>',
 archive:'<path d="M3.6 7.2h16.8v3.2H3.6zM5.2 10.4v8.6a2 2 0 0 0 2 2h9.6a2 2 0 0 0 2-2v-8.6"/><path d="M9.8 14h4.4"/>',
 settings:'<circle cx="12" cy="12" r="3.1"/><path d="m12 2.9 1.55 1.85 2.35-.7.8 2.3 2.3.8-.7 2.35L20.15 12l-1.85 1.5.7 2.35-2.3.8-.8 2.3-2.35-.7L12 21.1l-1.55-1.85-2.35.7-.8-2.3-2.3-.8.7-2.35L3.85 12l1.85-1.5-.7-2.35 2.3-.8.8-2.3 2.35.7L12 2.9Z"/>',
@@ -20,7 +21,7 @@ search:'<circle cx="10.6" cy="10.6" r="6.6"/><path d="m15.6 15.6 5 5"/>',
 star:'<path d="m12 2.6 2.9 6 6.5.9-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9 2.9-6Z"/>',
 arrow:'<path d="m9 5 7 7-7 7"/>',
 edit:'<path d="M4 20h4.5L19 9.5a2.1 2.1 0 0 0-3-3L5.5 17 4 20Z"/><path d="m14 8.5 3 3"/>',
-mvp:'<path d="M7.2 3.5h9.6L21 9l-9 11.5L3 9l4.2-5.5Z"/><path d="m12 7.2 1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3L7.7 10.3l3-.4L12 7.2Z" fill="currentColor" stroke="none" opacity=".9"/>',
+mvp:'<circle cx="5" cy="10" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="5.5" r="1.8" fill="currentColor" stroke="none"/><circle cx="19" cy="10" r="1.8" fill="currentColor" stroke="none"/><path d="M5 10c2.5-3.2 4.8-4.5 7-4.5s4.5 1.3 7 4.5" opacity=".7"/><path d="M6 15.5h12M7.5 19.5h9"/>',
 more:'<circle cx="5" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.1" fill="currentColor" stroke="none"/>'};
 export const icon=name=>`<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.worlds}</svg>`;
 export function planet(tone=0,cls=''){return `<div class="planet ${cls}" style="--planet-hue:${tone}deg" aria-hidden="true"><img src="/assets/planet-sapphire.webp" alt="" draggable="false"><i class="planet-atmosphere"></i></div>`}
@@ -35,12 +36,12 @@ export function startIntakeVisual(){
   const sulci=[[[.55,-.12],[.3,-.02],[0,.02],[-.3,.02],[-.55,.08]],[[.5,.3],[.3,.42],[.05,.4],[-.2,.48],[-.45,.4]],[[.6,.1],[.45,.2],[.3,.12],[.15,.22],[0,.16]],[[-.3,.25],[-.45,.15],[-.6,.28],[-.7,.15]],[[.1,-.3],[.3,-.25],[.45,-.3]],[[-.35,-.5],[-.5,-.45],[-.62,-.55],[-.45,-.62]],[[.2,.55],[.05,.5],[-.1,.58],[-.3,.55]]];
   const shape=new Path2D();outline.forEach(([x,y],i)=>{const [nx,ny]=outline[(i+1)%outline.length],mx=(x+nx)/2,my=(y+ny)/2;if(i===0)shape.moveTo(mx,my);else shape.quadraticCurveTo(x,y,mx,my)});shape.quadraticCurveTo(outline[0][0],outline[0][1],(outline[0][0]+outline[1][0])/2,(outline[0][1]+outline[1][1])/2);
   const probe=document.createElement('canvas').getContext('2d');
-  const particles=[];const count=innerWidth<700?520:980;let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+  const particles=[];const count=0;let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
   while(particles.length<count){const x=rnd()*2-1,y=rnd()*1.7-.9;if(probe.isPointInPath(shape,x,y))particles.push({x,y,z:rnd()*2-1,light:rnd(),kind:0})}
-  outline.forEach(([x,y],i)=>{const [nx,ny]=outline[(i+1)%outline.length];for(let k=0;k<9;k++){const t=k/9;particles.push({x:x+(nx-x)*t,y:y+(ny-y)*t,z:.3,light:.9,kind:1})}});
-  sulci.forEach(c=>{for(let i=0;i<c.length-1;i++)for(let k=0;k<7;k++){const t=k/7;particles.push({x:c[i][0]+(c[i+1][0]-c[i][0])*t,y:c[i][1]+(c[i+1][1]-c[i][1])*t,z:.5,light:.75,kind:2})}});
+  false&&outline.forEach(([x,y],i)=>{const [nx,ny]=outline[(i+1)%outline.length];for(let k=0;k<9;k++){const t=k/9;particles.push({x:x+(nx-x)*t,y:y+(ny-y)*t,z:.3,light:.9,kind:1})}});
+  false&&sulci.forEach(c=>{for(let i=0;i<c.length-1;i++)for(let k=0;k<7;k++){const t=k/7;particles.push({x:c[i][0]+(c[i+1][0]-c[i][0])*t,y:c[i][1]+(c[i+1][1]-c[i][1])*t,z:.5,light:.75,kind:2})}});
   const neighbours=[];for(let i=0;i<particles.length;i++){const a=particles[i];let best=[[1e9,-1],[1e9,-1]];for(let j=0;j<particles.length;j++){if(i===j)continue;const b=particles[j],d=(a.x-b.x)**2+(a.y-b.y)**2+(a.z-b.z)*.02;if(d<best[1][0]){best[1]=[d,j];best.sort((p,q)=>p[0]-q[0])}}neighbours.push(best.map(b=>b[1]).filter(j=>j>i))}
-  const nodes=[];for(let n=0;n<30;n++)nodes.push({i:Math.floor((n*263+41)%count),phase:n*1.9});
+  const nodes=[];
   // Neural cells inside the pill: jittered seeds that pulse from the centre outward.
   const seeds=[];for(let r=0;r<3;r++)for(let c=0;c<15;c++){const j=(r*15+c);seeds.push({u:(c+.5)/15+((j*37%100)/100-.5)*.045,v:(r+.5)/3+((j*53%100)/100-.5)*.24,phase:(j*97%100)/100*6.28})}
   function resize(){const dpr=Math.min(devicePixelRatio||1,1.7);const cb=canvas.getBoundingClientRect();width=cb.width||innerWidth;height=cb.height||innerHeight;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const box=button.getBoundingClientRect();ew=box.width;eh=box.height;energy.width=ew*dpr;energy.height=eh*dpr;ec.setTransform(dpr,0,0,dpr,0,0)}

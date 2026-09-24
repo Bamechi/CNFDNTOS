@@ -4,6 +4,11 @@ import {startIntakeVisual} from '/visuals.js';
 const root=document.documentElement,toggle=document.getElementById('theme-toggle'),KEY='cnfdnt-landing-theme';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ---- Intro (orbit logo fuses into the wordmark), once per session ----
+const intro=document.getElementById('intro');
+if(intro){let seen=false;try{seen=sessionStorage.getItem('ori-intro')==='1'}catch{}
+  if(seen||reduced){intro.classList.add('skip');document.documentElement.classList.add('intro-skipped')}else{document.documentElement.style.overflow='hidden';setTimeout(()=>{intro.remove();document.documentElement.style.overflow=''},4300);try{sessionStorage.setItem('ori-intro','1')}catch{}}}
+
 // ---- Theme ----
 function apply(theme){
   root.dataset.theme=theme;
@@ -32,10 +37,9 @@ const pin=document.querySelector('.hero-pin'),navg=document.querySelector('[data
 let heroP=0;
 function heroFrame(){
   if(!pin||!navg)return;
-  const r=pin.getBoundingClientRect(),h=r.height-innerHeight;
-  heroP=h>0?Math.min(1,Math.max(0,-r.top/h)):0;
+  heroP=Math.min(1,Math.max(0,scrollY/(innerHeight*.9)));
   navg.style.setProperty('--p',heroP.toFixed(4));
-  copy.style.opacity=String(1-Math.min(1,heroP*1.6));
+  copy.style.opacity=String(1-Math.min(.6,heroP*.8));
   copy.style.transform=`translateY(${-heroP*60}px)`;
 }
 if(!reduced){addEventListener('scroll',heroFrame,{passive:true});addEventListener('resize',heroFrame);heroFrame()}
@@ -50,8 +54,8 @@ const shotDesktop=document.getElementById('shot-desktop'),shotPhone=document.get
 let activeShot={shot:'home',phone:'home'};
 function setShot(next){
   activeShot=next;const theme=root.dataset.theme||'dark';
-  if(shotDesktop)shotDesktop.src=`/landing/desktop-${next.shot}-${next.shot==='intake'?'dark':theme}.webp`;
-  if(shotPhone)shotPhone.src=`/landing/phone-${next.phone}-${next.phone==='intake'?'dark':theme}.webp`;
+  if(shotDesktop)shotDesktop.src=`/landing/desktop-${next.shot}-${theme}.webp`;
+  if(shotPhone)shotPhone.src=`/landing/phone-${next.phone}-${theme}.webp`;
   steps.forEach(s=>s.classList.toggle('active',s.dataset.shot===next.shot));
 }
 if(steps.length){
@@ -66,19 +70,20 @@ if(demo&&hold){
   let running=false,userTouched=false,autoTimer=0;
   const setStep=k=>stepEls.forEach(el=>el.classList.toggle('active',el.dataset.step===k));
   const start=()=>{hold.classList.add('recording');status.textContent='...LISTENING...';hint.textContent='Release when you are done';setStep('hold')};
-  const stop=()=>{hold.classList.remove('recording');status.textContent='';hint.textContent='Captured. Choose its World.';setStep('release');clearTimeout(autoTimer);autoTimer=setTimeout(()=>{hint.textContent='Press and hold';setStep('idle')},2600)};
+  const home=document.querySelector('[data-demo-home]');
+  const stop=()=>{hold.classList.remove('recording');status.textContent='CAPTURED';hint.textContent='Captured. Your universe opens.';setStep('release');clearTimeout(autoTimer);autoTimer=setTimeout(()=>{home?.classList.add('on')},700);setTimeout(()=>{home?.classList.remove('on');status.textContent='';hint.textContent='Press and hold';setStep('idle')},4200)};
   hold.addEventListener('pointerdown',e=>{e.preventDefault();userTouched=true;start();hold.setPointerCapture?.(e.pointerId)});
   ['pointerup','pointercancel','pointerleave'].forEach(ev=>hold.addEventListener(ev,()=>{if(hold.classList.contains('recording'))stop()}));
   hold.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!hold.classList.contains('recording')){e.preventDefault();userTouched=true;start()}});
   hold.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')stop()});
   // Auto-demo until the visitor touches it: hold for 2.4s every 7s while on screen.
   let loop=0;const autoDemo=()=>{if(userTouched||document.hidden)return;start();setTimeout(()=>{if(!userTouched)stop()},2400)};
-  const vo=new IntersectionObserver(e=>{const on=e[0].isIntersecting;if(on&&!running){running=true;if(!reduced)startIntakeVisual();setStep('idle');if(!reduced){setTimeout(autoDemo,1200);loop=setInterval(autoDemo,7000)}}else if(!on&&running){running=false;clearInterval(loop)}},{threshold:.35});
+  const vo=new IntersectionObserver(e=>{const on=e[0].isIntersecting;if(on&&!running){running=true;if(!reduced)startIntakeVisual();setStep('idle');if(!reduced){setTimeout(autoDemo,1200);loop=setInterval(autoDemo,9000)}}else if(!on&&running){running=false;clearInterval(loop)}},{threshold:.35});
   vo.observe(demo);
 }
 
 // ---- Billing toggle + checkout links. Paste Stripe Payment Link URLs here; empty entries fall back to the email request. ----
 const CHECKOUT={solo:{monthly:'',yearly:''},operator:{monthly:'',yearly:''},setup:''};
 let billing='yearly';
-function applyBilling(){document.querySelectorAll('[data-billing]').forEach(b=>b.classList.toggle('active',b.dataset.billing===billing));document.querySelectorAll('.amount[data-monthly]').forEach(a=>a.textContent=a.dataset[billing]);document.querySelectorAll('.billed[data-monthly]').forEach(a=>a.textContent=a.dataset[billing]);document.querySelectorAll('[data-checkout]').forEach(a=>{const plan=a.dataset.checkout,link=plan==='setup'?CHECKOUT.setup:CHECKOUT[plan]?.[billing];if(link)a.href=link;else if(plan!=='setup')a.href=`mailto:cnfdnt.ai@gmail.com?subject=CNFDNT%20OS%20${plan[0].toUpperCase()+plan.slice(1)}%20(${billing})`})}
+function applyBilling(){document.querySelectorAll('[data-billing]').forEach(b=>b.classList.toggle('active',b.dataset.billing===billing));document.querySelectorAll('.amount[data-monthly]').forEach(a=>a.textContent=a.dataset[billing]);document.querySelectorAll('.billed[data-monthly]').forEach(a=>a.textContent=a.dataset[billing]);document.querySelectorAll('[data-checkout]').forEach(a=>{const plan=a.dataset.checkout,link=plan==='setup'?CHECKOUT.setup:CHECKOUT[plan]?.[billing];if(link)a.href=link;else if(plan!=='setup')a.href=`mailto:cnfdnt.ai@gmail.com?subject=Or%C3%AD%20${plan[0].toUpperCase()+plan.slice(1)}%20(${billing})`})}
 document.querySelectorAll('[data-billing]').forEach(b=>b.addEventListener('click',()=>{billing=b.dataset.billing;applyBilling()}));applyBilling();

@@ -15,17 +15,6 @@ test('profile writes survive subsequent requests',async()=>{const data=await(awa
 test('invalid state is rejected',async()=>assert.equal((await request('/api/state','PUT',{items:[]})).status,400));
 test('cross-origin writes are rejected',async()=>assert.equal((await request('/api/state','PUT',{}, {Origin:'https://untrusted.example'})).status,403));
 test('static app and manifest are available',async()=>{assert.equal((await request('/')).status,200);assert.equal((await request('/manifest.webmanifest')).status,200)});
-test('delivery catalog and unauthenticated delivery page are available',async()=>{
-  const catalog=await request('/api/delivery/catalog');
-  assert.equal(catalog.status,200);
-  const body=await catalog.json();
-  assert.equal(body.products.length,68);
-  assert.ok(body.products.every(p=>p.stripePaymentLink.startsWith('https://buy.stripe.com/')));
-  const page=await fetch(base+'/delivery');
-  assert.equal(page.status,200);
-  assert.match(await page.text(),/CNFDNT DELIVERY/);
-  assert.equal((await fetch(base+'/delivery/access?token=bad')).status,403);
-});
 test('logout revokes session',async()=>{assert.equal((await request('/api/logout','POST')).status,200);assert.equal((await request('/api/state')).status,401)});
 
 test('new sessions reject stale revisions without overwriting',async()=>{const login=await request('/api/login','POST',{email:'amechi@addcolormedia.com',password:'vanta'});cookie=login.headers.get('set-cookie').split(';')[0];const original=await(await request('/api/state')).json();assert.equal((await request('/api/state','PUT',original)).status,200);assert.equal((await request('/api/state','PUT',original)).status,409)});

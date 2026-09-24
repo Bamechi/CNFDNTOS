@@ -97,16 +97,16 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 .rock-card::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.35;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='white' stroke-opacity='.08' stroke-width='.8'><path d='M0 40 40 0M0 80 80 0M0 120 120 0M40 120 120 40M80 120 120 80'/></g></svg>")}
 .rock-glyph{position:absolute;top:14px;right:14px;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#ffffff18,#ffffff06);border:1px solid #ffffff1c;color:#c9d6ee;box-shadow:inset 0 1px 0 #ffffff2b}
 .rock-glyph .ui-icon{width:19px;height:19px}
-.mvp-card{background:linear-gradient(160deg,#5b93ff2e,#8f6bff14 45%,#ffffff05),radial-gradient(circle at 80% 0%,#ffd98a33,transparent 45%)!important;border:1px solid #c9a86a80!important;box-shadow:inset 0 1px 0 #ffe4ae55,0 30px 60px -30px #000,0 0 50px #c9a86a1f!important}
-.mvp-card .rock-glyph.mvp{background:linear-gradient(145deg,#ffd98a,#c9a86a);color:#2b1d05;border-color:#ffe9be;box-shadow:inset 0 1px 0 #fff6,0 8px 18px -8px #c9a86a}
-.mvp-card .item-meta>span:first-child{color:#ffd98a;font-weight:600;letter-spacing:.5px}
+.mvp-card{background:linear-gradient(160deg,#5b93ff2e,#8f6bff14 45%,#ffffff05),radial-gradient(circle at 80% 0%,#b487ff33,transparent 45%)!important;border:1px solid #c9a86a80!important;box-shadow:inset 0 1px 0 #d9cfff55,0 30px 60px -30px #000,0 0 50px #c9a86a1f!important}
+.mvp-card .rock-glyph.mvp{background:linear-gradient(145deg,#b487ff,#c9a86a);color:#0d0f2a;border-color:#e6dcff;box-shadow:inset 0 1px 0 #fff6,0 8px 18px -8px #c9a86a}
+.mvp-card .item-meta>span:first-child{color:#b487ff;font-weight:600;letter-spacing:.5px}
 .mvp-section{position:relative;padding:22px;border-radius:26px;background:linear-gradient(160deg,#ffffff0a,#ffffff03),radial-gradient(ellipse 60% 60% at 50% 0%,#c9a86a1f,transparent 60%);border:1px solid #c9a86a33;box-shadow:inset 0 1px 0 #ffffff1a}
-.mvp-section h2{color:#ffe4ae}
+.mvp-section h2{color:#d9cfff}
 .mvp-slot{border-color:#c9a86a44!important}
 [data-theme="light"] .rock-card{background:linear-gradient(160deg,#fff,#f4f8ff 55%,#eaf0fb),radial-gradient(circle at 85% 15%,#5b93ff14,transparent 45%)!important}
-[data-theme="light"] .mvp-card{background:linear-gradient(160deg,#fffdf6,#fff5e0 60%,#fdf1d9)!important;border-color:#dcc08c!important}
-[data-theme="light"] .mvp-section{background:linear-gradient(160deg,#fffdf8,#fff8ea);border-color:#e8d4a8}
-[data-theme="light"] .mvp-section h2{color:#8a6a2c}
+[data-theme="light"] .mvp-card{background:linear-gradient(160deg,#fbfaff,#f2efff 60%,#ece8ff)!important;border-color:#c9bfff!important}
+[data-theme="light"] .mvp-section{background:linear-gradient(160deg,#fbfaff,#f3f0ff);border-color:#d9cfff}
+[data-theme="light"] .mvp-section h2{color:#7c7cff}
 
 /* Rock detail: project links and check-in. */
 .project-link{text-align:left;display:grid;gap:8px}
@@ -139,7 +139,7 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 [data-theme="light"] .track-toggle button:hover{background:#2c4a7a0d}
 [data-theme="light"] .track-toggle button.active{background:#fff;box-shadow:inset 0 1px 0 #fff,0 6px 14px -10px #2c4a7a}
 [data-theme="light"] .rock-glyph{background:linear-gradient(145deg,#fff,#eef3fb);border-color:#d6e0f0;color:#3a4a68}
-[data-theme="light"] .notes-grid>.item-card .eyebrow{color:#8a6a2c}
+[data-theme="light"] .notes-grid>.item-card .eyebrow{color:#7c7cff}
 [data-theme="light"] .import-drop{background:#2c4a7a06}
 [data-theme="light"] .timeline-row:hover,[data-theme="light"] .todo-row:hover{background:#2c4a7a0c}
 .breadcrumb,.breadcrumb>button{font-size:14px!important;font-weight:500;color:var(--text)}
@@ -159,3 +159,48 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 .time-strip>small.muted{display:block;margin-top:6px;font-size:13px}
 [data-theme="light"] .date-point span{background:radial-gradient(circle,#2f6fe8 0 3px,#5b93ff 3.5px 6px,transparent 6.5px);box-shadow:0 0 14px #5b93ff80}
 .login-home{display:inline-block;text-decoration:none;color:inherit;transition:opacity .25s}.login-home:hover{opacity:.8}
+
+/* ===== Round 4: Orí brand, power surfaces, world labels ===== */
+:root{--ori-gold:#7c7cff;--ori-indigo:#1A1A2E}
+.ori-brand{display:inline-flex;align-items:center;color:var(--text)}
+.ori-wordmark{height:30px;width:auto;display:block}
+.sidebar .ori-wordmark{height:32px}
+.login-art .ori-wordmark{height:40px}
+.intake-brand .ori-wordmark,.cinematic-intake .ori-wordmark{height:36px}
+.ori-mark{width:1em;height:1em}
+.hero-mark.ori-mark{width:34%;height:34%;color:#f4f6fb;filter:drop-shadow(0 0 18px #7c7cff66)}
+.hold-symbol.ori-mark{width:26px;height:26px;color:#eaf6ff;filter:drop-shadow(0 0 9px #7c7cff99)}
+/* World-labeled satellites */
+.cosmos-satellite .sat-link{background:none;border:0;padding:0;cursor:pointer;display:grid;justify-items:center;gap:6px;color:var(--text);font:inherit}
+.cosmos-satellite .sat-link .planet{width:100%}
+.sat-label{font-size:10px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid var(--glass-border);background:linear-gradient(135deg,var(--glass-top),var(--glass-bottom));backdrop-filter:blur(10px);white-space:nowrap;transition:background .3s,color .3s,transform .3s}
+.sat-link:hover .sat-label,.sat-link:focus-visible .sat-label{background:linear-gradient(95deg,#5b93ff,#8f6bff);color:#fff;transform:translateY(-2px)}
+.sat-link:hover .planet{transform:scale(1.08)}
+.cosmos-satellite.is-world{overflow:visible}
+/* Power CTA: What should I do today */
+.power-cta{position:relative;isolation:isolate;overflow:hidden;border:1px solid transparent!important;background:linear-gradient(var(--panel),var(--panel)) padding-box,conic-gradient(from var(--pa,0deg),#5b93ff,#7c7cff,#b487ff,#5b93ff) border-box!important;animation:power-spin 6s linear infinite;box-shadow:0 0 30px #5b93ff33,0 0 60px #7c7cff22}
+@property --pa{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes power-spin{to{--pa:360deg}}
+.power-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff2e 50%,transparent 70%);transform:translateX(-120%);animation:power-sweep 3.4s ease-in-out infinite;z-index:-1}
+@keyframes power-sweep{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.power-cta .ui-icon{color:#7c7cff;filter:drop-shadow(0 0 8px #7c7cff99);animation:power-pulse 2.2s ease-in-out infinite}
+@keyframes power-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.power-cta:hover{box-shadow:0 0 40px #5b93ff55,0 0 90px #7c7cff33;transform:translateY(-2px)}
+[data-theme="light"] .power-cta{background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from var(--pa,0deg),#5b93ff,#7c7cff,#b487ff,#5b93ff) border-box!important}
+/* Output power stage */
+.power-stage{position:relative;overflow:hidden;min-height:420px;display:grid;place-items:center;text-align:center;border-radius:24px;background:radial-gradient(ellipse 70% 60% at 50% 45%,#5b93ff1f,transparent 60%),radial-gradient(ellipse 40% 30% at 50% 60%,#7c7cff1a,transparent 60%),#070a12}
+#output-wave{position:absolute;inset:0;width:100%;height:100%}
+.power-copy{position:relative;z-index:1;max-width:520px;padding:30px}
+.power-copy .eyebrow{color:#7c7cff;letter-spacing:4px}
+.power-copy h2{font-size:clamp(30px,3.4vw,46px);color:#f4f6fb;text-shadow:0 0 30px #5b93ff66}
+.power-copy .muted{color:#c3cbe0}
+.output-compose .primary{background:linear-gradient(95deg,#5b93ff,#8f6bff);color:#fff;border:0;box-shadow:0 0 24px #5b93ff55}
+/* Sidebar: Output item glows a little more than the rest */
+.sidebar .nav-item[data-nav="output"]>span:first-child{background:linear-gradient(145deg,#7c7cff33,#5b93ff22);color:#b487ff}
+/* MVP flag */
+.mvp-flag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:linear-gradient(95deg,#7c7cff,#b487ff);color:#ffffff!important;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;box-shadow:0 0 16px #7c7cff66}
+.mvp-section h2{display:flex;align-items:center;gap:10px}
+.mvp-section h2 .ui-icon,.mvp-slot-icon .ui-icon{color:#b487ff;width:24px;height:24px}
+.rock-glyph .ui-icon{color:#c9d6ee}
+
+.cosmos-primary .ori-wordmark.hero-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58%;height:auto;color:#f4f6fb;filter:drop-shadow(0 6px 16px #000c) drop-shadow(0 0 18px #7c7cff55);z-index:2}

@@ -42,35 +42,6 @@ Set `ANTHROPIC_API_KEY` and an `ANTHROPIC_MODEL` available to your account. Know
 
 Set `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REDIRECT_URI`. The redirect URI must match the OAuth Web application's authorized URI exactly. Connect through Settings, choose calendars and assign a World to each. The only requested scope is `calendar.readonly`; events are visibly external and uneditable in CNFDNT. Sync is user-triggered, paginated and incremental, handles expired sync tokens by rebuilding selected-calendar copies, deduplicates by calendar/event ID, and removes only imported copies when calendars are deselected/disconnected. OAuth tokens stay in the local database. Live authorization requires the user's Google OAuth setup. Reference: https://developers.google.com/identity/protocols/oauth2/web-server and https://developers.google.com/workspace/calendar/api/guides/sync
 
-### Stripe delivery
-
-Product delivery is mapped in `data/delivery-products.json`. Each Stripe Payment Link, Product ID and Price ID is matched to a CNFDNT product, with delivery records for PDFs, bundles, GPT links, services and community access. Product-specific `assetUrl` values should point to the final customer-facing Google Drive or storage links. Until an `assetUrl` is set, delivery pages fall back to `DELIVERY_FALLBACK_URL` or the configured Drive folder.
-
-Set these production environment variables:
-
-```sh
-STRIPE_SECRET_KEY=sk_live_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-DELIVERY_TOKEN_SECRET=<long random string>
-PUBLIC_BASE_URL=https://cnfdnt.co
-DELIVERY_FALLBACK_URL=https://drive.google.com/drive/folders/1uHjxD_U1ZvbK3_AF_NE0BMGyLzkZkROY
-```
-
-Optional email delivery uses Resend:
-
-```sh
-RESEND_API_KEY=re_...
-DELIVERY_EMAIL_FROM="CNFDNT <delivery@cnfdnt.co>"
-```
-
-After deploying the server, set every Stripe Payment Link to redirect after successful payment:
-
-```sh
-PUBLIC_BASE_URL=https://cnfdnt.co STRIPE_SECRET_KEY=sk_live_... npm run configure:stripe-delivery
-```
-
-That script finds the 68 mapped Stripe Payment Links and updates their after-payment redirect to `/delivery?session_id={CHECKOUT_SESSION_ID}`. The delivery page verifies the Checkout Session with Stripe before showing products. The webhook endpoint `/api/stripe/webhook` also records the order, generates a 30-day signed access link and sends the optional delivery email when Resend is configured.
-
 ### Extraction and music
 
 TXT and DOCX extraction use Python's standard library; PDF extraction requires `pypdf`. Set `EXTRACTOR_PYTHON` if necessary. The local Codex runtime is detected when present. Failed extraction retains the original and reports an explicit status.
