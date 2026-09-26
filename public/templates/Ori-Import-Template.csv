@@ -1,0 +1,10 @@
+Type,World,Area,Title,Description,Due date (YYYY-MM-DD),Project,Rock,Status,Tags
+World,,,19Keys,Everything run for 19Keys as his manager and integrator.,,,,,
+Area,19Keys,,Supermind,,,,,,
+Rock,19Keys,Supermind,Launch the Supermind affiliate program,Program live with 25 active affiliates and tracked payouts.,2026-12-15,,,on,revenue
+Project,19Keys,Supermind,Affiliate program build,"Terms, tracking links, onboarding page.",2026-11-15,,Launch the Supermind affiliate program,open,build
+Project,19Keys,,Weekly operating rhythm,"Standing meeting agenda and follow-ups. No date, so Orí shows it as Ongoing.",,,,open,ops
+To-Do,19Keys,Supermind,Send affiliate terms to legal review,,2026-09-30,Affiliate program build,Launch the Supermind affiliate program,,legal
+To-Do,19Keys,Supermind,Pick the payout platform,"Dated past 14 days and linked to a Rock, so Orí imports it as a checkpoint.",2026-10-20,Affiliate program build,Launch the Supermind affiliate program,,
+Issue,19Keys,Supermind,Flat commission or tiered commission?,Decide before the terms go out.,,Affiliate program build,,,
+Note,19Keys,Supermind,Affiliate positioning,"Lead with the ritual, not the discount.",,,,,brand
