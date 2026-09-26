@@ -55,7 +55,7 @@ export function isVisible(state, i) {
 }
 export function normalize(input, now = new Date()) {
   const s=structuredClone(input), stamp=now.toISOString();
-  s.schema=3; s.revision=Number(s.revision)||0;s.projects||=[];s.orders||={};s.focusThree||=[];s.audit||=[];s.outputs||=[];s.captures||=[];s.connections||=[];
+  s.schema=3; s.revision=Number(s.revision)||0;s.projects||=[];s.orders||={};s.focusThree||=[];s.audit||=[];s.outputs||=[];s.captures||=[];s.connections||=[];s.areas||=[];
   s.preferences={notifications:{enabled:false,categories:['due','overdue','offtrack'],leadDays:1,frequency:'daily',quietStart:'22:00',quietEnd:'08:00',digestTime:'09:00',weekDay:1},music:{track:'',remember:false},...s.preferences};
   s.worlds.forEach((w,n)=>{w.created_at||=stamp;w.summary??=w.purpose||'';w.headline||='';w.icon=WORLD_ICONS.includes(w.icon)?w.icon:'orb';w.color=WORLD_COLORS.includes(w.color)?w.color:WORLD_COLORS[(w.tone||n)%WORLD_COLORS.length]; if(w.status_override===undefined)w.status_override=w.status==='off'?'off':null;delete w.purpose;delete w.status;});
   // Legacy Inbox is retained as a review World; no captured item is discarded.

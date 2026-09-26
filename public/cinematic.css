@@ -216,3 +216,12 @@ button,a,input,textarea,select,summary{-webkit-tap-highlight-color:transparent}b
 .power-copy .muted{color:#dde3f2;font-size:15px;text-shadow:0 1px 12px #000}
 .power-copy h2{text-shadow:0 2px 24px #000,0 0 30px #5b93ff55}
 #output-wave{-webkit-mask-image:radial-gradient(ellipse 45% 38% at 50% 48%,transparent 0 55%,#000 100%);mask-image:radial-gradient(ellipse 45% 38% at 50% 48%,transparent 0 55%,#000 100%)}
+
+/* Areas: filter chips on the World page, Ongoing badge on undated Projects */
+.area-chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 18px}
+.area-chips-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.area-chips button{padding:7px 14px;border-radius:999px;border:1px solid var(--glass-border);background:linear-gradient(135deg,var(--glass-top),var(--glass-bottom));color:var(--text);font:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:border-color .2s,background .2s}
+.area-chips button:hover{border-color:#7c7cff88}
+.area-chips button.active{background:linear-gradient(95deg,#5b93ff33,#7c7cff44);border-color:#7c7cff;color:var(--text);box-shadow:0 0 16px #7c7cff44}
+.area-chips .area-add{padding:7px 12px;color:var(--muted)}
+.ongoing-badge{display:inline-block;padding:1px 8px;border-radius:999px;border:1px solid #7c7cff66;color:#9d9dff;font-size:11px;font-weight:600;letter-spacing:.3px}
